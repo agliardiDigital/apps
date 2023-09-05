@@ -2,22 +2,23 @@ import type { App, FnContext } from "deco/mod.ts";
 import { createHttpClient } from "../utils/http.ts";
 import manifest, { Manifest } from "./manifest.gen.ts";
 import { API } from "./utils/specs/api.gen.ts";
+import { fetchSafe } from "../utils/fetch.ts";
 
 export type AppContext = FnContext<State, Manifest>;
 
 /** @title Wake */
 export interface Props {
   /**
-   * @title Wake Account name
-   * @description The name that comes before the cdn.Wake, deco on deco.cdn.Wake.com.br
+   * @title Wake API token
+   * @description The token for accessing wake commerce
    * @default deco
    */
-  account: string;
+  token: string;
 
   /**
    * @description Use Wake as backend platform
    */
-  platform: "wakes";
+  platform: "wake";
 }
 
 export interface State extends Props {
@@ -28,12 +29,11 @@ export interface State extends Props {
  * @title Wake
  */
 export default function App(props: Props): App<Manifest, State> {
-  const { authToken, publicUrl, sandbox } = props;
+  const { token } = props;
   const api = createHttpClient<API>({
-    headers: new Headers({}),
-    base: sandbox
-      ? "https://api.sandbox.Wake.com.br"
-      : "https://api.Wake.com.br",
+    base: "https://api.fbits.net",
+    headers: new Headers({ "Authentication": `Basic ${token}` }),
+    fetcher: fetchSafe,
   });
 
   return {
