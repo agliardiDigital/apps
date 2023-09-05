@@ -3,6 +3,7 @@
 // To generate this file: deno run -A scripts/openAPI.ts
 
 export interface API {
+  /** @description Últimos Pedidos */
   "GET /dashboard/pedidos": {
     response: {
       pedidoId?: number;
@@ -14,6 +15,7 @@ export interface API {
       valorTotal?: string;
     }[];
   };
+  /** @description Atualiza a exibição do banner nos hotsites, se deve ser em todos ou não */
   "PUT /banners/:bannerId/hotsites": {
     body: {
       /**
@@ -22,11 +24,13 @@ export interface API {
       exibirEmTodosHotsites?: boolean;
     };
   };
+  /** @description Retorna se o usuário ativou o recebimento de newsletter */
   "GET /usuarios/:email/comunicacao": {
     response: {
       recebimentoNewsletter?: boolean;
     };
   };
+  /** @description Atualizar autor */
   "PUT /autores/:autorId": {
     body: {
       /**
@@ -39,6 +43,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Retorna lista contendo os Id's dos pedidos do usuário */
   "GET /usuarios/:email/pedidos": {
     response: {
       pedidoId?: number;
@@ -49,6 +54,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Usuário encontrado */
   "GET /usuarios/cpf/:cpf": {
     response: {
       usuarioId?: number;
@@ -84,6 +90,7 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Loja Física */
   "GET /lojasFisicas/:lojaFisicaId": {
     response: {
       lojaId?: number;
@@ -113,6 +120,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atributo encontrado */
   "GET /atributos/:nome": {
     response: {
       nome?: string;
@@ -121,6 +129,7 @@ export interface API {
       prioridade?: number;
     };
   };
+  /** @description Lista de resellers */
   "GET /resellers": {
     response: {
       resellerId?: number;
@@ -133,6 +142,7 @@ export interface API {
       nomeMarketPlace?: string;
     }[];
   };
+  /** @description Reseller específico */
   "GET /resellers/:resellerId": {
     response: {
       resellerId?: number;
@@ -145,6 +155,7 @@ export interface API {
       nomeMarketPlace?: string;
     };
   };
+  /** @description Método que insere um produto na base */
   "POST /produtos": {
     body: {
       /**
@@ -369,7 +380,9 @@ export interface API {
       };
     };
   };
+  /** @description Remove um produto de uma tabela de preço */
   "DELETE /tabelaPrecos/:tabelaPrecoId/:sku": {};
+  /** @description Atualiza o frete de todos os produtos de um pedido */
   "PUT /pedidos/:pedidoId/changeseller": {
     body: {
       /**
@@ -387,6 +400,7 @@ export interface API {
       };
     };
   };
+  /** @description Objeto do banner */
   "GET /banners/:bannerId": {
     response: {
       id?: number;
@@ -443,6 +457,7 @@ export interface API {
       };
     };
   };
+  /** @description Atualiza um produto em uma assinatura */
   "PUT /assinaturas/produtos/:assinaturaProdutoId/Alterar": {
     body: {
       /**
@@ -459,6 +474,7 @@ export interface API {
       quantidade?: number;
     };
   };
+  /** @description Parceiro encontrado */
   "GET /parceiros/:parceiroId": {
     response: {
       parceiroId?: number;
@@ -472,6 +488,7 @@ export interface API {
       origem?: string;
     };
   };
+  /** @description Lista de parceiros */
   "GET /parceiros": {
     response: {
       parceiroId?: number;
@@ -485,7 +502,9 @@ export interface API {
       origem?: string;
     }[];
   };
+  /** @description Deleta um banner existente */
   "DELETE /banners/:bannerId": {};
+  /** @description Insere um novo tipo de evento */
   "POST /tiposEvento": {
     body: {
       /**
@@ -562,6 +581,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de preços e estoque de produtos que sofreram alterações */
   "GET /produtos/alteracoes": {
     searchParams: {
       pagina?: number;
@@ -591,12 +611,15 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Retorna a situação reseller de um produto */
   "GET /produtos/:identificador/situacaoReseller": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
+  /** @description Buscar autor por id */
   "GET /autores/:autorId": {};
+  /** @description Lista de atributos */
   "GET /atributos": {
     response: {
       nome?: string;
@@ -605,6 +628,7 @@ export interface API {
       prioridade?: number;
     }[];
   };
+  /** @description Inscrição */
   "GET /webhook/inscricao/:inscricaoId": {
     response: {
       inscricaoId?: number;
@@ -621,6 +645,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Insere um novo produto na assinatura */
   "POST /assinaturas/:assinaturaId/produtos": {
     body: {
       /**
@@ -633,6 +658,7 @@ export interface API {
       quantidade?: number;
     };
   };
+  /** @description Atualiza uma categoria */
   "PUT /categorias/:id": {
     body: {
       /**
@@ -673,7 +699,9 @@ export interface API {
       exibeMenu?: boolean;
     };
   };
+  /** @description Deletar autor */
   "DELETE /autores/:autorId": {};
+  /** @description Retorna todos os identificadores dos produtos/variantes relacionados ao produto pesquisado */
   "GET /produtos/:identificador/relacionados": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -685,6 +713,7 @@ export interface API {
       sku?: string;
     }[];
   };
+  /** @description Atualiza um valor pré definido pelo id */
   "PUT /usuarios/valoresdefinidoscadastropersonalizado/:valoresDefinidosCampoGrupoInformacaoId":
     {
       body: {
@@ -698,6 +727,7 @@ export interface API {
         ordem?: number;
       };
     };
+  /** @description Insere um novo banner */
   "POST /banners": {
     body: {
       /**
@@ -878,7 +908,9 @@ export interface API {
       };
     };
   };
+  /** @description Deleta um avatar de um usuário */
   "DELETE /usuarios/:email/avatar": {};
+  /** @description Atualiza uma inscrição */
   "PUT /webhook/inscricao/:inscricaoId": {
     body: {
       /**
@@ -920,13 +952,16 @@ export interface API {
       }[];
     };
   };
+  /** @description Exclui um fabricante */
   "DELETE /fabricantes/:fabricanteId": {};
+  /** @description Lista de posicionamentos do banner */
   "GET /banners/posicionamentos": {
     response: {
       posicionamentoId?: number;
       descricao?: string;
     }[];
   };
+  /** @description Insere um novo avatar para o usuário */
   "POST /usuarios/:email/avatar": {
     body: {
       /**
@@ -942,6 +977,7 @@ export interface API {
       urlAvatar?: string;
     };
   };
+  /** @description Preços do produto variante informado */
   "GET /produtos/:identificador/precos": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -961,6 +997,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza a autonomia de um Seller */
   "PUT /resellers/:resellerId/autonomia": {
     body: {
       /**
@@ -969,6 +1006,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Lista de produtos variantes vinculados aos tipo de evento */
   "GET /eventos/:eventoId/produtos": {
     response: {
       eventoId?: number;
@@ -977,6 +1015,7 @@ export interface API {
       removido?: boolean;
     }[];
   };
+  /** @description Atualiza o status do hotsite, sendo ativo (true) ou inativo (false) */
   "PUT /hotsites/:hotsiteId/status": {
     body: {
       /**
@@ -985,6 +1024,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Autenticação realizada com sucesso */
   "POST /autenticacao/login": {
     body: {
       /**
@@ -997,6 +1037,7 @@ export interface API {
       senha?: string;
     };
   };
+  /** @description Parceiro encontrado */
   "GET /parceiros/:nome": {
     response: {
       parceiroId?: number;
@@ -1010,6 +1051,7 @@ export interface API {
       origem?: string;
     };
   };
+  /** @description Seta status do produto variante como ativo ou inativo */
   "PUT /produtos/:identificador/situacao": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -1021,6 +1063,7 @@ export interface API {
       status?: boolean;
     };
   };
+  /** @description Lista de Grupos de Personalização */
   "GET /grupospersonalizacao": {
     response: {
       grupoPersonalizacaoId?: number;
@@ -1029,7 +1072,9 @@ export interface API {
       obrigatorio?: boolean;
     }[];
   };
+  /** @description Retorna o saldo de um usuário */
   "GET /contascorrentes/:email": {};
+  /** @description Lista de produtos */
   "GET /resellers/produtos/:identificador": {
     searchParams: {
       tipoIdentificador?: "ResellerId" | "RazaoSocial";
@@ -1123,6 +1168,7 @@ export interface API {
       buyBox?: boolean;
     }[];
   };
+  /** @description Lista de pedidos */
   "GET /pedidos/formaPagamento/:formasPagamento": {
     searchParams: {
       dataInicial?: string;
@@ -1394,6 +1440,7 @@ export interface API {
       pedidoSplit?: number[];
     }[];
   };
+  /** @description Caso a loja utilize as formas de pagamento do gateway o campo "formaPagamentoId" do objeto "pagamento" deverá conter o valor "200". */
   "POST /pedidos": {
     body: {
       /**
@@ -1648,6 +1695,7 @@ export interface API {
       usuarioMaster?: number;
     };
   };
+  /** @description Lista de portfolios */
   "GET /portfolios": {
     response: {
       portfolioId?: number;
@@ -1655,6 +1703,7 @@ export interface API {
       ativo?: boolean;
     }[];
   };
+  /** @description Lista de imagens vinculadas a um produtos */
   "GET /produtos/:identificador/imagens": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -1669,6 +1718,7 @@ export interface API {
       exibirMiniatura?: boolean;
     }[];
   };
+  /** @description Limite de crédito de um usuário específico */
   "GET /usuarios/limiteCreditoPorUsuarioId/:usuarioId": {
     response: {
       usuarioId?: number;
@@ -1676,11 +1726,13 @@ export interface API {
       saldo?: number;
     };
   };
+  /** @description Deleta o SEO de um produto específico */
   "DELETE /produtos/:identificador/seo": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
   };
+  /** @description Adiciona um vínculo entre usuário e parceiro */
   "POST /usuarios/:email/parceiro": {
     body: {
       /**
@@ -1701,6 +1753,7 @@ export interface API {
       dataFinal?: string;
     };
   };
+  /** @description Atualiza um banner existente */
   "PUT /banners/:bannerId": {
     body: {
       /**
@@ -1881,6 +1934,7 @@ export interface API {
       };
     };
   };
+  /** @description Retorna usuário encontrado */
   "GET /usuarios/:email/enderecos": {
     response: {
       enderecoId?: number;
@@ -1897,7 +1951,9 @@ export interface API {
       pais?: string;
     }[];
   };
+  /** @description Exclui um Script */
   "DELETE /gestorscripts/scripts/:scriptId": {};
+  /** @description Ativa ou desativa um endereço de um usuário com base no id do usuário */
   "PUT /usuarios/:usuarioId/enderecos/:enderecoId/ativar": {
     body: {
       /**
@@ -1906,6 +1962,7 @@ export interface API {
       status?: boolean;
     };
   };
+  /** @description Atualiza um vínculo entre usuário e parceiro */
   "PUT /usuarios/:email/parceiro": {
     body: {
       /**
@@ -1922,6 +1979,7 @@ export interface API {
       dataFinal?: string;
     };
   };
+  /** @description Ativa ou desativa um Seller */
   "PUT /resellers/:resellerId/status": {
     body: {
       /**
@@ -1930,6 +1988,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Lista de produtos */
   "GET /produtos": {
     searchParams: {
       pagina?: number;
@@ -2031,11 +2090,13 @@ export interface API {
       prazoValidade?: number;
     }[];
   };
+  /** @description Remove um Atacarejo */
   "DELETE /produtos/:identificador/atacarejo/:produtoVarianteAtacadoId": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
+  /** @description Inserir autor */
   "POST /autores": {
     body: {
       /**
@@ -2048,6 +2109,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Lista dos estados */
   "GET /lojasFisicas/estados": {
     response: {
       estadoId?: number;
@@ -2056,6 +2118,7 @@ export interface API {
       regiao?: string;
     }[];
   };
+  /** @description Método responsável por retornar um produto específico buscando pelo seu identificador, que pode ser um sku ou produto variante. O tipo do identificador pode ser definido no campo tipoIdentificador. Também é possível informar quais informações adicionais devem ser retornadas na consulta utilizando o campo campos adicionais. */
   "GET /produtos/:identificador": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId" | "ProdutoId";
@@ -2151,6 +2214,7 @@ export interface API {
       prazoValidade?: number;
     };
   };
+  /** @description Lista de versões */
   "GET /gestorscripts/scripts/:scriptId/versoes": {
     response: {
       versaoId?: number;
@@ -2161,6 +2225,7 @@ export interface API {
       usuario?: string;
     }[];
   };
+  /** @description Reseller específico */
   "GET /resellers/token": {
     response: {
       resellerId?: number;
@@ -2173,6 +2238,7 @@ export interface API {
       nomeMarketPlace?: string;
     };
   };
+  /** @description Insere uma versão para um script existente */
   "POST /gestorscripts/scripts/:scriptId/versoes": {
     body: {
       /**
@@ -2189,6 +2255,7 @@ export interface API {
       publicado?: boolean;
     };
   };
+  /** @description Atualiza uma categoria utilizando o id do erp como identificador */
   "PUT /categorias/erp/:id": {
     body: {
       /**
@@ -2229,7 +2296,9 @@ export interface API {
       exibeMenu?: boolean;
     };
   };
+  /** @description Templates */
   "GET /templates": {};
+  /** @description Insere um novo usuário */
   "POST /usuarios": {
     body: {
       /**
@@ -2342,6 +2411,7 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Lista de pedidos */
   "GET /pedidos": {
     searchParams: {
       dataInicial?: string;
@@ -2618,6 +2688,7 @@ export interface API {
       pedidoSplit?: number[];
     }[];
   };
+  /** @description Dados da loja */
   "GET /loja": {
     response: {
       nome?: string;
@@ -2625,6 +2696,7 @@ export interface API {
       urlCarrinho?: string;
     };
   };
+  /** @description Indicadores de Faturamento */
   "GET /dashboard/faturamento": {
     searchParams: {
       dataInicial?: string;
@@ -2650,6 +2722,7 @@ export interface API {
       indicadorTicketMedioPorcentagem?: string;
     };
   };
+  /** @description Grupo de assinatura */
   "GET /assinaturas/grupoassinatura": {
     response: {
       grupoAssinaturaId?: number;
@@ -2661,6 +2734,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Atualiza um produto com base nos dados enviados */
   "PUT /produtos/:identificador": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -2888,6 +2962,7 @@ export interface API {
       };
     };
   };
+  /** @description Lista de pedidos */
   "GET /pedidos/:pedidoId/rastreamento": {
     response: {
       pedidoRastreamentoId?: number;
@@ -2904,6 +2979,7 @@ export interface API {
       dataEntrega?: string;
     };
   };
+  /** @description Atualiza rastreamento de produto completo (com os dados da N.F.) */
   "PUT /pedidos/:pedidoId/produtos/:produtoVarianteId/rastreamento/:pedidoRastreamentoProdutoId":
     {
       body: {
@@ -2941,6 +3017,7 @@ export interface API {
         dataEntrega?: string;
       };
     };
+  /** @description Insere um novo detalhe de frete vinculado a um contrato de frete */
   "POST /fretes/:freteId/detalhes": {
     body: {
       /**
@@ -2982,6 +3059,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Insere um novo portfolio */
   "POST /portfolios": {
     body: {
       /**
@@ -2990,6 +3068,7 @@ export interface API {
       nome?: string;
     };
   };
+  /** @description Lista de banners */
   "GET /banners": {
     searchParams: {
       pagina?: number;
@@ -3050,6 +3129,7 @@ export interface API {
       };
     }[];
   };
+  /** @description Pedido encontrado */
   "GET /pedidos/:pedidoId": {
     response: {
       pedidoId?: number;
@@ -3308,16 +3388,19 @@ export interface API {
       pedidoSplit?: number[];
     };
   };
+  /** @description Avatar do usuário encontrado */
   "GET /usuarios/:email/avatar": {
     response: {
       urlAvatar?: string;
     };
   };
+  /** @description Lista de identificadores de conteúdos vinculados ao hotsite */
   "GET /hotsites/:hotsiteId/conteudos": {
     response: {
       conteudoId?: number;
     }[];
   };
+  /** @description Atualiza um campo de cadastro personalizado pelo id */
   "PUT /usuarios/camposcadastropersonalizado/:camposcadastropersonalizadoId": {
     body: {
       /**
@@ -3334,7 +3417,9 @@ export interface API {
       ordem?: number;
     };
   };
+  /** @description Dados do serviço de frete do pedido */
   "GET /pedidos/:pedidoId/frete": {};
+  /** @description Atualiza uma tabela de preços */
   "PUT /tabelaPrecos/:tabelaPrecoId": {
     body: {
       /**
@@ -3355,6 +3440,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Atualiza a situação do status do pedido */
   "PUT /pedidos/:pedidoId/status": {
     body: {
       /**
@@ -3368,6 +3454,7 @@ export interface API {
       };
     };
   };
+  /** @description Lista de Tópicos */
   "GET /webhook/Topicos": {
     response: {
       nome?: string;
@@ -3375,6 +3462,7 @@ export interface API {
       payload?: string;
     }[];
   };
+  /** @description Seta o pedido como integrado */
   "POST /pedidos/complete": {
     body: {
       /**
@@ -3388,12 +3476,15 @@ export interface API {
       };
     };
   };
+  /** @description Deleta um portfolio */
   "DELETE /portfolios/:portfolioId": {};
+  /** @description Retorna se o produto variante está disponível ou não */
   "GET /produtos/:identificador/disponibilidade": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
+  /** @description Lista de formas de pagamento */
   "GET /formasPagamento": {
     response: {
       formaPagamentoId?: number;
@@ -3402,6 +3493,7 @@ export interface API {
       descricao?: string;
     }[];
   };
+  /** @description Último status do pedido */
   "GET /pedidos/:pedidoId/status": {
     response: {
       situacaoPedidoId?: number;
@@ -3421,6 +3513,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de pedidos */
   "GET /pedidos/:pedidoId/rastreamento/produtos": {
     response: {
       produtoVarianteId?: number;
@@ -3440,6 +3533,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Altera o status de um portfolio */
   "PUT /portfolios/:portfolioId/status": {
     body: {
       /**
@@ -3453,6 +3547,7 @@ export interface API {
       };
     };
   };
+  /** @description Limite de crédito que estão vinculados aos usuários */
   "GET /usuarios/limiteCredito": {
     response: {
       usuarioId?: number;
@@ -3460,11 +3555,13 @@ export interface API {
       saldo?: number;
     }[];
   };
+  /** @description Exclui uma imagem de um produto */
   "DELETE /produtos/:identificador/imagens/:id": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
+  /** @description Atualiza um atributo */
   "PUT /atributos/:nome": {
     body: {
       /**
@@ -3495,6 +3592,7 @@ export interface API {
       prioridade?: number;
     };
   };
+  /** @description Atualiza um portfolio */
   "PUT /portfolios/:portfolioId": {
     body: {
       /**
@@ -3503,6 +3601,7 @@ export interface API {
       nome?: string;
     };
   };
+  /** @description Extrato retornado com sucesso */
   "GET /contascorrentes/:email/extrato": {
     searchParams: {
       dataInicial?: string;
@@ -3517,6 +3616,7 @@ export interface API {
       visivelParaCliente?: boolean;
     }[];
   };
+  /** @description Fabricante encontrado */
   "GET /fabricantes/:fabricanteId": {
     response: {
       fabricanteId?: number;
@@ -3527,6 +3627,7 @@ export interface API {
       urlCarrossel?: string;
     };
   };
+  /** @description Insere uma observação a um pedido */
   "POST /pedidos/:pedidoId/observacao": {
     body: {
       /**
@@ -3548,6 +3649,7 @@ export interface API {
       };
     };
   };
+  /** @description Lista de tipos de evento */
   "GET /tiposEvento": {
     searchParams: {
       ativo?: boolean;
@@ -3576,6 +3678,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Lista de centros de distribuição */
   "GET /centrosdistribuicao": {
     response: {
       id?: number;
@@ -3584,6 +3687,7 @@ export interface API {
       padrao?: boolean;
     }[];
   };
+  /** @description Rastreamento de produto encontrado */
   "GET /pedidos/:pedidoId/produtos/:produtoVarianteId/rastreamento/:pedidoRastreamentoProdutoId":
     {
       response: {
@@ -3608,6 +3712,7 @@ export interface API {
         dataEntrega?: string;
       };
     };
+  /** @description Lista de avaliações de produtos */
   "GET /produtoavaliacao": {
     searchParams: {
       status?: "Pendente" | "NaoAprovado" | "Aprovado";
@@ -3627,7 +3732,9 @@ export interface API {
       status?: string;
     }[];
   };
+  /** @description Conteúdo encontrado */
   "GET /conteudos/:conteudoId": {};
+  /** @description Lista de usuários */
   "GET /usuarios": {
     searchParams: {
       pagina?: number;
@@ -3671,6 +3778,7 @@ export interface API {
       aprovado?: boolean;
     }[];
   };
+  /** @description Desvincula um ou mais conteúdos de um hotsite específico */
   "DELETE /hotsites/:hotsiteId/conteudos": {
     body: {
       /**
@@ -3684,14 +3792,18 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza o status do tipo de evento, ativando-o ou inativando-o */
   "PUT /tiposEvento/:tipoEventoId/AlterarStatus": {};
+  /** @description Exclui os detalhes de um contrato de frete */
   "DELETE /fretes/:freteId/detalhes": {};
+  /** @description Lista de produtos variantes vinculados aos tipo de evento */
   "GET /tiposEvento/:tipoEventoId/produtos": {
     response: {
       tipoEventoId?: number;
       produtoVariantePrincipalId?: number;
     }[];
   };
+  /** @description Atualiza a ativação automática de produtos de um Seller */
   "PUT /resellers/:resellerId/ativacaoAutomaticaProdutos": {
     body: {
       /**
@@ -3700,6 +3812,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Insere um SEO para um produto específico */
   "POST /produtos/:identificador/seo": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -3736,6 +3849,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Gráfico Forma de Pagamento */
   "GET /dashboard/graficoformapagamento": {
     searchParams: {
       dataInicial?: string;
@@ -3748,11 +3862,13 @@ export interface API {
       cor?: string;
     }[];
   };
+  /** @description Lista de números de pedidos ainda não integrados */
   "GET /pedidos/naoIntegrados": {
     response: {
       pedidoId?: number;
     }[];
   };
+  /** @description Dados da lista de desejos de um usuário */
   "GET /usuarios/:usuarioId/listaDesejos": {
     response: {
       produtoId?: number;
@@ -3761,6 +3877,7 @@ export interface API {
       dataAdicao?: string;
     }[];
   };
+  /** @description Portfolio encontrado */
   "GET /portfolios/:portfolioId": {
     response: {
       portfolioId?: number;
@@ -3768,6 +3885,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Atualiza lista de produtos vinculados a um evento removendo os itens vinculados anteriormente e mantendo apenas os enviados pelo request */
   "PUT /eventos/:eventoId/produtos": {
     body: {
       /**
@@ -3781,6 +3899,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Usuários encontrados */
   "GET /parceiros/:nome/usuarios": {
     response: {
       usuarioId?: number;
@@ -3791,6 +3910,7 @@ export interface API {
       vinculoVitalicio?: boolean;
     }[];
   };
+  /** @description Indicador dos Novos Compradores */
   "GET /dashboard/novoscompradores": {
     searchParams: {
       dataInicial?: string;
@@ -3800,6 +3920,7 @@ export interface API {
       indicadorComprador?: string;
     };
   };
+  /** @description Lista de produtos variantes vinculados aos tipo de evento */
   "GET /eventos": {
     searchParams: {
       dataInicial?: string;
@@ -3853,6 +3974,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Realiza um novo lançamento na conta corrente do cliente */
   "POST /contascorrentes/:email": {
     body: {
       /**
@@ -3873,6 +3995,7 @@ export interface API {
       visivelParaCliente?: boolean;
     };
   };
+  /** @description Retorna todas as informações de um produto específico */
   "GET /produtos/:identificador/informacoes": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId" | "ProdutoId";
@@ -3884,6 +4007,7 @@ export interface API {
       tipoInformacao?: string;
     }[];
   };
+  /** @description Insere um novo atributo */
   "POST /atributos": {
     body: {
       /**
@@ -3914,6 +4038,7 @@ export interface API {
       prioridade?: number;
     };
   };
+  /** @description Indicador do Carrinho Abandonado */
   "GET /dashboard/carrinhoabandonado": {
     searchParams: {
       dataInicial?: string;
@@ -3923,6 +4048,7 @@ export interface API {
       indicadorCarrinhoAbandonado?: string;
     };
   };
+  /** @description Deleta um ou mais Metatags de produto */
   "DELETE /produtos/:identificador/seo/metaTag": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -3939,6 +4065,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Frete encontrado */
   "GET /fretes/:freteId": {
     response: {
       freteId?: number;
@@ -3959,6 +4086,7 @@ export interface API {
       valorMinimoProdutos?: number;
     };
   };
+  /** @description Relatório de transações de um determinado período */
   "GET /dashboard/transacoes": {
     searchParams: {
       dataInicial?: string;
@@ -3976,6 +4104,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de produtos de uma tabela de preços */
   "GET /tabelaPrecos/:tabelaPrecoId/produtos": {
     searchParams: {
       pagina?: number;
@@ -3990,6 +4119,7 @@ export interface API {
       precoPor?: number;
     }[];
   };
+  /** @description Insere um novo script */
   "POST /gestorscripts/scripts": {
     body: {
       /**
@@ -4048,6 +4178,7 @@ export interface API {
       publicado?: boolean;
     };
   };
+  /** @description Assinaturas com erro na loja */
   "GET /assinaturas/erros": {
     searchParams: {
       dataInicial?: string;
@@ -4055,6 +4186,7 @@ export interface API {
       resolvidos?: boolean;
     };
   };
+  /** @description Método que realiza uma cotação de frete */
   "POST /fretes/cotacoes": {
     searchParams: {
       cep?: string;
@@ -4093,6 +4225,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Remove uma lista de range de cep de uma Loja Física */
   "DELETE /lojasFisicas/:lojaFisicaId/rangeCep": {
     body: {
       /**
@@ -4106,6 +4239,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Insere um endereço para um usuário pelo id do usuário */
   "POST /usuarios/:usuarioId/enderecos": {
     body: {
       /**
@@ -4146,8 +4280,11 @@ export interface API {
       cep?: string;
     };
   };
+  /** @description Categoria excluída com sucesso */
   "DELETE /categorias/erp/:id": {};
+  /** @description Retorna uma lista de vínculos entre usuário e parceiro */
   "GET /usuarios/:email/parceiros": {};
+  /** @description Produtos de uma assinatura */
   "GET /assinaturas/:assinaturaId/produtos": {
     response: {
       assinaturaProdutoId?: number;
@@ -4159,6 +4296,7 @@ export interface API {
       removido?: boolean;
     }[];
   };
+  /** @description Insere um endereço para um usuário pelo e-mail */
   "POST /usuarios/:email/enderecos": {
     body: {
       /**
@@ -4199,6 +4337,7 @@ export interface API {
       cep?: string;
     };
   };
+  /** @description Atualiza o preço de vários produtos com base na lista enviada. Limite de 50 produtos por requisição */
   "PUT /produtos/precos": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -4245,6 +4384,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Usuário encontrado */
   "GET /usuarios/email/:email": {
     response: {
       usuarioId?: number;
@@ -4280,6 +4420,7 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Novo token gerado com sucesso */
   "POST /autenticacao/trocarLoja/:novaLoja": {
     response: {
       lojas?: string[];
@@ -4287,8 +4428,10 @@ export interface API {
       dataExpiracaoAccessTokenUTC?: string;
     };
   };
+  /** @description Remove um campo de cadastro personalizado */
   "DELETE /usuarios/camposcadastropersonalizado/:camposcadastropersonalizadoId":
     {};
+  /** @description Vincula um ou mais produtos a um evento sem remover os produtos vinculados anteriormente */
   "POST /eventos/:eventoId/produtos": {
     body: {
       /**
@@ -4302,6 +4445,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Campos de cadastro personalizado encontrados */
   "GET /usuarios/camposcadastropersonalizado": {
     response: {
       grupoInformacaoCadastralId?: number;
@@ -4316,6 +4460,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Atualiza os dados de um hotsite existente */
   "PUT /hotsites/:hotsiteId": {
     body: {
       /**
@@ -4433,6 +4578,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Lista com assinaturas */
   "GET /assinaturas": {
     searchParams: {
       situacaoAssinatura?: "Ativa" | "Pausada" | "Cancelada";
@@ -4457,6 +4603,7 @@ export interface API {
       cupom?: string;
     }[];
   };
+  /** @description Lista de categorias */
   "GET /categorias": {
     searchParams: {
       hierarquia?: boolean;
@@ -4478,6 +4625,7 @@ export interface API {
       urlHotSite?: string;
     }[];
   };
+  /** @description Insere um novo fabricante */
   "POST /fabricantes": {
     body: {
       /**
@@ -4498,6 +4646,7 @@ export interface API {
       urlCarrossel?: string;
     };
   };
+  /** @description Atualiza o campo Recebido de um produto vinculado a um evento */
   "PUT /eventos/:eventoId/produtos/recebido": {
     body: {
       /**
@@ -4510,6 +4659,7 @@ export interface API {
       recebidoForaLista?: boolean;
     };
   };
+  /** @description Atualiza o tipo evento */
   "PUT /tiposEvento/:tipoEventoId": {
     body: {
       /**
@@ -4586,6 +4736,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Produtos de uma assinatura */
   "GET /assinaturas/:email": {
     response: {
       assinaturaId?: number;
@@ -4609,6 +4760,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Atualiza uma Loja Física */
   "PUT /lojasFisicas/:lojaFisicaId": {
     body: {
       /**
@@ -4706,6 +4858,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza um evento */
   "PUT /eventos/:eventoId": {
     body: {
       /**
@@ -4848,11 +5001,13 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de identificadores de banners vinculados ao hotsite */
   "GET /hotsites/:hotsiteId/banners": {
     response: {
       bannerId?: number;
     }[];
   };
+  /** @description Atualiza a comunicação de um usuário via newsletter */
   "PUT /usuarios/:email/comunicacao": {
     body: {
       /**
@@ -4861,6 +5016,7 @@ export interface API {
       recebimentoNewsletter?: boolean;
     };
   };
+  /** @description Insere uma nova categoria */
   "POST /categorias": {
     body: {
       /**
@@ -4901,6 +5057,7 @@ export interface API {
       exibeMenu?: boolean;
     };
   };
+  /** @description Estorna um valor menor ou igual ao total do pedido "Pago" */
   "POST /pedidos/estorno/:pedidoId": {
     body: {
       /**
@@ -4909,6 +5066,7 @@ export interface API {
       Valor?: number;
     };
   };
+  /** @description Pedidos que terão vínculo com o grupo de assinatura informado. */
   "POST /assinaturas/grupoassinatura/assinatura": {
     body: {
       /**
@@ -4930,6 +5088,7 @@ export interface API {
       grupoAssinaturaId?: number;
     };
   };
+  /** @description Lista de hotsites vinculados ao banner */
   "GET /banners/:bannerId/hotsites": {
     response: {
       exibirEmTodosHotSites?: boolean;
@@ -4938,6 +5097,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de situações de pedido */
   "GET /situacoesPedido": {
     response: {
       situacaoPedidoId?: number;
@@ -4946,6 +5106,7 @@ export interface API {
       observacao?: string;
     }[];
   };
+  /** @description Insere uma Loja Física */
   "POST /lojasFisicas": {
     body: {
       /**
@@ -5043,6 +5204,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza um usuário pelo email */
   "PUT /usuarios/:email": {
     body: {
       /**
@@ -5155,6 +5317,7 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Insere um novo campo de cadastro personalizado */
   "POST /usuarios/CadastroPersonalizado": {
     body: {
       /**
@@ -5188,11 +5351,13 @@ export interface API {
       }[];
     };
   };
+  /** @description Seta identificador como variante principal */
   "PUT /produtos/:identificador/principal": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
+  /** @description Insere uma inscrição */
   "POST /webhook/inscricao": {
     body: {
       /**
@@ -5234,6 +5399,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de produtos de um Grupo de Personalização */
   "GET /grupospersonalizacao/:grupoPersonalizacaoId/produtos": {
     response: {
       produtoId?: number;
@@ -5241,6 +5407,7 @@ export interface API {
       alias?: string;
     }[];
   };
+  /** @description Lista de inscrições */
   "GET /webhook/inscricao": {
     response: {
       inscricaoId?: number;
@@ -5257,6 +5424,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Gráfico do Faturamento */
   "GET /dashboard/graficofaturamento": {
     searchParams: {
       dataInicial?: string;
@@ -5273,6 +5441,7 @@ export interface API {
       usuarioEnderecoEstado?: string;
     }[];
   };
+  /** @description Exclui uma informação de um produto */
   "DELETE /produtos/:identificador/informacoes/:informacaoId": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -5284,6 +5453,7 @@ export interface API {
       tipoInformacao?: string;
     }[];
   };
+  /** @description Assinatura de um determinado pedido */
   "GET /assinaturas/pedido/:pedidoId": {
     response: {
       assinaturaPedidoId?: number;
@@ -5298,6 +5468,7 @@ export interface API {
       produtoVarianteId?: number;
     }[];
   };
+  /** @description Atualiza rastreamento parcial (Rastreamento e UrlRastreamento) */
   "PUT /pedidos/:pedidoId/rastreamento/:pedidoRastreamentoId/parcial": {
     body: {
       /**
@@ -5315,6 +5486,7 @@ export interface API {
       };
     };
   };
+  /** @description Inseri uma lista de produto variantes em uma tabela de preços */
   "POST /tabelaPrecos/:tabelaPrecoId/produtos": {
     body: {
       /**
@@ -5348,6 +5520,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Access token atualizado com sucesso */
   "POST /autenticacao/refresh": {
     response: {
       lojas?: string[];
@@ -5355,6 +5528,7 @@ export interface API {
       dataExpiracaoAccessTokenUTC?: string;
     };
   };
+  /** @description Ativa ou inativa uma inscrição */
   "PUT /webhook/inscricao/:inscricaoId/Ativar": {
     body: {
       /**
@@ -5371,6 +5545,7 @@ export interface API {
       observacao?: string;
     };
   };
+  /** @description Assinatura com erro na loja */
   "GET /assinaturas/erros/:assinaturaId": {
     response: {
       assinaturaErroId?: number;
@@ -5384,6 +5559,7 @@ export interface API {
       assinaturaErroDescricao?: string;
     }[];
   };
+  /** @description Limite de crédito de um usuário específico */
   "GET /usuarios/limiteCreditoPorEmail/:email": {
     response: {
       usuarioId?: number;
@@ -5391,6 +5567,7 @@ export interface API {
       saldo?: number;
     };
   };
+  /** @description Retorna o histórico de situações de um pedido */
   "GET /pedidos/:pedidoId/historicoSituacao": {
     response: {
       situacoes?: {
@@ -5400,6 +5577,7 @@ export interface API {
       }[];
     };
   };
+  /** @description SEO do produto informado */
   "GET /produtos/:identificador/seo": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -5416,18 +5594,22 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza o limite de crédito para um usuário */
   "PUT /usuarios/limiteCredito/:usuarioId": {
     searchParams: {
       cpf_cnpj?: string;
       valor?: number;
     };
   };
+  /** @description Exclui uma categoria */
   "DELETE /categorias/:id": {};
+  /** @description Retorna a lista de produtos de um portfolio */
   "GET /portfolios/:portfolioId/produtos": {
     response: {
       produtoId?: number;
     }[];
   };
+  /** @description Insere um rastreamento e status a um produto variante */
   "POST /pedidos/:pedidoId/produtos/:produtoVarianteId/rastreamento": {
     body: {
       /**
@@ -5476,6 +5658,7 @@ export interface API {
       urlRastreamento?: string;
     };
   };
+  /** @description Lista de resposta para cada produto vinculado */
   "POST /tiposEvento/:tipoEventoId/produtos": {
     body: {
       /**
@@ -5501,6 +5684,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Desvincula um ou mais banners de um hotsite específico */
   "DELETE /hotsites/:hotsiteId/banners": {
     body: {
       /**
@@ -5514,6 +5698,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de produtos variantes vinculados aos tipo de evento */
   "GET /eventos/:eventoId": {
     response: {
       eventoId?: number;
@@ -5559,6 +5744,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Usuários encontrados */
   "GET /parceiros/:parceiroId/usuarios": {
     response: {
       usuarioId?: number;
@@ -5569,6 +5755,7 @@ export interface API {
       vinculoVitalicio?: boolean;
     }[];
   };
+  /** @description Atualiza a data de entrega do pedido */
   "PUT /pedidos/:pedidoId/rastreamento": {
     body: {
       /**
@@ -5586,6 +5773,7 @@ export interface API {
       };
     };
   };
+  /** @description Atualiza um fabricante */
   "PUT /fabricantes/:fabricanteId": {
     body: {
       /**
@@ -5606,7 +5794,9 @@ export interface API {
       urlCarrossel?: string;
     };
   };
+  /** @description Dados de transação do pedido */
   "GET /pedidos/transacoes/:transacaoId": {};
+  /** @description Operação realizada com ou sem sucesso para os usuários */
   "PUT /usuarios/autorizar": {
     searchParams: {
       tipoIdentificador?: "UsuarioId" | "Email";
@@ -5631,6 +5821,7 @@ export interface API {
       usuariosNaoAtualizados?: string[];
     };
   };
+  /** @description Cria um Novo Evento */
   "POST /eventos": {
     body: {
       /**
@@ -5773,6 +5964,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza a data de cadastro um produto com base nos dados enviados */
   "PUT /produtos/:identificador/DataCadastro": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -5868,6 +6060,7 @@ export interface API {
       buyBox?: boolean;
     };
   };
+  /** @description Insere um novo Seller no marketplace */
   "POST /resellers": {
     body: {
       /**
@@ -5920,6 +6113,7 @@ export interface API {
       cep?: string;
     };
   };
+  /** @description Atualiza a situação do status de um produto do pedido */
   "PUT /pedidos/:pedidoId/:produtoVarianteId/status": {
     body: {
       /**
@@ -5941,6 +6135,7 @@ export interface API {
       };
     };
   };
+  /** @description Lista de Lojas Físicas */
   "GET /lojasFisicas": {
     searchParams: {
       pagina?: number;
@@ -5974,6 +6169,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Atualiza os produtos sugeridos de um tipo de evento */
   "PUT /tiposEvento/:tipoEventoId/produtos": {
     body: {
       /**
@@ -5987,6 +6183,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Indicadores dos Produtos no Estoque */
   "GET /dashboard/produtoestoque": {
     searchParams: {
       dataInicial?: string;
@@ -5997,6 +6194,7 @@ export interface API {
       indicadorProdutoSemEstoque?: string;
     };
   };
+  /** @description Atualiza um endereço de um usuário pelo e-mail do usuário */
   "PUT /usuarios/:email/enderecos/:enderecoId": {
     body: {
       /**
@@ -6037,7 +6235,9 @@ export interface API {
       cep?: string;
     };
   };
+  /** @description Deleta um atributo */
   "DELETE /atributos/:nome": {};
+  /** @description Parceiro excluído com sucesso */
   "DELETE /parceiros/:parceiroId": {
     response: {
       resultadoOperacao?: boolean;
@@ -6045,6 +6245,7 @@ export interface API {
       mensagem?: string;
     };
   };
+  /** @description Atualiza o status de uma avaliação de um produto variante */
   "PUT /produtoavaliacao/:produtoAvaliacaoId/status": {
     body: {
       /**
@@ -6053,6 +6254,7 @@ export interface API {
       status?: "Pendente" | "NaoAprovado" | "Aprovado";
     };
   };
+  /** @description Insere um rastreamento e status a um pedido */
   "POST /pedidos/:pedidoId/rastreamento": {
     body: {
       /**
@@ -6097,6 +6299,7 @@ export interface API {
       urlRastreamento?: string;
     };
   };
+  /** @description Fabricante encontrado */
   "GET /fabricantes/:nome": {
     response: {
       fabricanteId?: number;
@@ -6107,6 +6310,7 @@ export interface API {
       urlCarrossel?: string;
     };
   };
+  /** @description Vincula parceiros com um banner específico */
   "POST /banners/:bannerId/parceiros": {
     body: {
       /**
@@ -6120,6 +6324,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Lista de tabelas de preços */
   "GET /tabelaPrecos": {
     response: {
       tabelaPrecoId?: number;
@@ -6130,6 +6335,7 @@ export interface API {
       isSite?: boolean;
     }[];
   };
+  /** @description Atualiza a imagem do banner */
   "PUT /banners/:bannerId/Imagem": {
     body: {
       /**
@@ -6155,6 +6361,7 @@ export interface API {
       };
     };
   };
+  /** @description Atualiza um conteúdo */
   "PUT /conteudos/:conteudoId": {
     body: {
       /**
@@ -6210,6 +6417,7 @@ export interface API {
       hotsiteId?: number[];
     };
   };
+  /** @description Categoria encontrada */
   "GET /categorias/erp/:id": {
     searchParams: {
       hierarquia?: boolean;
@@ -6229,6 +6437,7 @@ export interface API {
       urlHotSite?: string;
     };
   };
+  /** @description Lista de Ranges de Ceps de uma Loja Física */
   "GET /lojasFisicas/:lojaFisicaId/rangeCep": {
     response: {
       rangeCepId?: number;
@@ -6237,6 +6446,7 @@ export interface API {
       cepFinal?: string;
     }[];
   };
+  /** @description Atualiza um Atacarejo */
   "PUT /produtos/:identificador/atacarejo/:produtoVarianteAtacadoId": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -6252,11 +6462,13 @@ export interface API {
       quantidade?: number;
     };
   };
+  /** @description Exclui o vínculo entre uma categoria e um produto */
   "DELETE /produtos/:identificador/categorias/:id": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
+  /** @description Xml com os dados de uma mídia específicas entre duas datas */
   "GET /midias/:identificador": {
     searchParams: {
       dataInicial?: string;
@@ -6293,6 +6505,7 @@ export interface API {
       tipo?: string;
     };
   };
+  /** @description A lista de produtos para serem exibidos no hotsite está limitada a 1024 itens, tanto por expressão como por produtos. */
   "POST /hotsites": {
     body: {
       /**
@@ -6410,6 +6623,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Lista de pedidos */
   "GET /pedidos/situacaoPedido/:situacoesPedido": {
     searchParams: {
       dataInicial?: string;
@@ -6682,6 +6896,7 @@ export interface API {
       pedidoSplit?: number[];
     }[];
   };
+  /** @description Lista de scripts */
   "GET /gestorscripts/scripts": {
     response: {
       scriptId?: number;
@@ -6694,6 +6909,7 @@ export interface API {
       prioridade?: number;
     }[];
   };
+  /** @description Portfolio encontrado */
   "GET /portfolios/:nome": {
     response: {
       portfolioId?: number;
@@ -6701,6 +6917,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Lista de categorias de um produto */
   "GET /produtos/:identificador/categorias": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId" | "ProdutoId";
@@ -6723,6 +6940,7 @@ export interface API {
       categoriaPrincipal?: boolean;
     }[];
   };
+  /** @description Lista de Atacarejos */
   "GET /produtos/:identificador/atacarejo": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -6733,6 +6951,7 @@ export interface API {
       quantidade?: number;
     }[];
   };
+  /** @description Retorna usuário encontrado */
   "GET /usuarios/:usuarioId/enderecos": {
     response: {
       enderecoId?: number;
@@ -6749,6 +6968,7 @@ export interface API {
       pais?: string;
     }[];
   };
+  /** @description Lista com o retorno do processamento dos produtos enviados */
   "PUT /tabelaPrecos/:tabelaPrecoId/produtos": {
     body: {
       /**
@@ -6782,12 +7002,15 @@ export interface API {
       }[];
     };
   };
+  /** @description Deleta um hotsite que foi inserido manualmente, hotsites gerados automaticamente não podem ser deletados */
   "DELETE /hotsites/:hotsiteId": {};
+  /** @description Recorrências cadastradas na loja */
   "GET /assinaturas/recorrencias": {
     response: {
       recorrencias?: string[];
     };
   };
+  /** @description Atualiza rastreamento completo (com os dados da N.F.) */
   "PUT /pedidos/:pedidoId/rastreamento/:pedidoRastreamentoId": {
     body: {
       /**
@@ -6829,6 +7052,7 @@ export interface API {
       };
     };
   };
+  /** @description Adiciona o vínculo entre um produto e uma categoria com base na lista enviada */
   "POST /produtos/:identificador/categorias": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -6844,6 +7068,7 @@ export interface API {
       listaCategoriaId?: number[];
     };
   };
+  /** @description Atualiza a prioridade de um centro de distribuição */
   "PUT /centrosdistribuicao/:centroDistribuicaoId/prioridade": {
     body: {
       /**
@@ -6857,6 +7082,7 @@ export interface API {
     };
     response: {};
   };
+  /** @description Insere um novo conteúdo na loja */
   "POST /conteudos": {
     body: {
       /**
@@ -6912,6 +7138,7 @@ export interface API {
       hotsitesId?: number[];
     };
   };
+  /** @description Atualiza a imagem de estampa do produto */
   "PUT /produtos/:identificador/imagens/estampa": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -6923,6 +7150,7 @@ export interface API {
       idImagem?: number;
     };
   };
+  /** @description Retorna lista de usuários cadastrados/descadastrados na newsletter (50 por página) */
   "GET /usuarios/newsletter": {
     searchParams: {
       ordenarPor?: "DataCadastro" | "DataAtualizacao";
@@ -6943,6 +7171,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Ativa ou desativa um endereço de um usuário com base no e-mail do usuário */
   "PUT /usuarios/:email/enderecos/:enderecoId/ativar": {
     body: {
       /**
@@ -6951,6 +7180,7 @@ export interface API {
       status?: boolean;
     };
   };
+  /** @description Conteúdos encontrados */
   "GET /conteudos": {
     searchParams: {
       pagina?: number;
@@ -6971,6 +7201,7 @@ export interface API {
       hotsitesId?: number[];
     }[];
   };
+  /** @description Insere uma avaliação para um produto variante */
   "POST /produtoavaliacao/:identificador": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7006,6 +7237,7 @@ export interface API {
       status?: "Pendente" | "NaoAprovado" | "Aprovado";
     };
   };
+  /** @description Lista de hotsites */
   "GET /hotsites": {
     searchParams: {
       pagina?: number;
@@ -7049,6 +7281,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Relatório de receitas de um determinado período */
   "GET /dashboard/receita": {
     searchParams: {
       dataInicial?: string;
@@ -7066,6 +7299,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Vincula um ou mais conteúdos a um hotsite específico */
   "POST /hotsites/:hotsiteId/conteudos": {
     body: {
       /**
@@ -7079,6 +7313,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Insere um novo contrato de frete */
   "POST /fretes": {
     body: {
       /**
@@ -7143,6 +7378,7 @@ export interface API {
       valorMinimoProdutos?: number;
     };
   };
+  /** @description Detalhes de uma assinatura */
   "GET /assinaturas/:assinaturaId": {
     response: {
       assinaturaId?: number;
@@ -7166,7 +7402,9 @@ export interface API {
       }[];
     };
   };
+  /** @description Buscar autor pelo nome */
   "GET /autores/:nomeAutor": {};
+  /** @description Lista o conteúdo de uma versão */
   "GET /gestorscripts/scripts/:scriptId/versao/:versaoId/conteudo": {
     response: {
       scriptId?: number;
@@ -7174,6 +7412,7 @@ export interface API {
       conteudo?: string;
     }[];
   };
+  /** @description Remove o vinculo de produtos de um Grupo de Personalização */
   "DELETE /grupospersonalizacao/:grupoPersonalizacaoId/produtos": {
     body: {
       /**
@@ -7187,6 +7426,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Altera a data de recorrência de uma assinatura */
   "PUT /assinaturas/:assinaturaId/proximaRecorrencia": {
     body: {
       /**
@@ -7195,6 +7435,7 @@ export interface API {
       proximaRecorrencia?: string;
     };
   };
+  /** @description Lista de parceiros com pedidos */
   "GET /parceiros/comPedidos": {
     searchParams: {
       dataInicial?: string;
@@ -7212,6 +7453,7 @@ export interface API {
       origem?: string;
     }[];
   };
+  /** @description Insere um ou mais metatags para um produto */
   "POST /produtos/:identificador/seo/metaTag": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -7247,6 +7489,7 @@ export interface API {
       scheme?: string;
     }[];
   };
+  /** @description Frete atualizado com sucesso */
   "PUT /fretes/:freteId": {
     body: {
       /**
@@ -7311,6 +7554,7 @@ export interface API {
       valorMinimoProdutos?: number;
     };
   };
+  /** @description Lista de detalhes de frete */
   "GET /fretes/:freteId/detalhes": {
     response: {
       freteId?: number;
@@ -7326,7 +7570,9 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Buscar todos os autores */
   "GET /autores": {};
+  /** @description Adiciona uma nova informação */
   "POST /produtos/:identificador/informacoes": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7369,6 +7615,7 @@ export interface API {
         | "Carrinho";
     };
   };
+  /** @description Usuário encontrado */
   "GET /usuarios/cnpj/:cnpj": {
     response: {
       usuarioId?: number;
@@ -7404,10 +7651,13 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Deleta um produto da lista de sugestões de produtos de um tipo de evento */
   "DELETE /tiposEvento/:tipoEventoId/produto/:produtoVarianteId": {};
+  /** @description Deleta o vinculo de um produto a um evento */
   "DELETE /eventos/:eventoId/produto/:produtoVarianteId": {
     response: string;
   };
+  /** @description Lista de Metatags do produto informado */
   "GET /produtos/:identificador/seo/metaTag": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -7420,6 +7670,7 @@ export interface API {
       scheme?: string;
     }[];
   };
+  /** @description Define uma categoria de um produto como principal */
   "PUT /produtos/:identificador/categoriaPrincipal": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7431,6 +7682,7 @@ export interface API {
       categoriaId?: number;
     };
   };
+  /** @description Atualiza o estoque de vários produtos com base na lista enviada. Limite de 50 produtos por requisição */
   "PUT /produtos/estoques": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7492,6 +7744,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Objeto com o estoque total e o estoque por centro de distribuição de um produto variante */
   "GET /produtos/:identificador/estoque": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7507,6 +7760,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza um script existente */
   "PUT /gestorscripts/scripts/:scriptId": {
     body: {
       /**
@@ -7565,6 +7819,7 @@ export interface API {
       publicado?: boolean;
     };
   };
+  /** @description Lista de fabricantes */
   "GET /fabricantes": {
     response: {
       fabricanteId?: number;
@@ -7575,6 +7830,7 @@ export interface API {
       urlCarrossel?: string;
     }[];
   };
+  /** @description Categoria encontrada */
   "GET /categorias/:id": {
     searchParams: {
       hierarquia?: boolean;
@@ -7594,6 +7850,7 @@ export interface API {
       urlHotSite?: string;
     };
   };
+  /** @description Vincula um ou mais banners a um hotsite específico */
   "POST /hotsites/:hotsiteId/banners": {
     body: {
       /**
@@ -7607,8 +7864,11 @@ export interface API {
       }[];
     };
   };
+  /** @description Exclui uma tabela de preços */
   "DELETE /tabelaPrecos/:tabelaPrecoId": {};
+  /** @description Remove uma Loja Física */
   "DELETE /lojasFisicas/:lojaFisicaId": {};
+  /** @description Parceiro atualizado com sucesso */
   "PUT /parceiros/:parceiroId": {
     body: {
       /**
@@ -7650,6 +7910,7 @@ export interface API {
       mensagem?: string;
     }[];
   };
+  /** @description Usuário encontrado */
   "GET /usuarios/usuarioId/:usuarioId": {
     response: {
       usuarioId?: number;
@@ -7685,6 +7946,7 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Lista de fretes */
   "GET /fretes": {
     response: {
       freteId?: number;
@@ -7705,6 +7967,7 @@ export interface API {
       valorMinimoProdutos?: number;
     }[];
   };
+  /** @description Vinculo de produtos ao portfolio */
   "PUT /portfolios/:portfolioId/produtos": {
     body: {
       /**
@@ -7718,6 +7981,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Vincula produtos a um Grupo de Personalização */
   "POST /grupospersonalizacao/:grupoPersonalizacaoId/produtos": {
     body: {
       /**
@@ -7731,6 +7995,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atacarejo */
   "GET /produtos/:identificador/atacarejo/:produtoVarianteAtacadoId": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7741,6 +8006,7 @@ export interface API {
       quantidade?: number;
     };
   };
+  /** @description Produtos Mais Vendidos */
   "GET /dashboard/produtos": {
     searchParams: {
       dataInicial?: string;
@@ -7755,6 +8021,7 @@ export interface API {
       receita?: string;
     }[];
   };
+  /** @description Atualiza rastreamento parcial (Rastreamento e UrlRastreamento) */
   "PUT /pedidos/:pedidoId/produtos/:produtoVarianteId/rastreamento/:pedidoRastreamentoProdutoId/parcial":
     {
       body: {
@@ -7773,6 +8040,7 @@ export interface API {
         };
       };
     };
+  /** @description Atualiza o status do banner pelo id */
   "PUT /banners/:bannerId/status": {
     body: {
       /**
@@ -7781,8 +8049,10 @@ export interface API {
       status?: boolean;
     };
   };
+  /** @description Remove um valor pré definido */
   "DELETE /usuarios/valoresdefinidoscadastropersonalizado/:valoresDefinidosCampoGrupoInformacaoId":
     {};
+  /** @description Atualiza um endereço de um usuário pelo id do usuário */
   "PUT /usuarios/:usuarioId/enderecos/:enderecoId": {
     body: {
       /**
@@ -7823,6 +8093,7 @@ export interface API {
       cep?: string;
     };
   };
+  /** @description Vincula hotsites com um banner específico */
   "POST /banners/:bannerId/hotsites": {
     body: {
       /**
@@ -7836,6 +8107,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Insere um range de cep em uma Loja Física */
   "POST /lojasFisicas/:lojaFisicaId/rangeCep": {
     body: {
       /**
@@ -7852,6 +8124,7 @@ export interface API {
       cepFinal?: string;
     };
   };
+  /** @description Lista de avaliações de produtos */
   "GET /produtos/:identificador/avaliacoes": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -7872,6 +8145,7 @@ export interface API {
       status?: string;
     }[];
   };
+  /** @description Atualiza um usuário pelo id */
   "PUT /usuarios/:usuarioId": {
     body: {
       /**
@@ -7984,6 +8258,7 @@ export interface API {
       aprovado?: boolean;
     };
   };
+  /** @description Lista de observações de um pedido */
   "GET /pedidos/:pedidoId/observacao": {
     response: {
       observacao?: string;
@@ -7992,6 +8267,7 @@ export interface API {
       data?: string;
     }[];
   };
+  /** @description Tabela de preços específica */
   "GET /tabelaPrecos/:tabelaPrecoId": {
     response: {
       tabelaPrecoId?: number;
@@ -8002,6 +8278,7 @@ export interface API {
       isSite?: boolean;
     };
   };
+  /** @description Liberar reservas de pedidos */
   "POST /pedidos/liberarReservas": {
     body: {
       /**
@@ -8010,6 +8287,7 @@ export interface API {
       RAW_BODY: number[];
     };
   };
+  /** @description Atualiza para o mesmo preço, todos os variantes de um produto encontrado com o SKU informado. Limite de 50 produtos por requisição */
   "PUT /produtos/precos/lote": {
     body: {
       /**
@@ -8053,6 +8331,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Deleta o vinculo de um ou mais hotsites com um banner específico */
   "DELETE /banners/:bannerId/hotsites": {
     body: {
       /**
@@ -8071,6 +8350,7 @@ export interface API {
       };
     };
   };
+  /** @description Atualiza a exibição do banner em parceiros, se deve ser em todos ou não */
   "PUT /banners/:bannerId/Parceiros": {
     body: {
       /**
@@ -8079,6 +8359,7 @@ export interface API {
       exibirEmTodosParceiros?: boolean;
     };
   };
+  /** @description Atualiza um SEO de um produto específico */
   "PUT /produtos/:identificador/seo": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
@@ -8115,6 +8396,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Retorna lista contendo os Id's dos pedidos do usuário */
   "GET /usuarios/documento/:documento/pedidos": {
     searchParams: {
       tipoDocumento?: "Cpf" | "Cnpj";
@@ -8128,6 +8410,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Objeto com o precoDe e precoPor de um produto variante */
   "GET /produtos/:identificador/preco": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -8138,6 +8421,7 @@ export interface API {
       fatorMultiplicadorPreco?: number;
     };
   };
+  /** @description Adiciona novos Atacarejos */
   "POST /produtos/:identificador/atacarejo": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -8163,6 +8447,7 @@ export interface API {
       quantidade?: number;
     }[];
   };
+  /** @description Objeto do hotsite */
   "GET /hotsites/:hotsiteId": {
     response: {
       hotsiteId?: number;
@@ -8202,6 +8487,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Adiciona uma nova imagem vinculada a um produto */
   "POST /produtos/:identificador/imagens": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -8235,6 +8521,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Remove o vínculo entre usuário e parceiro */
   "DELETE /usuarios/:email/parceiro": {
     body: {
       /**
@@ -8243,6 +8530,7 @@ export interface API {
       parceiroId?: number;
     };
   };
+  /** @description Insere um novo parceiro */
   "POST /parceiros": {
     body: {
       /**
@@ -8275,7 +8563,9 @@ export interface API {
       origem?: string;
     };
   };
+  /** @description Lista de parceiros vinculados ao banner */
   "GET /banners/:bannerId/parceiros": {};
+  /** @description Campo atualizado com sucesso */
   "PUT /usuarios/bloquear": {
     body: {
       /**
@@ -8297,6 +8587,7 @@ export interface API {
       usuariosNaoAtualizados?: string[];
     };
   };
+  /** @description Frete atualizado com sucesso */
   "PUT /fretes/:freteId/Ativo": {
     body: {
       /**
@@ -8305,6 +8596,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Atualiza a situação de uma assinatura específica */
   "PUT /assinaturas/:assinaturaId": {
     body: {
       /**
@@ -8329,6 +8621,7 @@ export interface API {
       cupom?: string;
     };
   };
+  /** @description Atualiza uma informação de um produto específico */
   "PUT /produtos/:identificador/informacoes/:informacaoId": {
     searchParams: {
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
@@ -8370,6 +8663,7 @@ export interface API {
         | "Carrinho";
     };
   };
+  /** @description Insere uma nova tabela de preços */
   "POST /tabelaPrecos": {
     body: {
       /**
@@ -8390,6 +8684,7 @@ export interface API {
       ativo?: boolean;
     };
   };
+  /** @description Tipo evento buscado */
   "GET /tiposEvento/:tipoEventoId": {
     response: {
       tipoEventoId?: number;
@@ -8413,6 +8708,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Atualiza um novo Seller no marketplace */
   "PUT /resellers": {
     searchParams: {
       resellerId?: number;
@@ -8468,13 +8764,16 @@ export interface API {
       cep?: string;
     };
   };
+  /** @description Gera um novo pedido para a assinatura */
   "POST /assinaturas/:assinaturaId/pedido": {};
+  /** @description Xml com os dados das mídias entre duas datas */
   "GET /midias": {
     searchParams: {
       dataInicial?: string;
       dataFinal?: string;
     };
   };
+  /** @description Relatório de ticket médio de um determinado período */
   "GET /dashboard/ticketMedio": {
     searchParams: {
       dataInicial?: string;
@@ -8492,6 +8791,7 @@ export interface API {
       }[];
     };
   };
+  /** @description Objeto com as cotações de frete */
   "GET /fretes/pedidos/:pedidoId/cotacoes": {
     searchParams: {
       forcarCotacaoTodosCDs?: boolean;
@@ -8511,6 +8811,7 @@ export interface API {
       }[];
     }[];
   };
+  /** @description Deleta o vinculo de um ou mais parceiros com um banner específico */
   "DELETE /banners/:bannerId/parceiros": {
     body: {
       /**

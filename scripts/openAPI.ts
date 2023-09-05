@@ -77,9 +77,15 @@ for (const [base, paths] of Object.entries(specsByModule)) {
           continue;
         }
 
-        const { parameters = [], requestBody, responses } = item;
+        const {
+          parameters = [],
+          requestBody,
+          responses,
+          summary,
+          description,
+        } = item;
 
-        const searchParamsSchema = parameters
+        const paramsSchema = parameters
           .filter((x): x is OpenAPIV3.ParameterObject => !isReferenceObject(x))
           .filter((x) => x.in === "query")
           .reduce((schema, item) => {
@@ -101,24 +107,18 @@ for (const [base, paths] of Object.entries(specsByModule)) {
         const responseSchema = !isReferenceObject(ok) &&
           ok?.content?.[MEDIA_TYPE_JSON].schema;
 
-        const searchParams =
-          Object.keys(searchParamsSchema.properties).length > 0
-            ? await compile(
-              searchParamsSchema,
-              AUTOGEN_TYPE_NAME,
-              COMPILE_OPTIONS,
-            )
-            : null;
+        const [searchParams, body, response] = await Promise.all([
+          Object.keys(paramsSchema.properties).length > 0 && paramsSchema,
+          bodySchema,
+          responseSchema,
+        ].map((schema) =>
+          schema ? compile(schema, AUTOGEN_TYPE_NAME, COMPILE_OPTIONS) : null
+        ));
 
-        const body = bodySchema
-          ? await compile(bodySchema, AUTOGEN_TYPE_NAME, COMPILE_OPTIONS)
-          : null;
+        const docs = (description || summary) &&
+          `/** @description ${description || summary} */`;
 
-        const response = responseSchema
-          ? await compile(responseSchema, AUTOGEN_TYPE_NAME, COMPILE_OPTIONS)
-          : null;
-
-        const typed = `"${verb.toUpperCase()} ${pathTemplate}": {
+        const typed = `${docs}\n "${verb.toUpperCase()} ${pathTemplate}": {
           ${
           Object.entries({ searchParams, body, response })
             .filter((e) => Boolean(e[1]))
