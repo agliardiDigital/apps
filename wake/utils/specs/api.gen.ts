@@ -584,8 +584,17 @@ export interface API {
   /** @description Lista de preços e estoque de produtos que sofreram alterações */
   "GET /produtos/alteracoes": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Retorna apenas os produtos que sofreram alguma alteração a partir da data/hora informada. Formato: aaaa-mm-dd hh:mm:ss com no máximo 48 horas de antecedência
+       */
       alteradosPartirDe?: string;
     };
     response: {
@@ -614,6 +623,9 @@ export interface API {
   /** @description Retorna a situação reseller de um produto */
   "GET /produtos/:identificador/situacaoReseller": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
@@ -704,6 +716,9 @@ export interface API {
   /** @description Retorna todos os identificadores dos produtos/variantes relacionados ao produto pesquisado */
   "GET /produtos/:identificador/relacionados": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um Sku, um ProdutoId (Agrupador de variantes) ou um ProdutoVarianteId
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     response: {
@@ -980,6 +995,9 @@ export interface API {
   /** @description Preços do produto variante informado */
   "GET /produtos/:identificador/precos": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     response: {
@@ -1054,6 +1072,9 @@ export interface API {
   /** @description Seta status do produto variante como ativo ou inativo */
   "PUT /produtos/:identificador/situacao": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -1077,10 +1098,25 @@ export interface API {
   /** @description Lista de produtos */
   "GET /resellers/produtos/:identificador": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um id interno da fstore ou a Razão social do Reseller
+       */
       tipoIdentificador?: "ResellerId" | "RazaoSocial";
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Se deve retornar apenas produtos válidos (padrão: false)
+       */
       somenteValidos?: boolean;
+      /**
+       * Campos adicionais que se selecionados retornaram junto com o produto: Atacado, Estoque, Atributo, Informacao, TabelaPreo
+       */
       camposAdicionais?: string[];
     };
     response: {
@@ -1171,16 +1207,34 @@ export interface API {
   /** @description Lista de pedidos */
   "GET /pedidos/formaPagamento/:formasPagamento": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos que deverão retonar (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de filtro da data (Ordenação "desc" - padrão: DataPedido)
+       */
       enumTipoFiltroData?:
         | "DataPedido"
         | "DataAprovacao"
         | "DataModificacaoStatus"
         | "DataAlteracao"
         | "DataCriacao";
+      /**
+       * Lista de situações que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará todas as situações
+       */
       situacoesPedido?: string;
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
     };
     response: {
@@ -1706,6 +1760,9 @@ export interface API {
   /** @description Lista de imagens vinculadas a um produtos */
   "GET /produtos/:identificador/imagens": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
       produtosIrmaos?: boolean;
     };
@@ -1729,6 +1786,9 @@ export interface API {
   /** @description Deleta o SEO de um produto específico */
   "DELETE /produtos/:identificador/seo": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
   };
@@ -1991,13 +2051,37 @@ export interface API {
   /** @description Lista de produtos */
   "GET /produtos": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Lista de categorias que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará todas as categorias
+       */
       categorias?: string;
+      /**
+       * Lista de fabricantes que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará todas as situações
+       */
       fabricantes?: string;
+      /**
+       * Lista de centros de distribuição que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará produtos de todos os cd's
+       */
       centrosDistribuicao?: string;
+      /**
+       * Retorna apenas os produtos que sofreram alguma alteração a partir da data/hora informada. Formato: aaaa-mm-dd hh:mm:ss com no máximo 48 horas de antecedência
+       */
       alteradosPartirDe?: string;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Retorna apenas os produtos que estão marcados como válido
+       */
       somenteValidos?: boolean;
+      /**
+       * Campos adicionais que se selecionados retornaram junto com o produto, valores aceitos: Atacado, Estoque,  Atributo ,  Informacao,  TabelaPreco
+       */
       camposAdicionais?: string[];
     };
     response: {
@@ -2093,6 +2177,9 @@ export interface API {
   /** @description Remove um Atacarejo */
   "DELETE /produtos/:identificador/atacarejo/:produtoVarianteAtacadoId": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
@@ -2121,7 +2208,13 @@ export interface API {
   /** @description Método responsável por retornar um produto específico buscando pelo seu identificador, que pode ser um sku ou produto variante. O tipo do identificador pode ser definido no campo tipoIdentificador. Também é possível informar quais informações adicionais devem ser retornadas na consulta utilizando o campo campos adicionais. */
   "GET /produtos/:identificador": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId" | "ProdutoId";
+      /**
+       * Campo opcional que define quais dados extras devem ser retornados em conjunto com os dados básicos do produto, valores aceitos: Atacado, Estoque,  Atributo ,  Informacao,  TabelaPreco
+       */
       camposAdicionais?: string[];
     };
     response: {
@@ -2414,21 +2507,54 @@ export interface API {
   /** @description Lista de pedidos */
   "GET /pedidos": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos que deverão retonar (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de filtro da data (Ordenação "desc" - padrão: DataPedido)
+       */
       enumTipoFiltroData?:
         | "DataPedido"
         | "DataAprovacao"
         | "DataModificacaoStatus"
         | "DataAlteracao"
         | "DataCriacao";
+      /**
+       * Lista de situações que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará todas as situações
+       */
       situacoesPedido?: string;
+      /**
+       * Lista de formas de pagamento que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará todas as formas de pagamento
+       */
       formasPagamento?: string;
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Deverá retornar apenas pedidos realizados pelo usuário com o e-mail passado
+       */
       email?: string;
+      /**
+       * Deverá retornar apenas pedidos válidos, inválidos ou todos (caso não seja informado)
+       */
       valido?: boolean;
+      /**
+       * Deverá retornar apenas pedidos que o produto de determinado sku foi comprado
+       */
       sku?: string;
+      /**
+       * Quando passado o valor true, deverá retornar apenas pedidos de assinatura. Quando falso, deverá retornar todos os pedidos.
+       */
       apenasAssinaturas?: boolean;
     };
     response: {
@@ -2699,9 +2825,21 @@ export interface API {
   /** @description Indicadores de Faturamento */
   "GET /dashboard/faturamento": {
     searchParams: {
+      /**
+       * Data inicial dos indicadores que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos indicadores que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Data inicial do comparativo dos indicadores que deverão retonar (aaaa-mm-dd)
+       */
       dataInicialComparativo?: string;
+      /**
+       * Data final do comparativo dos indicadores que deverão retonar (aaaa-mm-dd)
+       */
       dataFinalComparativo?: string;
     };
     response: {
@@ -2737,6 +2875,9 @@ export interface API {
   /** @description Atualiza um produto com base nos dados enviados */
   "PUT /produtos/:identificador": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -3071,7 +3212,13 @@ export interface API {
   /** @description Lista de banners */
   "GET /banners": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadePorPagina?: number;
     };
     response: {
@@ -3481,6 +3628,9 @@ export interface API {
   /** @description Retorna se o produto variante está disponível ou não */
   "GET /produtos/:identificador/disponibilidade": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
@@ -3558,6 +3708,9 @@ export interface API {
   /** @description Exclui uma imagem de um produto */
   "DELETE /produtos/:identificador/imagens/:id": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
@@ -3604,7 +3757,13 @@ export interface API {
   /** @description Extrato retornado com sucesso */
   "GET /contascorrentes/:email/extrato": {
     searchParams: {
+      /**
+       * Data Inicial para verificar extrato
+       */
       dataInicial?: string;
+      /**
+       * Data Final para verificar extrato
+       */
       dataFinal?: string;
     };
     response: {
@@ -3652,8 +3811,17 @@ export interface API {
   /** @description Lista de tipos de evento */
   "GET /tiposEvento": {
     searchParams: {
+      /**
+       * Status do tipo de evento
+       */
       ativo?: boolean;
+      /**
+       * Se o tipo de evento está disponível
+       */
       disponivel?: boolean;
+      /**
+       * Nome do tipo de evento
+       */
       nome?: string;
     };
     response: {
@@ -3715,8 +3883,17 @@ export interface API {
   /** @description Lista de avaliações de produtos */
   "GET /produtoavaliacao": {
     searchParams: {
+      /**
+       * Referente ao status que libera a visualização da avaliação no site
+       */
       status?: "Pendente" | "NaoAprovado" | "Aprovado";
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
     };
     response: {
@@ -3737,11 +3914,29 @@ export interface API {
   /** @description Lista de usuários */
   "GET /usuarios": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Data inicial da data de criação do usuário que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final da data de criação do usuário que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de filtro de data
+       */
       enumTipoFiltroData?: "DataAlteracao" | "DataCriacao";
+      /**
+       * Status de aprovação
+       */
       aprovado?: boolean;
     };
     response: {
@@ -3815,6 +4010,9 @@ export interface API {
   /** @description Insere um SEO para um produto específico */
   "POST /produtos/:identificador/seo": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     body: {
@@ -3852,8 +4050,17 @@ export interface API {
   /** @description Gráfico Forma de Pagamento */
   "GET /dashboard/graficoformapagamento": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos com as formas de pagamento que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos com as formas de pagamento que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Id do parceiro
+       */
       parceiroId?: number;
     };
     response: {
@@ -3913,7 +4120,13 @@ export interface API {
   /** @description Indicador dos Novos Compradores */
   "GET /dashboard/novoscompradores": {
     searchParams: {
+      /**
+       * Data inicial dos novos compradores que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos novos compradores que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
     };
     response: {
@@ -3923,11 +4136,29 @@ export interface API {
   /** @description Lista de produtos variantes vinculados aos tipo de evento */
   "GET /eventos": {
     searchParams: {
+      /**
+       * Data de inicio do evento
+       */
       dataInicial?: string;
+      /**
+       * Data do termino do evento
+       */
       dataFinal?: string;
+      /**
+       * Status do evento
+       */
       disponivel?: boolean;
+      /**
+       * Titulo do evento
+       */
       titulo?: string;
+      /**
+       * Email do Usuário
+       */
       usuarioEmail?: string;
+      /**
+       * Identificador do Tipo de Evento
+       */
       tipoEventoId?: number;
     };
     response: {
@@ -3998,6 +4229,9 @@ export interface API {
   /** @description Retorna todas as informações de um produto específico */
   "GET /produtos/:identificador/informacoes": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId" | "ProdutoId";
     };
     response: {
@@ -4041,7 +4275,13 @@ export interface API {
   /** @description Indicador do Carrinho Abandonado */
   "GET /dashboard/carrinhoabandonado": {
     searchParams: {
+      /**
+       * Data inicial dos carrinhos abandonados que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos carrinhos abandonados que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
     };
     response: {
@@ -4051,6 +4291,9 @@ export interface API {
   /** @description Deleta um ou mais Metatags de produto */
   "DELETE /produtos/:identificador/seo/metaTag": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     body: {
@@ -4089,8 +4332,17 @@ export interface API {
   /** @description Relatório de transações de um determinado período */
   "GET /dashboard/transacoes": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos que deverão retornar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos que deverão retornar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de agrupamento dos pedidos (hora, dia, semana, mês, ano)
+       */
       tipoAgrupamento?: "Hora" | "Dia" | "Semana" | "Mes" | "Ano";
     };
     response: {
@@ -4107,7 +4359,13 @@ export interface API {
   /** @description Lista de produtos de uma tabela de preços */
   "GET /tabelaPrecos/:tabelaPrecoId/produtos": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
     };
     response: {
@@ -4181,16 +4439,34 @@ export interface API {
   /** @description Assinaturas com erro na loja */
   "GET /assinaturas/erros": {
     searchParams: {
+      /**
+       * Data inicial para buscas por periodo de tempo (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final para buscas por periodo de tempo (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
+      /**
+       * Erros já resolvidos ou não
+       */
       resolvidos?: boolean;
     };
   };
   /** @description Método que realiza uma cotação de frete */
   "POST /fretes/cotacoes": {
     searchParams: {
+      /**
+       * Cep de entrega
+       */
       cep?: string;
+      /**
+       * Define se o identificador informado é um sku ou um id interno da fstore
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
+      /**
+       * Define se deve retornar as opções de retirada em loja ("False" por padrão) (optional)
+       */
       retiradaLoja?: boolean;
     };
     body: {
@@ -4340,6 +4616,9 @@ export interface API {
   /** @description Atualiza o preço de vários produtos com base na lista enviada. Limite de 50 produtos por requisição */
   "PUT /produtos/precos": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -4581,13 +4860,37 @@ export interface API {
   /** @description Lista com assinaturas */
   "GET /assinaturas": {
     searchParams: {
+      /**
+       * Situação da assinatura
+       */
       situacaoAssinatura?: "Ativa" | "Pausada" | "Cancelada";
+      /**
+       * Período de recorrência
+       */
       periodoRecorrencia?: string;
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Data inicial da próxima recorrência
+       */
       dataInicialProximaRecorrencia?: string;
+      /**
+       * Data final da próxima recorrencia
+       */
       dataFinalProximaRecorrencia?: string;
+      /**
+       * Data inicial de cancelamento
+       */
       dataInicialCancelamento?: string;
+      /**
+       * Data final de cancelamento
+       */
       dataFinalCancelamento?: string;
     };
     response: {
@@ -4606,9 +4909,21 @@ export interface API {
   /** @description Lista de categorias */
   "GET /categorias": {
     searchParams: {
+      /**
+       * Hierarquia da categoria
+       */
       hierarquia?: boolean;
+      /**
+       * Se será apresentado apenas Reseller
+       */
       apenasReseller?: boolean;
+      /**
+       * Se será apresentado apenas o último nível das categorias
+       */
       apenasUltimoNivel?: boolean;
+      /**
+       * Se será apresentado somente categorias filhas
+       */
       somenteFilhos?: boolean;
     };
     response: {
@@ -5354,6 +5669,9 @@ export interface API {
   /** @description Seta identificador como variante principal */
   "PUT /produtos/:identificador/principal": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
@@ -5427,9 +5745,21 @@ export interface API {
   /** @description Gráfico do Faturamento */
   "GET /dashboard/graficofaturamento": {
     searchParams: {
+      /**
+       * Data inicial do faturamento que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final do faturamento que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Se o faturamento é somente da loja
+       */
       isLoja?: number;
+      /**
+       * Id do parceiro
+       */
       parceiroId?: number;
     };
     response: {
@@ -5444,6 +5774,9 @@ export interface API {
   /** @description Exclui uma informação de um produto */
   "DELETE /produtos/:identificador/informacoes/:informacaoId": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     response: {
@@ -5580,6 +5913,9 @@ export interface API {
   /** @description SEO do produto informado */
   "GET /produtos/:identificador/seo": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     response: {
@@ -5597,7 +5933,13 @@ export interface API {
   /** @description Atualiza o limite de crédito para um usuário */
   "PUT /usuarios/limiteCredito/:usuarioId": {
     searchParams: {
+      /**
+       * CPF ou CNPJ do usuário
+       */
       cpf_cnpj?: string;
+      /**
+       * Valor do limite de crédito
+       */
       valor?: number;
     };
   };
@@ -5799,6 +6141,9 @@ export interface API {
   /** @description Operação realizada com ou sem sucesso para os usuários */
   "PUT /usuarios/autorizar": {
     searchParams: {
+      /**
+       * Tipo de Identificador
+       */
       tipoIdentificador?: "UsuarioId" | "Email";
     };
     body: {
@@ -5967,6 +6312,9 @@ export interface API {
   /** @description Atualiza a data de cadastro um produto com base nos dados enviados */
   "PUT /produtos/:identificador/DataCadastro": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -6138,7 +6486,13 @@ export interface API {
   /** @description Lista de Lojas Físicas */
   "GET /lojasFisicas": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
     };
     response: {
@@ -6186,7 +6540,13 @@ export interface API {
   /** @description Indicadores dos Produtos no Estoque */
   "GET /dashboard/produtoestoque": {
     searchParams: {
+      /**
+       * Data inicial dos produtos no estoque que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos produtos no estoque que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
     };
     response: {
@@ -6420,7 +6780,13 @@ export interface API {
   /** @description Categoria encontrada */
   "GET /categorias/erp/:id": {
     searchParams: {
+      /**
+       * Hierarquia da categoria
+       */
       hierarquia?: boolean;
+      /**
+       * Se será apresentado somente categorias filhas
+       */
       somenteFilhos?: boolean;
     };
     response: {
@@ -6449,6 +6815,9 @@ export interface API {
   /** @description Atualiza um Atacarejo */
   "PUT /produtos/:identificador/atacarejo/:produtoVarianteAtacadoId": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -6465,13 +6834,22 @@ export interface API {
   /** @description Exclui o vínculo entre uma categoria e um produto */
   "DELETE /produtos/:identificador/categorias/:id": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
   };
   /** @description Xml com os dados de uma mídia específicas entre duas datas */
   "GET /midias/:identificador": {
     searchParams: {
+      /**
+       * Data inicial (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final (aaaa-mm-dd)
+       */
       dataFinal?: string;
     };
     response: {
@@ -6626,17 +7004,38 @@ export interface API {
   /** @description Lista de pedidos */
   "GET /pedidos/situacaoPedido/:situacoesPedido": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos que deverão retonar (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de filtro da data (Ordenação "desc" - padrão: DataPedido)
+       */
       enumTipoFiltroData?:
         | "DataPedido"
         | "DataAprovacao"
         | "DataModificacaoStatus"
         | "DataAlteracao"
         | "DataCriacao";
+      /**
+       * Lista de formas de pagamento que deverão retornar (lista separada por "," ex.: 1,2,3), caso vazio retornará todas as formas de pagamento
+       */
       formasPagamento?: string;
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
+      /**
+       * Quando passado o valor true, deverá retornar apenas pedidos de assinatura. Quando falso, deverá retornar todos os pedidos.
+       */
       apenasAssinaturas?: boolean;
     };
     response: {
@@ -6920,8 +7319,17 @@ export interface API {
   /** @description Lista de categorias de um produto */
   "GET /produtos/:identificador/categorias": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId" | "ProdutoId";
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadRegistros?: number;
     };
     response: {
@@ -6943,6 +7351,9 @@ export interface API {
   /** @description Lista de Atacarejos */
   "GET /produtos/:identificador/atacarejo": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     response: {
@@ -7055,6 +7466,9 @@ export interface API {
   /** @description Adiciona o vínculo entre um produto e uma categoria com base na lista enviada */
   "POST /produtos/:identificador/categorias": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -7141,6 +7555,9 @@ export interface API {
   /** @description Atualiza a imagem de estampa do produto */
   "PUT /produtos/:identificador/imagens/estampa": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -7153,11 +7570,29 @@ export interface API {
   /** @description Retorna lista de usuários cadastrados/descadastrados na newsletter (50 por página) */
   "GET /usuarios/newsletter": {
     searchParams: {
+      /**
+       * Tipo de ordenação
+       */
       ordenarPor?: "DataCadastro" | "DataAtualizacao";
+      /**
+       * Data inicial dos cadastros que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos cadastros que deverão retornar (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Status do usuário
+       */
       status?: boolean;
+      /**
+       * DoubleOptIn aceito (verificar estado da configuração)
+       */
       doubleOptIn?: boolean;
     };
     response: {
@@ -7183,7 +7618,13 @@ export interface API {
   /** @description Conteúdos encontrados */
   "GET /conteudos": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadePorPagina?: number;
     };
     response: {
@@ -7204,6 +7645,9 @@ export interface API {
   /** @description Insere uma avaliação para um produto variante */
   "POST /produtoavaliacao/:identificador": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno da fstore
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -7240,7 +7684,13 @@ export interface API {
   /** @description Lista de hotsites */
   "GET /hotsites": {
     searchParams: {
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadePorPagina?: number;
     };
     response: {
@@ -7284,8 +7734,17 @@ export interface API {
   /** @description Relatório de receitas de um determinado período */
   "GET /dashboard/receita": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos que deverão retornar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos que deverão retornar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de agrupamento dos pedidos (hora, dia, semana, mês, ano)
+       */
       tipoAgrupamento?: "Hora" | "Dia" | "Semana" | "Mes" | "Ano";
     };
     response: {
@@ -7438,7 +7897,13 @@ export interface API {
   /** @description Lista de parceiros com pedidos */
   "GET /parceiros/comPedidos": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos (aaaa-mm-dd hh:mm:ss)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos (aaaa-mm-dd hh:mm:ss)
+       */
       dataFinal?: string;
     };
     response: {
@@ -7456,6 +7921,9 @@ export interface API {
   /** @description Insere um ou mais metatags para um produto */
   "POST /produtos/:identificador/seo/metaTag": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno da fstore
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     body: {
@@ -7575,7 +8043,13 @@ export interface API {
   /** @description Adiciona uma nova informação */
   "POST /produtos/:identificador/informacoes": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
+      /**
+       * Define o tipo de retorno a ser recebido. Id retorna o InformacaoProdutoId da informação inserida, Booleano retorna true ou false, de acordo com o resultado da operação. Valor padrão Booleano
+       */
       tipoRetorno?: "Id" | "Booleano";
     };
     body: {
@@ -7660,6 +8134,9 @@ export interface API {
   /** @description Lista de Metatags do produto informado */
   "GET /produtos/:identificador/seo/metaTag": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     response: {
@@ -7673,6 +8150,9 @@ export interface API {
   /** @description Define uma categoria de um produto como principal */
   "PUT /produtos/:identificador/categoriaPrincipal": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -7685,6 +8165,9 @@ export interface API {
   /** @description Atualiza o estoque de vários produtos com base na lista enviada. Limite de 50 produtos por requisição */
   "PUT /produtos/estoques": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -7747,6 +8230,9 @@ export interface API {
   /** @description Objeto com o estoque total e o estoque por centro de distribuição de um produto variante */
   "GET /produtos/:identificador/estoque": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     response: {
@@ -7833,7 +8319,13 @@ export interface API {
   /** @description Categoria encontrada */
   "GET /categorias/:id": {
     searchParams: {
+      /**
+       * Hierarquia da categoria
+       */
       hierarquia?: boolean;
+      /**
+       * Se será apresentado somente categorias filhas
+       */
       somenteFilhos?: boolean;
     };
     response: {
@@ -7998,6 +8490,9 @@ export interface API {
   /** @description Atacarejo */
   "GET /produtos/:identificador/atacarejo/:produtoVarianteAtacadoId": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     response: {
@@ -8009,8 +8504,17 @@ export interface API {
   /** @description Produtos Mais Vendidos */
   "GET /dashboard/produtos": {
     searchParams: {
+      /**
+       * Data inicial dos produtos mais vendidos que deverão retonar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos produtos mais vendidos que deverão retonar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Id do parceiro
+       */
       parceiroId?: number;
     };
     response: {
@@ -8127,9 +8631,21 @@ export interface API {
   /** @description Lista de avaliações de produtos */
   "GET /produtos/:identificador/avaliacoes": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
+      /**
+       * Referente ao status que libera a visualização da avaliação no site = ['Pendente', 'NaoAprovado', 'Aprovado']
+       */
       status?: "Pendente" | "NaoAprovado" | "Aprovado";
+      /**
+       * Página da lista (padrão: 1)
+       */
       pagina?: number;
+      /**
+       * Quantidade de registros que deverão retornar (max: 50)
+       */
       quantidadeRegistros?: number;
     };
     response: {
@@ -8362,6 +8878,9 @@ export interface API {
   /** @description Atualiza um SEO de um produto específico */
   "PUT /produtos/:identificador/seo": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno
+       */
       tipoIdentificador?: "Sku" | "ProdutoId" | "ProdutoVarianteId";
     };
     body: {
@@ -8399,6 +8918,9 @@ export interface API {
   /** @description Retorna lista contendo os Id's dos pedidos do usuário */
   "GET /usuarios/documento/:documento/pedidos": {
     searchParams: {
+      /**
+       * Define se o documento informado é um CPF ou um CNPJ
+       */
       tipoDocumento?: "Cpf" | "Cnpj";
     };
     response: {
@@ -8413,6 +8935,9 @@ export interface API {
   /** @description Objeto com o precoDe e precoPor de um produto variante */
   "GET /produtos/:identificador/preco": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     response: {
@@ -8424,6 +8949,9 @@ export interface API {
   /** @description Adiciona novos Atacarejos */
   "POST /produtos/:identificador/atacarejo": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -8490,7 +9018,13 @@ export interface API {
   /** @description Adiciona uma nova imagem vinculada a um produto */
   "POST /produtos/:identificador/imagens": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
+      /**
+       * Define o tipo de retorno a ser recebido. ListaIds retorna lista de Ids das imagens inseridas, Booleano retorna true ou false, de acordo com o resultado da operação. Valor padrão Booleano
+       */
       tipoRetorno?: "ListaIds" | "Booleano";
     };
     body: {
@@ -8624,6 +9158,9 @@ export interface API {
   /** @description Atualiza uma informação de um produto específico */
   "PUT /produtos/:identificador/informacoes/:informacaoId": {
     searchParams: {
+      /**
+       * Define se o identificador informado é um sku ou um id interno.
+       */
       tipoIdentificador?: "Sku" | "ProdutoVarianteId";
     };
     body: {
@@ -8711,6 +9248,9 @@ export interface API {
   /** @description Atualiza um novo Seller no marketplace */
   "PUT /resellers": {
     searchParams: {
+      /**
+       * Valor único utilizado para identificar o seller
+       */
       resellerId?: number;
     };
     body: {
@@ -8769,15 +9309,30 @@ export interface API {
   /** @description Xml com os dados das mídias entre duas datas */
   "GET /midias": {
     searchParams: {
+      /**
+       * Data inicial (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final (aaaa-mm-dd)
+       */
       dataFinal?: string;
     };
   };
   /** @description Relatório de ticket médio de um determinado período */
   "GET /dashboard/ticketMedio": {
     searchParams: {
+      /**
+       * Data inicial dos pedidos que deverão retornar (aaaa-mm-dd)
+       */
       dataInicial?: string;
+      /**
+       * Data final dos pedidos que deverão retornar (aaaa-mm-dd)
+       */
       dataFinal?: string;
+      /**
+       * Tipo de agrupamento dos pedidos (hora, dia, semana, mês, ano)
+       */
       tipoAgrupamento?: "Hora" | "Dia" | "Semana" | "Mes" | "Ano";
     };
     response: {
@@ -8794,6 +9349,9 @@ export interface API {
   /** @description Objeto com as cotações de frete */
   "GET /fretes/pedidos/:pedidoId/cotacoes": {
     searchParams: {
+      /**
+       * Força cotação de todos os CD's.
+       */
       forcarCotacaoTodosCDs?: boolean;
     };
     response: {

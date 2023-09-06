@@ -90,7 +90,11 @@ for (const [base, paths] of Object.entries(specsByModule)) {
           .filter((x) => x.in === "query")
           .reduce((schema, item) => {
             if (item.schema && !isReferenceObject(item.schema)) {
-              schema.properties[item.name] = item.schema;
+              schema.properties[item.name] = {
+                required: item.required as any,
+                description: item.description,
+                ...item.schema,
+              };
             }
 
             return schema;

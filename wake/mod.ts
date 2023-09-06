@@ -32,7 +32,7 @@ export default function App(props: Props): App<Manifest, State> {
   const { token } = props;
   const api = createHttpClient<API>({
     base: "https://api.fbits.net",
-    headers: new Headers({ "Authentication": `Basic ${token}` }),
+    headers: new Headers({ "Authorization": `Basic ${token}` }),
     fetcher: fetchSafe,
   });
 
