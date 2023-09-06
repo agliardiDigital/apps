@@ -6,7 +6,8 @@ import {
 } from "../../commerce/types.ts";
 import { DEFAULT_IMAGE } from "../../commerce/utils/constants.ts";
 import { createHttpClient } from "../../utils/http.ts";
-import { API } from "./specs/api.gen.ts";
+import { ProductFragment } from "./graphql/graphql.gen.ts";
+import { API } from "./openapi/openapi.gen.ts";
 
 export const stale = {
   deco: { cache: "stale-while-revalidate" },
@@ -88,17 +89,9 @@ export const toBreadcrumbList = (
 };
 
 export const toProduct = async (
-  variant: API["GET /produtos/:identificador"]["response"],
-  { api, base }: {
-    api: ReturnType<typeof createHttpClient<API>>;
-    base: URL | string;
-  },
+  variant: ProductFragment,
+  { base }: { base: URL | string },
 ): Promise<Product> => {
-  const images = await api["GET /produtos/:identificador/imagens"]({
-    identificador: variant.produtoVarianteId!,
-    tipoIdentificador: "ProdutoVarianteId",
-  }, stale).then((r) => r.json());
-
   const inventoryLevel = variant.estoque?.[0]?.estoqueFisico;
   const priceSpecification: UnitPriceSpecification[] = [];
   if (variant.precoDe) {
@@ -119,23 +112,25 @@ export const toProduct = async (
   return {
     "@type": "Product",
     url: getVariantUrl(variant, base).href,
-    gtin: variant.ean,
+    gtin: variant.ean ?? undefined,
     sku: variant.sku!,
     description: variant.informacoes?.find((info) =>
       info.tipoInformacao === "Descricao"
     )?.texto,
-    productID: variant.produtoVarianteId!.toString(),
+    productID: variant.productVariantId,
     name: variant.nome,
     releaseDate: variant.dataCriacao,
     inProductGroupWithID: variant.produtoId?.toString(),
-    image: (images ?? [DEFAULT_IMAGE]).map((image) => ({
+    image: variant.images?.map((image) => ({
       "@type": "ImageObject",
-      url: image.url,
-      alternateName: image.nomeArquivo,
-    })),
+      url: image?.url ?? "",
+      alternateName: image?.fileName ?? "",
+    })) ?? [DEFAULT_IMAGE],
     brand: {
       "@type": "Brand",
-      name: variant.fabricante,
+      name: variant.productBrand?.name ?? "",
+      url: variant.productBrand?.logoUrl ?? variant.productBrand?.fullUrlLogo ??
+        "",
     },
     isSimilarTo: [],
     isVariantOf: {
