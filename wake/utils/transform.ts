@@ -1,22 +1,24 @@
+import slugify from "npm:slugify";
 import {
   BreadcrumbList,
   ListItem,
   Product,
+  ProductListingPage,
   PropertyValue,
   UnitPriceSpecification,
 } from "../../commerce/types.ts";
 import { DEFAULT_IMAGE } from "../../commerce/utils/constants.ts";
-import { createHttpClient } from "../../utils/http.ts";
 import {
   ProductFragment,
+  SearchQuery,
   SingleProductFragment,
 } from "./graphql/graphql.gen.ts";
-import { API } from "./openapi/openapi.gen.ts";
-import slugify from "npm:slugify";
 
 export const stale = {
   deco: { cache: "stale-while-revalidate" },
 };
+
+export const FILTER_PARAM = "filtro";
 
 export const camposAdicionais = [
   "Atacado",
@@ -43,7 +45,8 @@ export const parseSlug = (slug: string) => {
 export const getProductUrl = (
   { productName, productId }: ProductFragment | SingleProductFragment,
   base: URL | string,
-) => new URL(`/produto/${slugify.default(productName ?? "")}-${productId}`, base);
+) =>
+  new URL(`/produto/${slugify.default(productName ?? "")}-${productId}`, base);
 
 export const getVariantUrl = (
   variant: ProductFragment | SingleProductFragment,
@@ -55,6 +58,45 @@ export const getVariantUrl = (
 
   return url;
 };
+
+export const toFilters = (
+  aggregations: NonNullable<SearchQuery["search"]>["aggregations"],
+  { base }: { base: URL },
+): ProductListingPage["filters"] =>
+  aggregations?.filters?.map((filter) => ({
+    "@type": "FilterToggle",
+    key: filter?.origin ?? "",
+    label: filter?.field ?? "",
+    quantity: 0,
+    values: filter?.values?.map((filterValue) => {
+      const url = new URL(base);
+      const { name, quantity } = filterValue!;
+      const index = url.searchParams
+        .getAll(FILTER_PARAM)
+        .findIndex((f) => f === name);
+      const selected = index > -1;
+
+      if (selected) {
+        const params = new URLSearchParams();
+        url.searchParams.forEach((value, key) => {
+          if (key !== FILTER_PARAM || !value.endsWith(name!)) {
+            params.append(key, value);
+          }
+        });
+        url.search = `${params}`;
+      } else {
+        url.searchParams.append(FILTER_PARAM, `${filter.field}:${name}`);
+      }
+
+      return {
+        value: name!,
+        label: name!,
+        quantity: quantity!,
+        selected,
+        url: url.href,
+      };
+    }) ?? [],
+  })) ?? [];
 
 export const toBreadcrumbList = (
   product: Product,

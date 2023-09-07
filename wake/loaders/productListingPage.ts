@@ -10,7 +10,7 @@ import {
   SearchQueryVariables,
   SortDirection,
 } from "../utils/graphql/graphql.gen.ts";
-import { toProduct } from "../utils/transform.ts";
+import { FILTER_PARAM, toFilters, toProduct } from "../utils/transform.ts";
 
 export const SORT_OPTIONS: SortOption[] = [
   { value: "ASC:NAME", label: "Nome A-Z" },
@@ -35,6 +35,23 @@ export interface Props {
   operation?: "AND" | "OR";
 }
 
+const filtersFromParams = (searchParams: URLSearchParams) => {
+  const mapped = searchParams.getAll(FILTER_PARAM)
+    .reduce((acc, value) => {
+      const [field, val] = value.split(":");
+      if (!acc.has(field)) acc.set(field, []);
+      acc.get(field)?.push(val);
+      return acc;
+    }, new Map<string, string[]>());
+
+  const filters: Array<{ field: string; values: string[] }> = [];
+  for (const [field, values] of mapped.entries()) {
+    filters.push({ field, values });
+  }
+
+  return filters;
+};
+
 /**
  * @title Wake Integration
  * @description Product Listing Page loader
@@ -49,6 +66,7 @@ const searchLoader = async (
   const { storefront } = ctx;
 
   const first = props.first ?? 12;
+  const filters = filtersFromParams(url.searchParams);
   const sort = url.searchParams.get("sort") as SortValue | null ??
     "DESC:SALES";
   const page = Number(url.searchParams.get("page")) || 0;
@@ -60,15 +78,19 @@ const searchLoader = async (
   ];
 
   const data = await storefront.query<SearchQuery, SearchQueryVariables>({
-    variables: { query, operation, first, sortDirection, sortKey },
+    variables: { query, operation, first, sortDirection, sortKey, filters },
     fragments: [fragment],
     query:
-      gql`query Search($operation: Operation!, $query: String, $first: Int!, $sortDirection: SortDirection, $sortKey: ProductSearchSortKeys) { 
+      gql`query Search($operation: Operation!, $query: String, $first: Int!, $sortDirection: SortDirection, $sortKey: ProductSearchSortKeys, $filters: [ProductFilterInput]) { 
         search(query: $query, operation: $operation) { 
           aggregations {
             filters {
               field
               origin
+              values {
+                quantity
+                name
+              }
             }
           }
           breadcrumbs {
@@ -82,7 +104,7 @@ const searchLoader = async (
           pageSize
           redirectUrl
           searchTime
-          products(first: $first, sortDirection: $sortDirection, sortKey: $sortKey) {
+          products(first: $first, sortDirection: $sortDirection, sortKey: $sortKey, filters: $filters) {
             nodes {
               ...Product
             }
@@ -109,9 +131,17 @@ const searchLoader = async (
     previousPage.set("page", (page - 1).toString());
   }
 
+  const itemListElement: ProductListingPage["breadcrumb"]["itemListElement"] =
+    data.search?.breadcrumbs?.map((b, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: b!.link!,
+      name: b!.text!,
+    })) ?? [];
+
   return {
     "@type": "ProductListingPage",
-    filters: [],
+    filters: toFilters(data.search?.aggregations, { base: url }),
     pageInfo: {
       nextPage: pageInfo?.hasNextPage ? `?${nextPage}` : undefined,
       previousPage: pageInfo?.hasPreviousPage ? `?${previousPage}` : undefined,
@@ -122,8 +152,8 @@ const searchLoader = async (
     sortOptions: SORT_OPTIONS,
     breadcrumb: {
       "@type": "BreadcrumbList",
-      itemListElement: [],
-      numberOfItems: 0,
+      itemListElement,
+      numberOfItems: itemListElement.length,
     },
     products: products
       ?.filter((p): p is ProductFragment => Boolean(p))
