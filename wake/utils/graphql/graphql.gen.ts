@@ -3845,6 +3845,54 @@ export type Wishlist = {
   products?: Maybe<Array<Maybe<Product>>>;
 };
 
+export type AddCouponMutationVariables = Exact<{
+  checkoutId: Scalars['Uuid']['input'];
+  coupon: Scalars['String']['input'];
+}>;
+
+
+export type AddCouponMutation = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
+export type AddItemToCartMutationVariables = Exact<{
+  input: CheckoutProductInput;
+}>;
+
+
+export type AddItemToCartMutation = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
+export type RemoveCouponMutationVariables = Exact<{
+  checkoutId: Scalars['Uuid']['input'];
+}>;
+
+
+export type RemoveCouponMutation = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
+export type RemoveItemFromCartMutationVariables = Exact<{
+  input: CheckoutProductInput;
+}>;
+
+
+export type RemoveItemFromCartMutation = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
+export type UpdateItemQuantityMutationVariables = Exact<{
+  input: CheckoutProductInput;
+}>;
+
+
+export type UpdateItemQuantityMutation = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
+export type GetCartQueryVariables = Exact<{
+  checkoutId: Scalars['String']['input'];
+}>;
+
+
+export type GetCartQuery = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
+export type CreateCartMutationVariables = Exact<{ [key: string]: never; }>;
+
+
+export type CreateCartMutation = { checkout?: { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null } | null };
+
 export type GetProductQueryVariables = Exact<{
   productId: Scalars['Long']['input'];
 }>;
@@ -3873,6 +3921,8 @@ export type SearchQueryVariables = Exact<{
 
 
 export type SearchQuery = { search?: { pageSize: number, redirectUrl?: string | null, searchTime?: string | null, aggregations?: { filters?: Array<{ field?: string | null, origin?: string | null, values?: Array<{ quantity: number, name?: string | null } | null> | null } | null> | null } | null, breadcrumbs?: Array<{ link?: string | null, text?: string | null } | null> | null, forbiddenTerm?: { text?: string | null, suggested?: string | null } | null, products?: { totalCount: number, nodes?: Array<{ mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, seller?: { name?: string | null } | null } | null> | null, pageInfo: { hasNextPage: boolean, hasPreviousPage: boolean } } | null } | null };
+
+export type CheckoutFragment = { checkoutId: any, shippingFee: any, subtotal: any, total: any, completed: boolean, coupon?: string | null, products?: Array<{ imageUrl?: string | null, brand?: string | null, ajustedPrice: any, listPrice: any, price: any, name?: string | null, productId: any, productVariantId: any, quantity: number, sku?: string | null, url?: string | null } | null> | null };
 
 export type ProductFragment = { mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, seller?: { name?: string | null } | null };
 

@@ -171,6 +171,7 @@ const generateGraphQL = async () => {
 
     console.info(`Generating GraphQL types for specs at ${base}`);
     const config: CodegenConfig = {
+      silent: true,
       schema: join(Deno.cwd(), path),
       documents: [`./**/*.ts`],
       generates: {
@@ -191,5 +192,8 @@ const generateGraphQL = async () => {
   }
 };
 
+const generateDeco = () => import("deco/scripts/apps/bundle.ts");
+
 await generateOpenAPI();
 await generateGraphQL();
+await generateDeco();
