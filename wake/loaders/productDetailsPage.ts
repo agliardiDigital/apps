@@ -7,7 +7,7 @@ import {
   GetProductQueryVariables,
 } from "../utils/graphql/graphql.gen.ts";
 import { parseSlug, toBreadcrumbList, toProduct } from "../utils/transform.ts";
-import { fragment } from "../utils/graphql/fragments/SingleProduct.ts";
+import { fragment } from "../utils/graphql/fragments/singleProduct.ts";
 
 export interface Props {
   slug: RequestURLParam;
