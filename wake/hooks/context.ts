@@ -3,7 +3,7 @@ import { signal } from "@preact/signals";
 import { invoke } from "../runtime.ts";
 import type { CheckoutFragment } from "../utils/graphql/graphql.gen.ts";
 
-interface Context {
+export interface Context {
   cart: Partial<CheckoutFragment>;
 }
 
