@@ -1,20 +1,13 @@
 import type { ProductDetailsPage } from "../../commerce/types.ts";
+import { gql } from "../../utils/graphql.ts";
 import type { RequestURLParam } from "../../website/functions/requestToParam.ts";
 import { AppContext } from "../mod.ts";
 import {
   GetProductQuery,
   GetProductQueryVariables,
 } from "../utils/graphql/graphql.gen.ts";
-import { API } from "../utils/openapi/openapi.gen.ts";
-import {
-  camposAdicionais,
-  parseSlug,
-  stale,
-  toBreadcrumbList,
-  toProduct,
-} from "../utils/transform.ts";
-import { query } from "../utils/graphql/queries/getProduct.ts";
-import { gql } from "../../utils/graphql.ts";
+import { parseSlug, toBreadcrumbList, toProduct } from "../utils/transform.ts";
+import { fragment } from "../utils/graphql/fragments/SingleProduct.ts";
 
 export interface Props {
   slug: RequestURLParam;
@@ -42,16 +35,35 @@ async function loader(
     throw new Error("Missing product id");
   }
 
-  const data = await storefront.query<
+  const { product: wakeProduct } = await storefront.query<
     GetProductQuery,
     GetProductQueryVariables
   >({
+    fragments: [fragment],
     query:
-      gql`query GetProduct($productId: Long!) { product(productId: $productId) { ...Product } }`,
+      gql`query GetProduct($productId: Long!) { product(productId: $productId) { ...SingleProduct } }`,
     variables: { productId },
   });
 
-  return null;
+  if (!wakeProduct) {
+    return null;
+  }
+
+  const product = toProduct(wakeProduct, { base: url });
+
+  return {
+    "@type": "ProductDetailsPage",
+    breadcrumbList: toBreadcrumbList(product, wakeProduct.productCategories, {
+      base: url,
+    }),
+    product,
+    seo: {
+      canonical: product.isVariantOf?.url ?? "",
+      title: wakeProduct.productName ?? "",
+      description:
+        wakeProduct.seo?.find((m) => m?.name === "description")?.content ?? "",
+    },
+  };
 
   // const current = relatedVariants.find((rel) =>
   //   rel

@@ -1,35 +1,38 @@
 import type { ProductListingPage } from "../../commerce/types.ts";
 import { SortOption } from "../../commerce/types.ts";
-import type { RequestURLParam } from "../../website/functions/requestToParam.ts";
+import { gql } from "../../utils/graphql.ts";
 import type { AppContext } from "../mod.ts";
+import { fragment } from "../utils/graphql/fragments/product.ts";
+import {
+  ProductFragment,
+  ProductSortKeys,
+  SearchQuery,
+  SearchQueryVariables,
+  SortDirection,
+} from "../utils/graphql/graphql.gen.ts";
+import { toProduct } from "../utils/transform.ts";
 
-export const VNDA_SORT_OPTIONS: SortOption[] = [
-  { value: "", label: "Relevância" },
-  { value: "newest", label: "Mais recentes" },
-  { value: "oldest", label: "Mais antigos" },
-  { value: "lowest_price", label: "Menor preço" },
-  { value: "highest_price", label: "Maior preço" },
+export const SORT_OPTIONS: SortOption[] = [
+  { value: "ASC:NAME", label: "Nome A-Z" },
+  { value: "DESC:NAME", label: "Nome Z-A" },
+  { value: "DESC:RELEASE_DATE", label: "Lançamentos" },
+  { value: "ASC:PRICE", label: "Menores Preços" },
+  { value: "DESC:PRICE", label: "Maiores Preços" },
+  { value: "DESC:DISCOUNT", label: "Maiores Descontos" },
+  { value: "DESC:SALES", label: "Mais Vendidos" },
 ];
+
+type SortValue = `${SortDirection}:${ProductSortKeys}`;
 
 export interface Props {
   /**
-   * @description overides the query term
+   * @title Count
+   * @description Number of products to display
    */
-  term?: string;
-  /**
-   * @description filter products by tag
-   */
-  tags?: string[];
-  /**
-   * @title Items per page
-   * @description number of products per page to display
-   */
-  count: number;
+  first?: number;
 
-  /**
-   * Slug for category pages
-   */
-  slug?: RequestURLParam;
+  /** @description Types of operations to perform between query terms */
+  operation?: "AND" | "OR";
 }
 
 /**
@@ -43,91 +46,88 @@ const searchLoader = async (
 ): Promise<ProductListingPage | null> => {
   // get url from params
   const url = new URL(req.url);
-  const { api } = ctx;
+  const { storefront } = ctx;
 
-  const count = props.count ?? 12;
-  const { cleanUrl, typeTags } = typeTagExtractor(url);
-  const sort = url.searchParams.get("sort") as Sort;
-  const page = Number(url.searchParams.get("page")) || 1;
+  const first = props.first ?? 12;
+  const sort = url.searchParams.get("sort") as SortValue | null ??
+    "DESC:SALES";
+  const page = Number(url.searchParams.get("page")) || 0;
+  const query = url.searchParams.get("busca");
+  const operation = props.operation ?? "AND";
+  const [sortDirection, sortKey] = sort.split(":") as [
+    SortDirection,
+    ProductSortKeys,
+  ];
 
-  const isSearchPage = url.pathname === "/busca";
-  const qQueryString = url.searchParams.get("q");
-  const term = props.term || props.slug || qQueryString ||
-    undefined;
-
-  const response = await api["GET /api/v2/products/search"]({
-    term,
-    sort,
-    page,
-    per_page: count,
-    "tags[]": props.tags,
-    wildcard: true,
-    ...Object.fromEntries(typeTags.map(({ key, value }) => [key, value])),
-  }, {
-    deco: { cache: "stale-while-revalidate" },
+  const data = await storefront.query<SearchQuery, SearchQueryVariables>({
+    variables: { query, operation, first, sortDirection, sortKey },
+    fragments: [fragment],
+    query:
+      gql`query Search($operation: Operation!, $query: String, $first: Int!, $sortDirection: SortDirection, $sortKey: ProductSearchSortKeys) { 
+        search(query: $query, operation: $operation) { 
+          aggregations {
+            filters {
+              field
+              origin
+            }
+          }
+          breadcrumbs {
+            link
+            text
+          }
+          forbiddenTerm {
+            text
+            suggested
+          }
+          pageSize
+          redirectUrl
+          searchTime
+          products(first: $first, sortDirection: $sortDirection, sortKey: $sortKey) {
+            nodes {
+              ...Product
+            }
+            pageInfo {
+              hasNextPage
+              hasPreviousPage
+            }
+            totalCount
+          }
+        } 
+      }`,
   });
-  const pagination = JSON.parse(
-    response.headers.get("x-pagination") ?? "null",
-  ) as ProductSearchResult["pagination"] | null;
 
-  const categoryTagName = props.term || url.pathname.split("/").pop() || "";
-  const [search, seo, categoryTag] = await Promise.all([
-    response.json(),
-    api["GET /api/v2/seo_data"]({
-      resource_type: "Tag",
-      code: categoryTagName,
-      type: "category",
-    }, {
-      deco: { cache: "stale-while-revalidate" },
-    }).then((res) => res.json()),
-    isSearchPage
-      ? api["GET /api/v2/tags/:name"]({ name: categoryTagName })
-        .then((res) => res.json()).catch(() => undefined)
-      : undefined,
-  ]);
-
-  const { results: searchResults } = search;
-  const products = searchResults.map((product) =>
-    toProduct(product, null, {
-      url,
-      priceCurrency: "BRL",
-    })
-  );
+  const products = data.search?.products?.nodes ?? [];
+  const pageInfo = data.search?.products?.pageInfo;
 
   const nextPage = new URLSearchParams(url.searchParams);
   const previousPage = new URLSearchParams(url.searchParams);
 
-  if (pagination?.next_page) {
+  if (pageInfo?.hasNextPage) {
     nextPage.set("page", (page + 1).toString());
   }
-
-  if (pagination?.prev_page) {
+  if (pageInfo?.hasPreviousPage) {
     previousPage.set("page", (page - 1).toString());
   }
 
-  const hasSEO = !isSearchPage && (seo?.[0] || categoryTag);
-
   return {
     "@type": "ProductListingPage",
-    seo: hasSEO
-      ? getSEOFromTag({ ...categoryTag, ...seo?.[0] }, req)
-      : undefined,
-    // TODO: Find out what's the right breadcrumb on vnda
+    filters: [],
+    pageInfo: {
+      nextPage: pageInfo?.hasNextPage ? `?${nextPage}` : undefined,
+      previousPage: pageInfo?.hasPreviousPage ? `?${previousPage}` : undefined,
+      currentPage: page,
+      records: data.search?.products?.totalCount,
+      recordPerPage: first,
+    },
+    sortOptions: SORT_OPTIONS,
     breadcrumb: {
       "@type": "BreadcrumbList",
       itemListElement: [],
       numberOfItems: 0,
     },
-    filters: toFilters(search.aggregations, typeTags, cleanUrl),
-    products: products,
-    pageInfo: {
-      nextPage: pagination?.next_page ? `?${nextPage}` : undefined,
-      previousPage: pagination?.prev_page ? `?${previousPage}` : undefined,
-      currentPage: page,
-      records: pagination?.total_count,
-      recordPerPage: count,
-    },
-    sortOptions: VNDA_SORT_OPTIONS,
+    products: products
+      ?.filter((p): p is ProductFragment => Boolean(p))
+      .map((variant) => toProduct(variant, { base: url })),
   };
 };
 

@@ -179,6 +179,10 @@ const generateGraphQL = async () => {
             "typescript",
             "typescript-operations",
           ],
+          config: {
+            skipTypename: true,
+            enumsAsTypes: true,
+          },
         },
       },
     };

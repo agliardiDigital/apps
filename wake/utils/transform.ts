@@ -2,12 +2,17 @@ import {
   BreadcrumbList,
   ListItem,
   Product,
+  PropertyValue,
   UnitPriceSpecification,
 } from "../../commerce/types.ts";
 import { DEFAULT_IMAGE } from "../../commerce/utils/constants.ts";
 import { createHttpClient } from "../../utils/http.ts";
-import { ProductFragment } from "./graphql/graphql.gen.ts";
+import {
+  ProductFragment,
+  SingleProductFragment,
+} from "./graphql/graphql.gen.ts";
 import { API } from "./openapi/openapi.gen.ts";
+import slugify from "npm:slugify";
 
 export const stale = {
   deco: { cache: "stale-while-revalidate" },
@@ -36,41 +41,36 @@ export const parseSlug = (slug: string) => {
 };
 
 export const getProductUrl = (
-  { urlProduto }: API["GET /produtos/:identificador"]["response"],
+  { productName, productId }: ProductFragment | SingleProductFragment,
   base: URL | string,
-) => {
-  const original = new URL(urlProduto!);
-  const url = new URL(original.pathname, base);
-
-  return url;
-};
+) => new URL(`/produto/${slugify.default(productName ?? "")}-${productId}`, base);
 
 export const getVariantUrl = (
-  variant: API["GET /produtos/:identificador"]["response"],
+  variant: ProductFragment | SingleProductFragment,
   base: URL | string,
 ) => {
   const url = getProductUrl(variant, base);
 
-  url.searchParams.set("skuId", variant.produtoVarianteId!.toString());
+  url.searchParams.set("skuId", variant.productVariantId);
 
   return url;
 };
 
 export const toBreadcrumbList = (
   product: Product,
-  categories: API["GET /produtos/:identificador/categorias"]["response"],
+  categories: ProductFragment["productCategories"],
   { base }: { base: URL },
 ): BreadcrumbList => {
-  const category = categories.find((c) => c.categoriaPrincipal);
-  const segments = category?.urlHotSite?.split("/") ?? [];
-  const names = category?.caminhoHierarquia?.split(" > ") ?? [];
+  const category = categories?.find((c) => c?.main);
+  const segments = category?.url?.split("/") ?? [];
+  const names = category?.hierarchy?.split(" > ") ?? [];
   const itemListElement = segments.length === names.length
     ? [
       ...segments.map((_, i): ListItem<string> => ({
         "@type": "ListItem",
         name: names[i],
         position: i + 1,
-        item: new URL(segments.slice(0, i + 1).join("/"), base).href,
+        item: new URL(`/${segments.slice(0, i + 1).join("/")}`, base).href,
       })),
       {
         "@type": "ListItem",
@@ -88,24 +88,46 @@ export const toBreadcrumbList = (
   };
 };
 
-export const toProduct = async (
-  variant: ProductFragment,
+export const toProduct = (
+  variant: ProductFragment | SingleProductFragment,
   { base }: { base: URL | string },
-): Promise<Product> => {
-  const inventoryLevel = variant.estoque?.[0]?.estoqueFisico;
+): Product => {
+  const images = variant.images?.map((image) => ({
+    "@type": "ImageObject" as const,
+    url: image?.url ?? "",
+    alternateName: image?.fileName ?? "",
+  }));
+  const additionalProperty: PropertyValue[] = [];
+  variant.informations?.forEach((info) =>
+    additionalProperty.push({
+      "@type": "PropertyValue",
+      name: info?.title ?? undefined,
+      value: info?.value ?? undefined,
+      valueReference: "INFORMATION",
+    })
+  );
+  variant.attributes?.forEach((attr) =>
+    additionalProperty.push({
+      "@type": "PropertyValue",
+      name: attr?.name ?? undefined,
+      value: attr?.value ?? undefined,
+      valueReference: "SPECIFICATION",
+    })
+  );
+
   const priceSpecification: UnitPriceSpecification[] = [];
-  if (variant.precoDe) {
+  if (variant.prices?.listPrice) {
     priceSpecification.push({
       "@type": "UnitPriceSpecification",
       priceType: "https://schema.org/ListPrice",
-      price: variant.precoDe,
+      price: variant.prices.listPrice,
     });
   }
-  if (variant.precoPor) {
+  if (variant.prices?.price) {
     priceSpecification.push({
       "@type": "UnitPriceSpecification",
       priceType: "https://schema.org/SalePrice",
-      price: variant.precoPor,
+      price: variant.prices.price,
     });
   }
 
@@ -114,18 +136,13 @@ export const toProduct = async (
     url: getVariantUrl(variant, base).href,
     gtin: variant.ean ?? undefined,
     sku: variant.sku!,
-    description: variant.informacoes?.find((info) =>
-      info.tipoInformacao === "Descricao"
-    )?.texto,
+    description:
+      variant.informations?.find((info) => info?.type === "Descrição")?.value ??
+        undefined,
     productID: variant.productVariantId,
-    name: variant.nome,
-    releaseDate: variant.dataCriacao,
-    inProductGroupWithID: variant.produtoId?.toString(),
-    image: variant.images?.map((image) => ({
-      "@type": "ImageObject",
-      url: image?.url ?? "",
-      alternateName: image?.fileName ?? "",
-    })) ?? [DEFAULT_IMAGE],
+    name: variant.variantName ?? undefined,
+    inProductGroupWithID: variant.productId,
+    image: !images?.length ? [DEFAULT_IMAGE] : images,
     brand: {
       "@type": "Brand",
       name: variant.productBrand?.name ?? "",
@@ -136,35 +153,26 @@ export const toProduct = async (
     isVariantOf: {
       "@type": "ProductGroup",
       url: getProductUrl(variant, base).href,
-      name: variant.nomeProdutoPai,
-      productGroupID: variant.produtoId!.toString(),
+      name: variant.productName ?? undefined,
+      productGroupID: variant.productId,
       hasVariant: [],
       additionalProperty: [],
     },
-    additionalProperty: variant.atributos
-      ?.filter((attr) => attr.exibir)
-      .map((attr) => ({
-        "@type": "PropertyValue",
-        name: attr.nome,
-        value: attr.valor,
-        valueReference: "SPECIFICATION",
-      })),
+    additionalProperty,
     offers: {
       "@type": "AggregateOffer",
-      highPrice: variant.precoPor!,
-      lowPrice: variant.precoPor!,
+      highPrice: variant.prices?.price,
+      lowPrice: variant.prices?.price,
       offerCount: 1,
       offers: [{
         "@type": "Offer",
-        seller: "Wake",
-        price: variant.precoPor!,
+        seller: variant.seller?.name ?? undefined,
+        price: variant.prices?.price,
         priceSpecification,
-        availability: inventoryLevel
+        availability: variant.available
           ? "https://schema.org/InStock"
           : "https://schema.org/OutOfStock",
-        inventoryLevel: {
-          value: inventoryLevel,
-        },
+        inventoryLevel: { value: variant.stock },
       }],
     },
   };

@@ -38,7 +38,6 @@ export type AddPriceAlertInput = {
 };
 
 export type AddressNode = {
-  __typename?: 'AddressNode';
   /** Zip code. */
   cep?: Maybe<Scalars['String']['output']>;
   /** Address city. */
@@ -54,19 +53,16 @@ export type AddressNode = {
 };
 
 export type Answer = {
-  __typename?: 'Answer';
   id?: Maybe<Scalars['String']['output']>;
   value?: Maybe<Scalars['String']['output']>;
 };
 
-export enum ApplyPolicy {
-  AfterResolver = 'AFTER_RESOLVER',
-  BeforeResolver = 'BEFORE_RESOLVER'
-}
+export type ApplyPolicy =
+  | 'AFTER_RESOLVER'
+  | 'BEFORE_RESOLVER';
 
 /** Attributes available for the variant products from the given productId. */
 export type Attribute = Node & {
-  __typename?: 'Attribute';
   /** The id of the attribute. */
   attributeId: Scalars['Long']['output'];
   /** The display type of the attribute. */
@@ -99,7 +95,6 @@ export type AttributeInput = {
 };
 
 export type AttributeMatrix = {
-  __typename?: 'AttributeMatrix';
   /** Information about the column attribute. */
   column?: Maybe<AttributeMatrixInfo>;
   /** The matrix products data. List of rows. */
@@ -109,21 +104,18 @@ export type AttributeMatrix = {
 };
 
 export type AttributeMatrixInfo = {
-  __typename?: 'AttributeMatrixInfo';
   displayType?: Maybe<Scalars['String']['output']>;
   name?: Maybe<Scalars['String']['output']>;
   values?: Maybe<Array<Maybe<AttributeMatrixRowColumnInfoValue>>>;
 };
 
 export type AttributeMatrixProduct = {
-  __typename?: 'AttributeMatrixProduct';
   available: Scalars['Boolean']['output'];
   productVariantId: Scalars['Long']['output'];
   stock: Scalars['Long']['output'];
 };
 
 export type AttributeMatrixRowColumnInfoValue = {
-  __typename?: 'AttributeMatrixRowColumnInfoValue';
   printUrl?: Maybe<Scalars['String']['output']>;
   value?: Maybe<Scalars['String']['output']>;
 };
@@ -136,7 +128,6 @@ export type AttributeMatrixRowColumnInfoValuePrintUrlArgs = {
 
 /** Attributes available for the variant products from the given productId. */
 export type AttributeSelection = {
-  __typename?: 'AttributeSelection';
   /** Check if the current product attributes can be rendered as a matrix. */
   canBeMatrix: Scalars['Boolean']['output'];
   /** The candidate variant given the current input filters. Variant may be from brother product Id. */
@@ -151,7 +142,6 @@ export type AttributeSelection = {
 
 /** Attributes available for the variant products from the given productId. */
 export type AttributeSelectionOption = {
-  __typename?: 'AttributeSelectionOption';
   /** The id of the attribute. */
   attributeId: Scalars['Long']['output'];
   /** The display type of the attribute. */
@@ -165,7 +155,6 @@ export type AttributeSelectionOption = {
 };
 
 export type AttributeSelectionOptionValue = {
-  __typename?: 'AttributeSelectionOptionValue';
   alias?: Maybe<Scalars['String']['output']>;
   available: Scalars['Boolean']['output'];
   printUrl?: Maybe<Scalars['String']['output']>;
@@ -182,7 +171,6 @@ export type AttributeSelectionOptionValuePrintUrlArgs = {
 
 /** Attributes values with variants */
 export type AttributeValue = {
-  __typename?: 'AttributeValue';
   /** Product variants that have the attribute. */
   productVariants?: Maybe<Array<Maybe<ProductVariant>>>;
   /** The value of the attribute. */
@@ -191,7 +179,6 @@ export type AttributeValue = {
 
 /** Get query completion suggestion. */
 export type Autocomplete = {
-  __typename?: 'Autocomplete';
   /** Suggested products based on the current query. */
   products?: Maybe<Array<Maybe<Product>>>;
   /** List of possible query completions. */
@@ -200,7 +187,6 @@ export type Autocomplete = {
 
 /** A banner is usually an image used to show sales, highlight products, announcements or to redirect to another page or hotsite on click. */
 export type Banner = Node & {
-  __typename?: 'Banner';
   /** Banner's alternative text. */
   altText?: Maybe<Scalars['String']['output']>;
   /** Banner unique identifier. */
@@ -242,16 +228,14 @@ export type Banner = Node & {
 };
 
 /** Define the banner attribute which the result set will be sorted on. */
-export enum BannerSortKeys {
+export type BannerSortKeys =
   /** The banner's creation date. */
-  CreationDate = 'CREATION_DATE',
+  | 'CREATION_DATE'
   /** The banner's unique identifier. */
-  Id = 'ID'
-}
+  | 'ID';
 
 /** A connection to a list of items. */
 export type BannersConnection = {
-  __typename?: 'BannersConnection';
   /** A list of edges. */
   edges?: Maybe<Array<BannersEdge>>;
   /** A flattened list of the nodes. */
@@ -262,7 +246,6 @@ export type BannersConnection = {
 
 /** An edge in a connection. */
 export type BannersEdge = {
-  __typename?: 'BannersEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -270,7 +253,6 @@ export type BannersEdge = {
 };
 
 export type BestInstallment = {
-  __typename?: 'BestInstallment';
   /** Wether the installment has discount. */
   discount: Scalars['Boolean']['output'];
   /** The custom display name of the best installment plan option. */
@@ -287,7 +269,6 @@ export type BestInstallment = {
 
 /** Informations about brands and its products. */
 export type Brand = Node & {
-  __typename?: 'Brand';
   /** If the brand is active at the platform. */
   active: Scalars['Boolean']['output'];
   /** The alias for the brand's hotsite. */
@@ -346,16 +327,14 @@ export type BrandFilterInput = {
 };
 
 /** Define the brand attribute which the result set will be sorted on. */
-export enum BrandSortKeys {
+export type BrandSortKeys =
   /** The brand unique identifier. */
-  Id = 'ID',
+  | 'ID'
   /** The brand name. */
-  Name = 'NAME'
-}
+  | 'NAME';
 
 /** A connection to a list of items. */
 export type BrandsConnection = {
-  __typename?: 'BrandsConnection';
   /** A list of edges. */
   edges?: Maybe<Array<BrandsEdge>>;
   /** A flattened list of the nodes. */
@@ -367,7 +346,6 @@ export type BrandsConnection = {
 
 /** An edge in a connection. */
 export type BrandsEdge = {
-  __typename?: 'BrandsEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -376,7 +354,6 @@ export type BrandsEdge = {
 
 /** Informations about breadcrumb. */
 export type Breadcrumb = {
-  __typename?: 'Breadcrumb';
   /** Breadcrumb link. */
   link?: Maybe<Scalars['String']['output']>;
   /** Breadcrumb text. */
@@ -385,7 +362,6 @@ export type Breadcrumb = {
 
 /** BuyBox informations. */
 export type BuyBox = {
-  __typename?: 'BuyBox';
   /** List of the possibles installment plans. */
   installmentPlans?: Maybe<Array<Maybe<InstallmentPlan>>>;
   /** Maximum price among sellers. */
@@ -400,7 +376,6 @@ export type BuyBox = {
 
 /** A buy list represents a list of items for sale in the store. */
 export type BuyList = Node & {
-  __typename?: 'BuyList';
   /** Check if the product can be added to cart directly from spot. */
   addToCartFromSpot?: Maybe<Scalars['Boolean']['output']>;
   /** The product url alias. */
@@ -514,7 +489,6 @@ export type BuyListImagesArgs = {
 
 /** Contains the id and quantity of a product in the buy list. */
 export type BuyListProduct = {
-  __typename?: 'BuyListProduct';
   productId: Scalars['Long']['output'];
   quantity: Scalars['Int']['output'];
 };
@@ -527,7 +501,6 @@ export type CalculatePricesProductsInput = {
 
 /** A connection to a list of items. */
 export type CategoriesConnection = {
-  __typename?: 'CategoriesConnection';
   /** A list of edges. */
   edges?: Maybe<Array<CategoriesEdge>>;
   /** A flattened list of the nodes. */
@@ -538,7 +511,6 @@ export type CategoriesConnection = {
 
 /** An edge in a connection. */
 export type CategoriesEdge = {
-  __typename?: 'CategoriesEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -547,7 +519,6 @@ export type CategoriesEdge = {
 
 /** Categories are used to arrange your products into different sections by similarity. */
 export type Category = Node & {
-  __typename?: 'Category';
   /** Category unique identifier. */
   categoryId: Scalars['Long']['output'];
   /** A list of child categories, if it exists. */
@@ -593,15 +564,13 @@ export type CategoryProductsArgs = {
 };
 
 /** Define the category attribute which the result set will be sorted on. */
-export enum CategorySortKeys {
+export type CategorySortKeys =
   /** The category unique identifier. */
-  Id = 'ID',
+  | 'ID'
   /** The category name. */
-  Name = 'NAME'
-}
+  | 'NAME';
 
 export type Checkout = Node & {
-  __typename?: 'Checkout';
   /** The CEP. */
   cep?: Maybe<Scalars['Int']['output']>;
   /** The checkout unique identifier. */
@@ -641,7 +610,6 @@ export type Checkout = Node & {
 
 /** Represents an address node in the checkout. */
 export type CheckoutAddress = {
-  __typename?: 'CheckoutAddress';
   /** The street number of the address. */
   addressNumber?: Maybe<Scalars['String']['output']>;
   /** The ZIP code of the address. */
@@ -664,7 +632,6 @@ export type CheckoutAddress = {
 
 /** Represents a customer node in the checkout. */
 export type CheckoutCustomer = {
-  __typename?: 'CheckoutCustomer';
   /** Taxpayer identification number for businesses. */
   cnpj?: Maybe<Scalars['String']['output']>;
   /** Brazilian individual taxpayer registry identification. */
@@ -695,7 +662,6 @@ export type CheckoutMetadataInput = {
 
 /** Represents a node in the checkout order. */
 export type CheckoutOrder = {
-  __typename?: 'CheckoutOrder';
   /** The list of adjustments applied to the order. */
   adjustments?: Maybe<Array<Maybe<CheckoutOrderAdjustment>>>;
   /** The date of the order. */
@@ -724,7 +690,6 @@ export type CheckoutOrder = {
 
 /** The delivery or store Pickup Address. */
 export type CheckoutOrderAddress = {
-  __typename?: 'CheckoutOrderAddress';
   /** The street address. */
   address?: Maybe<Scalars['String']['output']>;
   /** The ZIP code. */
@@ -745,7 +710,6 @@ export type CheckoutOrderAddress = {
 
 /** Represents an adjustment applied to checkout. */
 export type CheckoutOrderAdjustment = {
-  __typename?: 'CheckoutOrderAdjustment';
   /** The name of the adjustment. */
   name?: Maybe<Scalars['String']['output']>;
   /** The type of the adjustment. */
@@ -756,7 +720,6 @@ export type CheckoutOrderAdjustment = {
 
 /** The delivery or store pickup details. */
 export type CheckoutOrderDelivery = {
-  __typename?: 'CheckoutOrderDelivery';
   /** The delivery or store pickup address. */
   address?: Maybe<CheckoutOrderAddress>;
   /** The cost of delivery or pickup. */
@@ -769,7 +732,6 @@ export type CheckoutOrderDelivery = {
 
 /** The invoice payment information. */
 export type CheckoutOrderInvoicePayment = {
-  __typename?: 'CheckoutOrderInvoicePayment';
   /** The digitable line. */
   digitableLine?: Maybe<Scalars['String']['output']>;
   /** The payment link. */
@@ -778,7 +740,6 @@ export type CheckoutOrderInvoicePayment = {
 
 /** The checkout order payment. */
 export type CheckoutOrderPayment = {
-  __typename?: 'CheckoutOrderPayment';
   /** The bank invoice payment information. */
   invoice?: Maybe<CheckoutOrderInvoicePayment>;
   /** The name of the payment method. */
@@ -789,7 +750,6 @@ export type CheckoutOrderPayment = {
 
 /** This represents a Pix payment node in the checkout order. */
 export type CheckoutOrderPixPayment = {
-  __typename?: 'CheckoutOrderPixPayment';
   /** The QR code. */
   qrCode?: Maybe<Scalars['String']['output']>;
   /** The expiration date of the QR code. */
@@ -800,7 +760,6 @@ export type CheckoutOrderPixPayment = {
 
 /** Represents a node in the checkout order products. */
 export type CheckoutOrderProduct = {
-  __typename?: 'CheckoutOrderProduct';
   /** The list of adjustments applied to the product. */
   adjustments?: Maybe<Array<Maybe<CheckoutOrderProductAdjustment>>>;
   /** The list of attributes of the product. */
@@ -819,7 +778,6 @@ export type CheckoutOrderProduct = {
 
 /** Represents an adjustment applied to a product in the checkout order. */
 export type CheckoutOrderProductAdjustment = {
-  __typename?: 'CheckoutOrderProductAdjustment';
   /** Additional information about the adjustment. */
   additionalInformation?: Maybe<Scalars['String']['output']>;
   /** The name of the adjustment. */
@@ -832,7 +790,6 @@ export type CheckoutOrderProductAdjustment = {
 
 /** Represents an attribute of a product. */
 export type CheckoutOrderProductAttribute = {
-  __typename?: 'CheckoutOrderProductAttribute';
   /** The name of the attribute. */
   name?: Maybe<Scalars['String']['output']>;
   /** The value of the attribute. */
@@ -840,7 +797,6 @@ export type CheckoutOrderProductAttribute = {
 };
 
 export type CheckoutProductAttributeNode = {
-  __typename?: 'CheckoutProductAttributeNode';
   /** The attribute name */
   name?: Maybe<Scalars['String']['output']>;
   /** The attribute type */
@@ -863,7 +819,6 @@ export type CheckoutProductItemInput = {
 };
 
 export type CheckoutProductNode = {
-  __typename?: 'CheckoutProductNode';
   /** The product adjusted price */
   ajustedPrice: Scalars['Decimal']['output'];
   /** Information about the possible selection attributes. */
@@ -916,7 +871,6 @@ export type CheckoutProductNodeAttributeSelectionsArgs = {
 };
 
 export type CheckoutShippingDeadlineNode = {
-  __typename?: 'CheckoutShippingDeadlineNode';
   /** The shipping deadline */
   deadline: Scalars['Int']['output'];
   /** The shipping description */
@@ -936,7 +890,6 @@ export type CheckoutSubscriptionInput = {
 
 /** Contents are used to show things to the user. */
 export type Content = Node & {
-  __typename?: 'Content';
   /** The content in html to be displayed. */
   content?: Maybe<Scalars['String']['output']>;
   /** Content unique identifier. */
@@ -958,16 +911,14 @@ export type Content = Node & {
 };
 
 /** Define the content attribute which the result set will be sorted on. */
-export enum ContentSortKeys {
+export type ContentSortKeys =
   /** The content's creation date. */
-  CreationDate = 'CreationDate',
+  | 'CreationDate'
   /** The content's unique identifier. */
-  Id = 'ID'
-}
+  | 'ID';
 
 /** A connection to a list of items. */
 export type ContentsConnection = {
-  __typename?: 'ContentsConnection';
   /** A list of edges. */
   edges?: Maybe<Array<ContentsEdge>>;
   /** A flattened list of the nodes. */
@@ -978,7 +929,6 @@ export type ContentsConnection = {
 
 /** An edge in a connection. */
 export type ContentsEdge = {
-  __typename?: 'ContentsEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -1002,7 +952,6 @@ export type CreateCustomerAddressInput = {
 
 /** A customer from the store. */
 export type Customer = Node & {
-  __typename?: 'Customer';
   /** Customer's addresses. */
   addresses?: Maybe<Array<Maybe<CustomerAddressNode>>>;
   /** Customer's birth date. */
@@ -1081,7 +1030,6 @@ export type CustomerWishlistArgs = {
 };
 
 export type CustomerAccessToken = {
-  __typename?: 'CustomerAccessToken';
   isMaster: Scalars['Boolean']['output'];
   token?: Maybe<Scalars['String']['output']>;
   /** The user login type */
@@ -1096,7 +1044,6 @@ export type CustomerAccessTokenInput = {
 };
 
 export type CustomerAddressNode = Node & {
-  __typename?: 'CustomerAddressNode';
   /** Address details. */
   addressDetails?: Maybe<Scalars['String']['output']>;
   /** Address number. */
@@ -1193,7 +1140,6 @@ export type CustomerEmailChangeInput = {
 };
 
 export type CustomerInformationGroupFieldNode = {
-  __typename?: 'CustomerInformationGroupFieldNode';
   /** The field name. */
   name?: Maybe<Scalars['String']['output']>;
   /** The field order. */
@@ -1205,7 +1151,6 @@ export type CustomerInformationGroupFieldNode = {
 };
 
 export type CustomerInformationGroupNode = {
-  __typename?: 'CustomerInformationGroupNode';
   /** The group exibition name. */
   exibitionName?: Maybe<Scalars['String']['output']>;
   /** The group fields. */
@@ -1215,7 +1160,6 @@ export type CustomerInformationGroupNode = {
 };
 
 export type CustomerOrderCollectionSegment = {
-  __typename?: 'CustomerOrderCollectionSegment';
   items?: Maybe<Array<Maybe<Order>>>;
   page: Scalars['Int']['output'];
   pageSize: Scalars['Int']['output'];
@@ -1223,19 +1167,17 @@ export type CustomerOrderCollectionSegment = {
 };
 
 /** Define the order attribute which the result set will be sorted on. */
-export enum CustomerOrderSortKeys {
+export type CustomerOrderSortKeys =
   /** The total order value. */
-  Amount = 'AMOUNT',
+  | 'AMOUNT'
   /** The date the order was placed. */
-  Date = 'DATE',
+  | 'DATE'
   /** The order ID. */
-  Id = 'ID',
+  | 'ID'
   /** The order current status. */
-  Status = 'STATUS'
-}
+  | 'STATUS';
 
 export type CustomerOrdersStatistics = {
-  __typename?: 'CustomerOrdersStatistics';
   /** The number of products the customer made from the number of orders. */
   productsQuantity: Scalars['Int']['output'];
   /** The number of orders the customer made. */
@@ -1243,7 +1185,6 @@ export type CustomerOrdersStatistics = {
 };
 
 export type CustomerPartnerNode = {
-  __typename?: 'CustomerPartnerNode';
   /** The partner alias. */
   alias?: Maybe<Scalars['String']['output']>;
   /** The partner's name. */
@@ -1316,7 +1257,6 @@ export type CustomerUpdateInput = {
 
 /** Some products can have customizations, such as writing your name on it or other predefined options. */
 export type Customization = Node & {
-  __typename?: 'Customization';
   /** Cost of customization. */
   cost: Scalars['Decimal']['output'];
   /** Customization unique identifier. */
@@ -1339,7 +1279,6 @@ export type Customization = Node & {
 
 /** The delivery schedule detail. */
 export type DeliveryScheduleDetail = {
-  __typename?: 'DeliveryScheduleDetail';
   /** The date of the delivery schedule. */
   date?: Maybe<Scalars['String']['output']>;
   /** The end date and time of the delivery schedule. */
@@ -1361,33 +1300,29 @@ export type DeliveryScheduleInput = {
 };
 
 /** Define the entity type of the customer registration. */
-export enum EntityType {
+export type EntityType =
   /** Legal entity, a company, business, organization. */
-  Company = 'COMPANY',
+  | 'COMPANY'
   /** An international person, a legal international entity. */
-  International = 'INTERNATIONAL',
+  | 'INTERNATIONAL'
   /** An individual person, a physical person. */
-  Person = 'PERSON'
-}
+  | 'PERSON';
 
-export enum FilterPosition {
+export type FilterPosition =
   /** Both filter position. */
-  Both = 'BOTH',
+  | 'BOTH'
   /** Horizontal filter position. */
-  Horizontal = 'HORIZONTAL',
+  | 'HORIZONTAL'
   /** Vertical filter position. */
-  Vertical = 'VERTICAL'
-}
+  | 'VERTICAL';
 
 /** The customer's gender. */
-export enum Gender {
-  Female = 'FEMALE',
-  Male = 'MALE'
-}
+export type Gender =
+  | 'FEMALE'
+  | 'MALE';
 
 /** A hotsite is a group of products used to organize them or to make them easier to browse. */
 export type Hotsite = Node & {
-  __typename?: 'Hotsite';
   /** A list of banners associated with the hotsite. */
   banners?: Maybe<Array<Maybe<Banner>>>;
   /** A list of contents associated with the hotsite. */
@@ -1430,35 +1365,31 @@ export type HotsiteProductsArgs = {
 };
 
 /** Define the hotsite attribute which the result set will be sorted on. */
-export enum HotsiteSortKeys {
+export type HotsiteSortKeys =
   /** The hotsite id. */
-  Id = 'ID',
+  | 'ID'
   /** The hotsite name. */
-  Name = 'NAME',
+  | 'NAME'
   /** The hotsite url. */
-  Url = 'URL'
-}
+  | 'URL';
 
 export type HotsiteSorting = {
-  __typename?: 'HotsiteSorting';
   direction?: Maybe<SortDirection>;
   field?: Maybe<ProductSortKeys>;
 };
 
-export enum HotsiteSubtype {
+export type HotsiteSubtype =
   /** Hotsite created from a brand. */
-  Brand = 'BRAND',
+  | 'BRAND'
   /** Hotsite created from a buy list (lista de compra). */
-  BuyList = 'BUY_LIST',
+  | 'BUY_LIST'
   /** Hotsite created from a category. */
-  Category = 'CATEGORY',
+  | 'CATEGORY'
   /** Hotsite created from a portfolio. */
-  Portfolio = 'PORTFOLIO'
-}
+  | 'PORTFOLIO';
 
 /** A connection to a list of items. */
 export type HotsitesConnection = {
-  __typename?: 'HotsitesConnection';
   /** A list of edges. */
   edges?: Maybe<Array<HotsitesEdge>>;
   /** A flattened list of the nodes. */
@@ -1469,7 +1400,6 @@ export type HotsitesConnection = {
 
 /** An edge in a connection. */
 export type HotsitesEdge = {
-  __typename?: 'HotsitesEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -1478,7 +1408,6 @@ export type HotsitesEdge = {
 
 /** Informations about an image of a product. */
 export type Image = {
-  __typename?: 'Image';
   /** The name of the image file. */
   fileName?: Maybe<Scalars['String']['output']>;
   /** Check if the image is used for the product main image. */
@@ -1501,7 +1430,6 @@ export type InStorePickupAdditionalInformationInput = {
 
 /** Information registred to the product. */
 export type Information = {
-  __typename?: 'Information';
   /** The information id. */
   id: Scalars['Long']['output'];
   /** The information title. */
@@ -1513,7 +1441,6 @@ export type Information = {
 };
 
 export type InformationGroupFieldNode = Node & {
-  __typename?: 'InformationGroupFieldNode';
   /** The information group field display type. */
   displayType?: Maybe<Scalars['String']['output']>;
   /** The information group field name. */
@@ -1529,7 +1456,6 @@ export type InformationGroupFieldNode = Node & {
 };
 
 export type InformationGroupFieldValueNode = {
-  __typename?: 'InformationGroupFieldValueNode';
   /** The information group field value order. */
   order: Scalars['Int']['output'];
   /** The information group field value. */
@@ -1544,7 +1470,6 @@ export type InformationGroupValueInput = {
 };
 
 export type Installment = {
-  __typename?: 'Installment';
   /** Wether the installment has discount. */
   discount: Scalars['Boolean']['output'];
   /** Wether the installment has fees. */
@@ -1556,7 +1481,6 @@ export type Installment = {
 };
 
 export type InstallmentPlan = {
-  __typename?: 'InstallmentPlan';
   /** The custom display name of this installment plan. */
   displayName?: Maybe<Scalars['String']['output']>;
   /** List of the installments. */
@@ -1566,15 +1490,13 @@ export type InstallmentPlan = {
 };
 
 /** The user login type. */
-export enum LoginType {
-  Authenticated = 'AUTHENTICATED',
-  New = 'NEW',
-  Simple = 'SIMPLE'
-}
+export type LoginType =
+  | 'AUTHENTICATED'
+  | 'NEW'
+  | 'SIMPLE';
 
 /** Informations about menu items. */
 export type Menu = Node & {
-  __typename?: 'Menu';
   /** Menu css class to apply. */
   cssClass?: Maybe<Scalars['String']['output']>;
   /** The full image URL. */
@@ -1612,7 +1534,6 @@ export type MenuFullImageUrlArgs = {
 
 /** Informations about menu groups. */
 export type MenuGroup = Node & {
-  __typename?: 'MenuGroup';
   /** The full image URL. */
   fullImageUrl?: Maybe<Scalars['String']['output']>;
   /** The node unique identifier. */
@@ -1640,7 +1561,6 @@ export type MenuGroupFullImageUrlArgs = {
 
 /** Some products can have metadata, like diferent types of custom information. A basic key value pair. */
 export type Metadata = {
-  __typename?: 'Metadata';
   /** Metadata key. */
   key?: Maybe<Scalars['String']['output']>;
   /** Metadata value. */
@@ -1648,7 +1568,6 @@ export type Metadata = {
 };
 
 export type Mutation = {
-  __typename?: 'Mutation';
   /** Add coupon to checkout */
   checkoutAddCoupon?: Maybe<Checkout>;
   /** Add metadata to checkout */
@@ -2009,7 +1928,6 @@ export type NewsletterInput = {
 };
 
 export type NewsletterNode = {
-  __typename?: 'NewsletterNode';
   /** Newsletter creation date. */
   createDate: Scalars['DateTime']['output'];
   /** The newsletter receiver email. */
@@ -2025,22 +1943,19 @@ export type Node = {
 };
 
 /** Types of operations to perform between query terms. */
-export enum Operation {
+export type Operation =
   /** Performs AND operation between query terms. */
-  And = 'AND',
+  | 'AND'
   /** Performs OR operation between query terms. */
-  Or = 'OR'
-}
+  | 'OR';
 
 /** Result of the operation. */
 export type OperationResult = {
-  __typename?: 'OperationResult';
   /** If the operation is a success. */
   isSuccess: Scalars['Boolean']['output'];
 };
 
 export type OrderAdjustNode = {
-  __typename?: 'OrderAdjustNode';
   /** The adjust name. */
   name?: Maybe<Scalars['String']['output']>;
   /** Note about the adjust. */
@@ -2052,7 +1967,6 @@ export type OrderAdjustNode = {
 };
 
 export type OrderAttributeNode = {
-  __typename?: 'OrderAttributeNode';
   /** The attribute name. */
   name?: Maybe<Scalars['String']['output']>;
   /** The attribute value. */
@@ -2060,7 +1974,6 @@ export type OrderAttributeNode = {
 };
 
 export type OrderCustomizationNode = {
-  __typename?: 'OrderCustomizationNode';
   /** The customization cost. */
   cost?: Maybe<Scalars['Float']['output']>;
   /** The customization name. */
@@ -2070,7 +1983,6 @@ export type OrderCustomizationNode = {
 };
 
 export type OrderDeliveryAddressNode = {
-  __typename?: 'OrderDeliveryAddressNode';
   /** The street number of the address. */
   addressNumber?: Maybe<Scalars['String']['output']>;
   /** The ZIP code of the address. */
@@ -2094,7 +2006,6 @@ export type OrderDeliveryAddressNode = {
 };
 
 export type OrderInvoiceNode = {
-  __typename?: 'OrderInvoiceNode';
   /** The invoice access key. */
   accessKey?: Maybe<Scalars['String']['output']>;
   /** The invoice identifier code. */
@@ -2106,7 +2017,6 @@ export type OrderInvoiceNode = {
 };
 
 export type OrderNoteNode = {
-  __typename?: 'OrderNoteNode';
   /** Date the note was added to the order. */
   date?: Maybe<Scalars['DateTime']['output']>;
   /** The note added to the order. */
@@ -2116,7 +2026,6 @@ export type OrderNoteNode = {
 };
 
 export type OrderPackagingNode = {
-  __typename?: 'OrderPackagingNode';
   /** The packaging cost. */
   cost: Scalars['Decimal']['output'];
   /** The packaging description. */
@@ -2128,7 +2037,6 @@ export type OrderPackagingNode = {
 };
 
 export type OrderPaymentAdditionalInfoNode = {
-  __typename?: 'OrderPaymentAdditionalInfoNode';
   /** Additional information key. */
   key?: Maybe<Scalars['String']['output']>;
   /** Additional information value. */
@@ -2136,7 +2044,6 @@ export type OrderPaymentAdditionalInfoNode = {
 };
 
 export type OrderPaymentBoletoNode = {
-  __typename?: 'OrderPaymentBoletoNode';
   /** The digitable line. */
   digitableLine?: Maybe<Scalars['String']['output']>;
   /** The payment link. */
@@ -2144,7 +2051,6 @@ export type OrderPaymentBoletoNode = {
 };
 
 export type OrderPaymentCardNode = {
-  __typename?: 'OrderPaymentCardNode';
   /** The brand of the card. */
   brand?: Maybe<Scalars['String']['output']>;
   /** The masked credit card number with only the last 4 digits displayed. */
@@ -2152,7 +2058,6 @@ export type OrderPaymentCardNode = {
 };
 
 export type OrderPaymentNode = {
-  __typename?: 'OrderPaymentNode';
   /** Additional information for the payment. */
   additionalInfo?: Maybe<Array<Maybe<OrderPaymentAdditionalInfoNode>>>;
   /** The boleto information. */
@@ -2180,7 +2085,6 @@ export type OrderPaymentNode = {
 };
 
 export type OrderPaymentPixNode = {
-  __typename?: 'OrderPaymentPixNode';
   /** The QR code. */
   qrCode?: Maybe<Scalars['String']['output']>;
   /** The expiration date of the QR code. */
@@ -2190,7 +2094,6 @@ export type OrderPaymentPixNode = {
 };
 
 export type OrderProductNode = {
-  __typename?: 'OrderProductNode';
   /** List of adjusts on the product price, if any. */
   adjusts?: Maybe<Array<Maybe<OrderAdjustNode>>>;
   /** The product attributes. */
@@ -2232,13 +2135,11 @@ export type OrderProductNode = {
 };
 
 export type OrderSellerNode = {
-  __typename?: 'OrderSellerNode';
   /** The seller's name. */
   name?: Maybe<Scalars['String']['output']>;
 };
 
 export type OrderShippingNode = {
-  __typename?: 'OrderShippingNode';
   /** Limit date of delivery, in days. */
   deadline?: Maybe<Scalars['Int']['output']>;
   /** Deadline text message. */
@@ -2272,7 +2173,6 @@ export type OrderShippingNode = {
 };
 
 export type OrderShippingProductNode = {
-  __typename?: 'OrderShippingProductNode';
   /** Distribution center unique identifier. */
   distributionCenterId?: Maybe<Scalars['Long']['output']>;
   /** The product price. */
@@ -2284,65 +2184,62 @@ export type OrderShippingProductNode = {
 };
 
 /** Define the sort orientation of the result set. */
-export enum OrderSortDirection {
+export type OrderSortDirection =
   /** The results will be sorted in an ascending order. */
-  Asc = 'ASC',
+  | 'ASC'
   /** The results will be sorted in an descending order. */
-  Desc = 'DESC'
-}
+  | 'DESC';
 
 /** Represents the status of an order. */
-export enum OrderStatus {
+export type OrderStatus =
   /** Order has been approved in analysis. */
-  ApprovedAnalysis = 'APPROVED_ANALYSIS',
+  | 'APPROVED_ANALYSIS'
   /** Order has been authorized. */
-  Authorized = 'AUTHORIZED',
+  | 'AUTHORIZED'
   /** Order is awaiting payment. */
-  AwaitingPayment = 'AWAITING_PAYMENT',
+  | 'AWAITING_PAYMENT'
   /** Order is awaiting change of payment method. */
-  AwaitingPaymentChange = 'AWAITING_PAYMENT_CHANGE',
+  | 'AWAITING_PAYMENT_CHANGE'
   /** Order has been cancelled. */
-  Cancelled = 'CANCELLED',
+  | 'CANCELLED'
   /** Order has been cancelled - Card Denied. */
-  CancelledDeniedCard = 'CANCELLED_DENIED_CARD',
+  | 'CANCELLED_DENIED_CARD'
   /** Order has been cancelled - Fraud. */
-  CancelledFraud = 'CANCELLED_FRAUD',
+  | 'CANCELLED_FRAUD'
   /** Order has been cancelled. */
-  CancelledOrderCancelled = 'CANCELLED_ORDER_CANCELLED',
+  | 'CANCELLED_ORDER_CANCELLED'
   /** Order has been cancelled - Suspected Fraud. */
-  CancelledSuspectFraud = 'CANCELLED_SUSPECT_FRAUD',
+  | 'CANCELLED_SUSPECT_FRAUD'
   /** Order has been cancelled - Card Temporarily Denied. */
-  CancelledTemporarilyDeniedCard = 'CANCELLED_TEMPORARILY_DENIED_CARD',
+  | 'CANCELLED_TEMPORARILY_DENIED_CARD'
   /** Order has been checked. */
-  CheckedOrder = 'CHECKED_ORDER',
+  | 'CHECKED_ORDER'
   /** Order has been credited. */
-  Credited = 'CREDITED',
+  | 'CREDITED'
   /** Order has been delivered. */
-  Delivered = 'DELIVERED',
+  | 'DELIVERED'
   /** Payment denied, but the order has not been cancelled. */
-  DeniedPayment = 'DENIED_PAYMENT',
+  | 'DENIED_PAYMENT'
   /** Documents needed for purchase. */
-  DocumentsForPurchase = 'DOCUMENTS_FOR_PURCHASE',
+  | 'DOCUMENTS_FOR_PURCHASE'
   /** Order has been placed. */
-  Ordered = 'ORDERED',
+  | 'ORDERED'
   /** Order has been paid. */
-  Paid = 'PAID',
+  | 'PAID'
   /** Available for pick-up in store. */
-  PickUpInStore = 'PICK_UP_IN_STORE',
+  | 'PICK_UP_IN_STORE'
   /** Order has been received - Gift Card. */
-  ReceivedGiftCard = 'RECEIVED_GIFT_CARD',
+  | 'RECEIVED_GIFT_CARD'
   /** Order has been returned. */
-  Returned = 'RETURNED',
+  | 'RETURNED'
   /** Order has been sent. */
-  Sent = 'SENT',
+  | 'SENT'
   /** Order has been sent - Invoiced. */
-  SentInvoiced = 'SENT_INVOICED',
+  | 'SENT_INVOICED'
   /** Order has been separated. */
-  Separated = 'SEPARATED'
-}
+  | 'SEPARATED';
 
 export type OrderStatusNode = {
-  __typename?: 'OrderStatusNode';
   /** The date when status has changed. */
   changeDate?: Maybe<Scalars['DateTime']['output']>;
   /** Order status. */
@@ -2352,7 +2249,6 @@ export type OrderStatusNode = {
 };
 
 export type OrderTrackingNode = {
-  __typename?: 'OrderTrackingNode';
   /** The tracking code. */
   code?: Maybe<Scalars['String']['output']>;
   /** The URL for tracking. */
@@ -2361,7 +2257,6 @@ export type OrderTrackingNode = {
 
 /** Information about pagination in a connection. */
 export type PageInfo = {
-  __typename?: 'PageInfo';
   /** When paginating forwards, the cursor to continue. */
   endCursor?: Maybe<Scalars['String']['output']>;
   /** Indicates whether more edges exist following the set defined by the clients arguments. */
@@ -2374,7 +2269,6 @@ export type PageInfo = {
 
 /** Partners are used to assign specific products or price tables depending on its scope. */
 export type Partner = Node & {
-  __typename?: 'Partner';
   /** The partner alias. */
   alias?: Maybe<Scalars['String']['output']>;
   /** The partner is valid until this date. */
@@ -2411,7 +2305,6 @@ export type PartnerFullUrlLogoArgs = {
 };
 
 export type PartnerAccessToken = {
-  __typename?: 'PartnerAccessToken';
   token?: Maybe<Scalars['String']['output']>;
   validUntil?: Maybe<Scalars['DateTime']['output']>;
 };
@@ -2431,25 +2324,22 @@ export type PartnerByRegionInput = {
 };
 
 /** Define the partner attribute which the result set will be sorted on. */
-export enum PartnerSortKeys {
+export type PartnerSortKeys =
   /** The partner unique identifier. */
-  Id = 'ID',
+  | 'ID'
   /** The partner name. */
-  Name = 'NAME'
-}
+  | 'NAME';
 
-export enum PartnerSubtype {
+export type PartnerSubtype =
   /** Partner 'client' subtype. */
-  Client = 'CLIENT',
+  | 'CLIENT'
   /** Partner 'closed' subtype. */
-  Closed = 'CLOSED',
+  | 'CLOSED'
   /** Partner 'open' subtype. */
-  Open = 'OPEN'
-}
+  | 'OPEN';
 
 /** A connection to a list of items. */
 export type PartnersConnection = {
-  __typename?: 'PartnersConnection';
   /** A list of edges. */
   edges?: Maybe<Array<PartnersEdge>>;
   /** A flattened list of the nodes. */
@@ -2460,7 +2350,6 @@ export type PartnersConnection = {
 
 /** An edge in a connection. */
 export type PartnersEdge = {
-  __typename?: 'PartnersEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -2469,7 +2358,6 @@ export type PartnersEdge = {
 
 /** Informations about the physical store. */
 export type PhysicalStore = {
-  __typename?: 'PhysicalStore';
   /** Additional text. */
   additionalText?: Maybe<Scalars['String']['output']>;
   /** Physical store address. */
@@ -2512,7 +2400,6 @@ export type PhysicalStore = {
 
 /** Range of prices for this product. */
 export type PriceRange = {
-  __typename?: 'PriceRange';
   /** The quantity of products in this range. */
   quantity: Scalars['Int']['output'];
   /** The price range. */
@@ -2520,7 +2407,6 @@ export type PriceRange = {
 };
 
 export type PriceTable = {
-  __typename?: 'PriceTable';
   /** The amount of discount in percentage. */
   discountPercentage: Scalars['Decimal']['output'];
   /** The id of this price table. */
@@ -2533,7 +2419,6 @@ export type PriceTable = {
 
 /** The prices of the product. */
 export type Prices = {
-  __typename?: 'Prices';
   /** The best installment option available. */
   bestInstallment?: Maybe<BestInstallment>;
   /** The amount of discount in percentage. */
@@ -2574,7 +2459,6 @@ export type PricesInput = {
 
 /** A product represents an item for sale in the store. */
 export type Product = Node & {
-  __typename?: 'Product';
   /** Check if the product can be added to cart directly from spot. */
   addToCartFromSpot?: Maybe<Scalars['Boolean']['output']>;
   /** The product url alias. */
@@ -2671,7 +2555,6 @@ export type ProductImagesArgs = {
 };
 
 export type ProductAggregations = {
-  __typename?: 'ProductAggregations';
   /** List of product filters which can be used to filter subsequent queries. */
   filters?: Maybe<Array<Maybe<SearchFilter>>>;
   /** Minimum price of the products. */
@@ -2689,7 +2572,6 @@ export type ProductAggregationsFiltersArgs = {
 
 /** The attributes of the product. */
 export type ProductAttribute = Node & {
-  __typename?: 'ProductAttribute';
   /** The id of the attribute. */
   attributeId: Scalars['Long']['output'];
   /** The display type of the attribute. */
@@ -2705,7 +2587,6 @@ export type ProductAttribute = Node & {
 };
 
 export type ProductBrand = {
-  __typename?: 'ProductBrand';
   /** The hotsite url alias fot this brand. */
   alias?: Maybe<Scalars['String']['output']>;
   /** The full brand logo URL. */
@@ -2726,7 +2607,6 @@ export type ProductBrandFullUrlLogoArgs = {
 
 /** Information about the category of a product. */
 export type ProductCategory = {
-  __typename?: 'ProductCategory';
   /** Wether the category is currently active. */
   active: Scalars['Boolean']['output'];
   /** The categories in google format. */
@@ -2744,7 +2624,6 @@ export type ProductCategory = {
 };
 
 export type ProductCollectionSegment = {
-  __typename?: 'ProductCollectionSegment';
   items?: Maybe<Array<Maybe<Product>>>;
   page: Scalars['Int']['output'];
   pageSize: Scalars['Int']['output'];
@@ -2799,7 +2678,6 @@ export type ProductFilterInput = {
 
 /** Options available for the given product. */
 export type ProductOption = Node & {
-  __typename?: 'ProductOption';
   /** A list of attributes available for the given product and its variants. */
   attributes?: Maybe<Array<Maybe<Attribute>>>;
   /** A list of customizations available for the given products. */
@@ -2816,7 +2694,6 @@ export type ProductOptionAttributesArgs = {
 
 /** A product price alert. */
 export type ProductPriceAlert = {
-  __typename?: 'ProductPriceAlert';
   /** The alerted's email. */
   email?: Maybe<Scalars['String']['output']>;
   /** The alerted's name. */
@@ -2831,50 +2708,46 @@ export type ProductPriceAlert = {
   targetPrice: Scalars['Decimal']['output'];
 };
 
-export enum ProductRecommendationAlgorithm {
-  Default = 'DEFAULT'
-}
+export type ProductRecommendationAlgorithm =
+  | 'DEFAULT';
 
 /** Define the product attribute which the result set will be sorted on. */
-export enum ProductSearchSortKeys {
+export type ProductSearchSortKeys =
   /** The applied discount to the product variant price. */
-  Discount = 'DISCOUNT',
+  | 'DISCOUNT'
   /** The product name. */
-  Name = 'NAME',
+  | 'NAME'
   /** The product variant price. */
-  Price = 'PRICE',
+  | 'PRICE'
   /** Sort in a random way. */
-  Random = 'RANDOM',
+  | 'RANDOM'
   /** The date the product was released. */
-  ReleaseDate = 'RELEASE_DATE',
+  | 'RELEASE_DATE'
   /** The relevance that the search engine gave to the possible result item based on own criteria. */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** The sales number on a period of time. */
-  Sales = 'SALES',
+  | 'SALES'
   /** The quantity in stock of the product variant. */
-  Stock = 'STOCK'
-}
+  | 'STOCK';
 
 /** Define the product attribute which the result set will be sorted on. */
-export enum ProductSortKeys {
+export type ProductSortKeys =
   /** The applied discount to the product variant price. */
-  Discount = 'DISCOUNT',
+  | 'DISCOUNT'
   /** The product name. */
-  Name = 'NAME',
+  | 'NAME'
   /** The product variant price. */
-  Price = 'PRICE',
+  | 'PRICE'
   /** Sort in a random way. */
-  Random = 'RANDOM',
+  | 'RANDOM'
   /** The date the product was released. */
-  ReleaseDate = 'RELEASE_DATE',
+  | 'RELEASE_DATE'
   /** The sales number on a period of time. */
-  Sales = 'SALES',
+  | 'SALES'
   /** The quantity in stock of the product variant. */
-  Stock = 'STOCK'
-}
+  | 'STOCK';
 
 export type ProductSubscription = {
-  __typename?: 'ProductSubscription';
   /** The amount of discount if this product is sold as a subscription. */
   discount: Scalars['Decimal']['output'];
   /** The price of the product when sold as a subscription. */
@@ -2885,7 +2758,6 @@ export type ProductSubscription = {
 
 /** Product variants that have the attribute. */
 export type ProductVariant = Node & {
-  __typename?: 'ProductVariant';
   /** The available stock at the default distribution center. */
   aggregatedStock?: Maybe<Scalars['Long']['output']>;
   /** The product alias. */
@@ -2927,7 +2799,6 @@ export type ProductVariantImagesArgs = {
 
 /** A connection to a list of items. */
 export type ProductsConnection = {
-  __typename?: 'ProductsConnection';
   /** A list of edges. */
   edges?: Maybe<Array<ProductsEdge>>;
   /** A flattened list of the nodes. */
@@ -2939,7 +2810,6 @@ export type ProductsConnection = {
 
 /** An edge in a connection. */
 export type ProductsEdge = {
-  __typename?: 'ProductsEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of the edge. */
@@ -2948,7 +2818,6 @@ export type ProductsEdge = {
 
 /** Information about promotions of a product. */
 export type Promotion = {
-  __typename?: 'Promotion';
   /** The promotion html content. */
   content?: Maybe<Scalars['String']['output']>;
   /** Where the promotion is shown (spot, product page, etc..). */
@@ -2971,7 +2840,6 @@ export type PromotionFullStampUrlArgs = {
 };
 
 export type QueryRoot = {
-  __typename?: 'QueryRoot';
   /** Get informations about an address. */
   address?: Maybe<AddressNode>;
   /** Get query completion suggestion. */
@@ -3245,7 +3113,6 @@ export type QueryRootUriArgs = {
 };
 
 export type Question = {
-  __typename?: 'Question';
   answers?: Maybe<Array<Maybe<Answer>>>;
   question?: Maybe<Scalars['String']['output']>;
   questionId?: Maybe<Scalars['String']['output']>;
@@ -3262,7 +3129,6 @@ export type RestockAlertInput = {
 };
 
 export type RestockAlertNode = {
-  __typename?: 'RestockAlertNode';
   /** Email to be notified. */
   email?: Maybe<Scalars['String']['output']>;
   /** Name of the person to be notified. */
@@ -3275,7 +3141,6 @@ export type RestockAlertNode = {
 
 /** A product review written by a customer. */
 export type Review = {
-  __typename?: 'Review';
   /** The reviewer name. */
   customer?: Maybe<Scalars['String']['output']>;
   /** The reviewer e-mail. */
@@ -3306,7 +3171,6 @@ export type ReviewCreateInput = {
 
 /** Entity SEO information. */
 export type Seo = {
-  __typename?: 'SEO';
   /** Content of SEO. */
   content?: Maybe<Scalars['String']['output']>;
   /** Equivalent SEO type for HTTP. */
@@ -3321,7 +3185,6 @@ export type Seo = {
 
 /** Returns the scripts registered in the script manager. */
 export type Script = {
-  __typename?: 'Script';
   /** The script content. */
   content?: Maybe<Scalars['String']['output']>;
   /** The script name. */
@@ -3334,27 +3197,24 @@ export type Script = {
   priority: Scalars['Int']['output'];
 };
 
-export enum ScriptPageType {
-  All = 'ALL',
-  Brand = 'BRAND',
-  Category = 'CATEGORY',
-  Home = 'HOME',
-  Product = 'PRODUCT',
-  Search = 'SEARCH'
-}
+export type ScriptPageType =
+  | 'ALL'
+  | 'BRAND'
+  | 'CATEGORY'
+  | 'HOME'
+  | 'PRODUCT'
+  | 'SEARCH';
 
-export enum ScriptPosition {
-  BodyEnd = 'BODY_END',
-  BodyStart = 'BODY_START',
-  FooterEnd = 'FOOTER_END',
-  FooterStart = 'FOOTER_START',
-  HeaderEnd = 'HEADER_END',
-  HeaderStart = 'HEADER_START'
-}
+export type ScriptPosition =
+  | 'BODY_END'
+  | 'BODY_START'
+  | 'FOOTER_END'
+  | 'FOOTER_START'
+  | 'HEADER_END'
+  | 'HEADER_START';
 
 /** Search for relevant products to the searched term. */
 export type Search = {
-  __typename?: 'Search';
   /** Aggregations from the products. */
   aggregations?: Maybe<ProductAggregations>;
   /** A list of banners displayed in search pages. */
@@ -3407,7 +3267,6 @@ export type SearchProductsByOffsetArgs = {
 
 /** Aggregated filters of a list of products. */
 export type SearchFilter = {
-  __typename?: 'SearchFilter';
   /** The name of the field. */
   field?: Maybe<Scalars['String']['output']>;
   /** The origin of the field. */
@@ -3418,7 +3277,6 @@ export type SearchFilter = {
 
 /** Details of a filter value. */
 export type SearchFilterItem = {
-  __typename?: 'SearchFilterItem';
   /** The name of the value. */
   name?: Maybe<Scalars['String']['output']>;
   /** The quantity of product with this value. */
@@ -3427,7 +3285,6 @@ export type SearchFilterItem = {
 
 /** The response data */
 export type SearchRecord = {
-  __typename?: 'SearchRecord';
   /** The date time of the processed request */
   date: Scalars['DateTime']['output'];
   /** If the record was successful */
@@ -3454,7 +3311,6 @@ export type SearchRecordInput = {
 
 /** The selected payment method details. */
 export type SelectedPaymentMethod = {
-  __typename?: 'SelectedPaymentMethod';
   /** The unique identifier for the selected payment method. */
   id: Scalars['Uuid']['output'];
   /** The list of installments associated with the selected payment method. */
@@ -3465,7 +3321,6 @@ export type SelectedPaymentMethod = {
 
 /** Details of an installment of the selected payment method. */
 export type SelectedPaymentMethodInstallment = {
-  __typename?: 'SelectedPaymentMethodInstallment';
   /** The adjustment value applied to the installment. */
   adjustment: Scalars['Float']['output'];
   /** The installment number. */
@@ -3478,13 +3333,11 @@ export type SelectedPaymentMethodInstallment = {
 
 /** Seller informations. */
 export type Seller = {
-  __typename?: 'Seller';
   /** Seller name */
   name?: Maybe<Scalars['String']['output']>;
 };
 
 export type SellerInstallment = {
-  __typename?: 'SellerInstallment';
   /** Wether the installment has discount. */
   discount: Scalars['Boolean']['output'];
   /** Wether the installment has fees. */
@@ -3496,7 +3349,6 @@ export type SellerInstallment = {
 };
 
 export type SellerInstallmentPlan = {
-  __typename?: 'SellerInstallmentPlan';
   /** The custom display name of this installment plan. */
   displayName?: Maybe<Scalars['String']['output']>;
   /** List of the installments. */
@@ -3505,7 +3357,6 @@ export type SellerInstallmentPlan = {
 
 /** The seller's product offer */
 export type SellerOffer = {
-  __typename?: 'SellerOffer';
   name?: Maybe<Scalars['String']['output']>;
   /** The product prices. */
   prices?: Maybe<SellerPrices>;
@@ -3515,7 +3366,6 @@ export type SellerOffer = {
 
 /** The prices of the product. */
 export type SellerPrices = {
-  __typename?: 'SellerPrices';
   /** List of the possibles installment plans. */
   installmentPlans?: Maybe<Array<Maybe<SellerInstallmentPlan>>>;
   /** The listed regular price of the product. */
@@ -3525,7 +3375,6 @@ export type SellerPrices = {
 };
 
 export type ShippingNode = {
-  __typename?: 'ShippingNode';
   /** The shipping deadline. */
   deadline: Scalars['Int']['output'];
   /** The delivery schedule detail. */
@@ -3542,7 +3391,6 @@ export type ShippingNode = {
 
 /** The product informations related to the shipping. */
 export type ShippingProduct = {
-  __typename?: 'ShippingProduct';
   /** The product unique identifier. */
   productVariantId: Scalars['Int']['output'];
   /** The shipping value related to the product. */
@@ -3551,7 +3399,6 @@ export type ShippingProduct = {
 
 /** A shipping quote. */
 export type ShippingQuote = Node & {
-  __typename?: 'ShippingQuote';
   /** The shipping deadline. */
   deadline: Scalars['Int']['output'];
   /** The available time slots for scheduling the delivery of the shipping quote. */
@@ -3572,7 +3419,6 @@ export type ShippingQuote = Node & {
 
 /** Informations about the store. */
 export type Shop = {
-  __typename?: 'Shop';
   /** Checkout URL */
   checkoutUrl?: Maybe<Scalars['String']['output']>;
   /** Store main URL */
@@ -3591,7 +3437,6 @@ export type Shop = {
 
 /** Store setting. */
 export type ShopSetting = {
-  __typename?: 'ShopSetting';
   /** Setting name */
   name?: Maybe<Scalars['String']['output']>;
   /** Setting value */
@@ -3600,7 +3445,6 @@ export type ShopSetting = {
 
 /** Information about a similar product. */
 export type SimilarProduct = {
-  __typename?: 'SimilarProduct';
   /** The url alias of this similar product. */
   alias?: Maybe<Scalars['String']['output']>;
   /** The file name of the similar product image. */
@@ -3619,7 +3463,6 @@ export type SimilarProductImageUrlArgs = {
 };
 
 export type SimpleLogin = {
-  __typename?: 'SimpleLogin';
   /** The customer access token */
   customerAccessToken?: Maybe<CustomerAccessToken>;
   /** The simple login question to answer */
@@ -3629,14 +3472,12 @@ export type SimpleLogin = {
 };
 
 /** The simple login type. */
-export enum SimpleLoginType {
-  New = 'NEW',
-  Simple = 'SIMPLE'
-}
+export type SimpleLoginType =
+  | 'NEW'
+  | 'SIMPLE';
 
 /** A hotsite is a group of products used to organize them or to make them easier to browse. */
 export type SingleHotsite = Node & {
-  __typename?: 'SingleHotsite';
   /** Aggregations from the products. */
   aggregations?: Maybe<ProductAggregations>;
   /** A list of banners associated with the hotsite. */
@@ -3707,7 +3548,6 @@ export type SingleHotsiteProductsByOffsetArgs = {
 
 /** A product represents an item for sale in the store. */
 export type SingleProduct = Node & {
-  __typename?: 'SingleProduct';
   /** Check if the product can be added to cart directly from spot. */
   addToCartFromSpot?: Maybe<Scalars['Boolean']['output']>;
   /** The product url alias. */
@@ -3824,16 +3664,14 @@ export type SingleProductImagesArgs = {
 };
 
 /** Define the sort orientation of the result set. */
-export enum SortDirection {
+export type SortDirection =
   /** The results will be sorted in an ascending order. */
-  Asc = 'ASC',
+  | 'ASC'
   /** The results will be sorted in an descending order. */
-  Desc = 'DESC'
-}
+  | 'DESC';
 
 /** Information about a product stock in a particular distribution center. */
 export type Stock = {
-  __typename?: 'Stock';
   /** The id of the distribution center. */
   id: Scalars['Long']['output'];
   /** The number of physical items in stock at this DC. */
@@ -3855,7 +3693,6 @@ export type StocksInput = {
 };
 
 export type SubscriptionGroup = {
-  __typename?: 'SubscriptionGroup';
   /** The recurring types for this subscription group. */
   recurringTypes?: Maybe<Array<Maybe<SubscriptionRecurringType>>>;
   /** The status name of the group. */
@@ -3869,7 +3706,6 @@ export type SubscriptionGroup = {
 };
 
 export type SubscriptionRecurringType = {
-  __typename?: 'SubscriptionRecurringType';
   /** The number of days of the recurring type. */
   days: Scalars['Int']['output'];
   /** The recurring type display name. */
@@ -3895,7 +3731,6 @@ export type UpdateCustomerAddressInput = {
 
 /** Node of URI Kind. */
 export type Uri = {
-  __typename?: 'Uri';
   /** The origin of the hotsite. */
   hotsiteSubtype?: Maybe<HotsiteSubtype>;
   /** Path kind. */
@@ -3912,17 +3747,15 @@ export type Uri = {
   redirectUrl?: Maybe<Scalars['String']['output']>;
 };
 
-export enum UriKind {
-  BuyList = 'BUY_LIST',
-  Hotsite = 'HOTSITE',
-  NotFound = 'NOT_FOUND',
-  Partner = 'PARTNER',
-  Product = 'PRODUCT',
-  Redirect = 'REDIRECT'
-}
+export type UriKind =
+  | 'BUY_LIST'
+  | 'HOTSITE'
+  | 'NOT_FOUND'
+  | 'PARTNER'
+  | 'PRODUCT'
+  | 'REDIRECT';
 
 export type WholesalePrices = {
-  __typename?: 'WholesalePrices';
   /** The wholesale price. */
   price: Scalars['Decimal']['output'];
   /** The minimum quantity required for the wholesale price to be applied */
@@ -3931,7 +3764,6 @@ export type WholesalePrices = {
 
 /** A representation of available time slots for scheduling a delivery. */
 export type DeliverySchedule = {
-  __typename?: 'deliverySchedule';
   /** The date of the delivery schedule. */
   date: Scalars['DateTime']['output'];
   /** The list of time periods available for scheduling a delivery. */
@@ -3940,7 +3772,6 @@ export type DeliverySchedule = {
 
 /** Informations about a forbidden search term. */
 export type ForbiddenTerm = {
-  __typename?: 'forbiddenTerm';
   /** The suggested search term instead. */
   suggested?: Maybe<Scalars['String']['output']>;
   /** The text to display about the term. */
@@ -3948,7 +3779,6 @@ export type ForbiddenTerm = {
 };
 
 export type Order = {
-  __typename?: 'order';
   /** The coupon for discounts. */
   coupon?: Maybe<Scalars['String']['output']>;
   /** Current account value used for the order. */
@@ -3992,7 +3822,6 @@ export type Order = {
 };
 
 export type PaymentMethod = Node & {
-  __typename?: 'paymentMethod';
   /** The node unique identifier. */
   id?: Maybe<Scalars['ID']['output']>;
   /** The url link that displays for the payment. */
@@ -4003,7 +3832,6 @@ export type PaymentMethod = Node & {
 
 /** Represents a time period available for scheduling a delivery. */
 export type Period = {
-  __typename?: 'period';
   /** The end time of the time period. */
   end?: Maybe<Scalars['String']['output']>;
   /** The unique identifier of the time period. */
@@ -4013,7 +3841,6 @@ export type Period = {
 };
 
 export type Wishlist = {
-  __typename?: 'wishlist';
   /** Wishlist products. */
   products?: Maybe<Array<Maybe<Product>>>;
 };
@@ -4023,6 +3850,29 @@ export type GetProductQueryVariables = Exact<{
 }>;
 
 
-export type GetProductQuery = { __typename?: 'QueryRoot', product?: { __typename?: 'SingleProduct', mainVariant?: boolean | null, productName?: string | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ __typename?: 'ProductAttribute', value?: string | null, name?: string | null } | null> | null, breadcrumbs?: Array<{ __typename?: 'Breadcrumb', text?: string | null, link?: string | null } | null> | null, images?: Array<{ __typename?: 'Image', url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { __typename?: 'Prices', discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { __typename?: 'BestInstallment', discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ __typename?: 'InstallmentPlan', displayName?: string | null, name?: string | null, installments?: Array<{ __typename?: 'Installment', discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ __typename?: 'PriceTable', discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ __typename?: 'WholesalePrices', price: any, quantity: number } | null> | null } | null, productBrand?: { __typename?: 'ProductBrand', fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, reviews?: Array<{ __typename?: 'Review', rating: number, review?: string | null, reviewDate: any, email?: string | null, customer?: string | null } | null> | null, seller?: { __typename?: 'Seller', name?: string | null } | null, seo?: Array<{ __typename?: 'SEO', name?: string | null, scheme?: string | null, type?: string | null, httpEquiv?: string | null, content?: string | null } | null> | null } | null };
+export type GetProductQuery = { product?: { mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, breadcrumbs?: Array<{ text?: string | null, link?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, reviews?: Array<{ rating: number, review?: string | null, reviewDate: any, email?: string | null, customer?: string | null } | null> | null, seller?: { name?: string | null } | null, seo?: Array<{ name?: string | null, scheme?: string | null, type?: string | null, httpEquiv?: string | null, content?: string | null } | null> | null } | null };
 
-export type ProductFragment = { __typename?: 'SingleProduct', mainVariant?: boolean | null, productName?: string | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ __typename?: 'ProductAttribute', value?: string | null, name?: string | null } | null> | null, breadcrumbs?: Array<{ __typename?: 'Breadcrumb', text?: string | null, link?: string | null } | null> | null, images?: Array<{ __typename?: 'Image', url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { __typename?: 'Prices', discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { __typename?: 'BestInstallment', discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ __typename?: 'InstallmentPlan', displayName?: string | null, name?: string | null, installments?: Array<{ __typename?: 'Installment', discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ __typename?: 'PriceTable', discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ __typename?: 'WholesalePrices', price: any, quantity: number } | null> | null } | null, productBrand?: { __typename?: 'ProductBrand', fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, reviews?: Array<{ __typename?: 'Review', rating: number, review?: string | null, reviewDate: any, email?: string | null, customer?: string | null } | null> | null, seller?: { __typename?: 'Seller', name?: string | null } | null, seo?: Array<{ __typename?: 'SEO', name?: string | null, scheme?: string | null, type?: string | null, httpEquiv?: string | null, content?: string | null } | null> | null };
+export type GetProductsQueryVariables = Exact<{
+  filters: ProductExplicitFiltersInput;
+  first: Scalars['Int']['input'];
+  sortDirection: SortDirection;
+  sortKey?: InputMaybe<ProductSortKeys>;
+}>;
+
+
+export type GetProductsQuery = { products?: { nodes?: Array<{ mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, seller?: { name?: string | null } | null } | null> | null } | null };
+
+export type SearchQueryVariables = Exact<{
+  operation: Operation;
+  query?: InputMaybe<Scalars['String']['input']>;
+  first: Scalars['Int']['input'];
+  sortDirection?: InputMaybe<SortDirection>;
+  sortKey?: InputMaybe<ProductSearchSortKeys>;
+}>;
+
+
+export type SearchQuery = { search?: { pageSize: number, redirectUrl?: string | null, searchTime?: string | null, aggregations?: { filters?: Array<{ field?: string | null, origin?: string | null } | null> | null } | null, breadcrumbs?: Array<{ link?: string | null, text?: string | null } | null> | null, forbiddenTerm?: { text?: string | null, suggested?: string | null } | null, products?: { totalCount: number, nodes?: Array<{ mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, seller?: { name?: string | null } | null } | null> | null, pageInfo: { hasNextPage: boolean, hasPreviousPage: boolean } } | null } | null };
+
+export type ProductFragment = { mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, seller?: { name?: string | null } | null };
+
+export type SingleProductFragment = { mainVariant?: boolean | null, productName?: string | null, productId?: any | null, alias?: string | null, available?: boolean | null, averageRating?: number | null, condition?: string | null, createdAt?: any | null, ean?: string | null, id?: string | null, minimumOrderQuantity?: number | null, productVariantId?: any | null, sku?: string | null, stock?: any | null, variantName?: string | null, attributes?: Array<{ value?: string | null, name?: string | null } | null> | null, productCategories?: Array<{ name?: string | null, url?: string | null, hierarchy?: string | null, main: boolean, googleCategories?: string | null } | null> | null, informations?: Array<{ title?: string | null, value?: string | null, type?: string | null } | null> | null, breadcrumbs?: Array<{ text?: string | null, link?: string | null } | null> | null, images?: Array<{ url?: string | null, fileName?: string | null, print: boolean } | null> | null, prices?: { discountPercentage: any, discounted: boolean, listPrice?: any | null, multiplicationFactor: number, price: any, bestInstallment?: { discount: boolean, displayName?: string | null, fees: boolean, name?: string | null, number: number, value: any } | null, installmentPlans?: Array<{ displayName?: string | null, name?: string | null, installments?: Array<{ discount: boolean, fees: boolean, number: number, value: any } | null> | null } | null> | null, priceTables?: Array<{ discountPercentage: any, id: any, listPrice?: any | null, price: any } | null> | null, wholesalePrices?: Array<{ price: any, quantity: number } | null> | null } | null, productBrand?: { fullUrlLogo?: string | null, logoUrl?: string | null, name?: string | null, alias?: string | null } | null, reviews?: Array<{ rating: number, review?: string | null, reviewDate: any, email?: string | null, customer?: string | null } | null> | null, seller?: { name?: string | null } | null, seo?: Array<{ name?: string | null, scheme?: string | null, type?: string | null, httpEquiv?: string | null, content?: string | null } | null> | null };

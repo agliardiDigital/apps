@@ -9,7 +9,8 @@
     "serve": "deno eval 'import \"deco/scripts/apps/serve.ts\"'",
     "watcher": "deno eval 'import \"deco/scripts/apps/watcher.ts\"'",
     "update": "deno eval 'import \"deco/scripts/update.ts\"'",
-    "new": "deno run -A ./scripts/new.ts"
+    "new": "deno run -A ./scripts/new.ts",
+    "gen": "deno run -A ./scripts/types.ts"
   },
   "githooks": {
     "pre-commit": "check"

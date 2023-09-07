@@ -1,7 +1,7 @@
 import { gql } from "../../../../utils/graphql.ts";
 
 export const fragment = gql`
-fragment Product on Product {
+fragment SingleProduct on SingleProduct {
   mainVariant
   productName
   productId
@@ -24,6 +24,10 @@ fragment Product on Product {
   }
   available
   averageRating
+  breadcrumbs {
+    text
+    link
+  }
   condition
   createdAt
   ean
@@ -76,8 +80,22 @@ fragment Product on Product {
     alias
   }
   productVariantId
+  reviews {
+    rating
+    review
+    reviewDate
+    email
+    customer
+  }
   seller {
     name
+  }
+  seo {
+    name
+    scheme
+    type
+    httpEquiv
+    content
   }
   sku
   stock

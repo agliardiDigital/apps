@@ -27,7 +27,6 @@ export type Scalars = {
  *
  */
 export type ApiVersion = {
-  __typename?: 'ApiVersion';
   /** The human-readable name of the version. */
   displayName: Scalars['String']['output'];
   /** The unique identifier of an ApiVersion. All supported API versions have a date-based (YYYY-MM) or `unstable` handle. */
@@ -79,7 +78,6 @@ export type ApplePayWalletHeaderInput = {
 
 /** Details about the gift card used on the checkout. */
 export type AppliedGiftCard = Node & {
-  __typename?: 'AppliedGiftCard';
   /** The amount that was taken from the gift card by applying it. */
   amountUsed: MoneyV2;
   /**
@@ -104,7 +102,6 @@ export type AppliedGiftCard = Node & {
 
 /** An article in an online store blog. */
 export type Article = HasMetafields & Node & OnlineStorePublishable & Trackable & {
-  __typename?: 'Article';
   /**
    * The article's author.
    * @deprecated Use `authorV2` instead.
@@ -188,7 +185,6 @@ export type ArticleMetafieldsArgs = {
 
 /** The author of an article. */
 export type ArticleAuthor = {
-  __typename?: 'ArticleAuthor';
   /** The author's bio. */
   bio?: Maybe<Scalars['String']['output']>;
   /** The author’s email. */
@@ -206,7 +202,6 @@ export type ArticleAuthor = {
  *
  */
 export type ArticleConnection = {
-  __typename?: 'ArticleConnection';
   /** A list of edges. */
   edges: Array<ArticleEdge>;
   /** A list of the nodes contained in ArticleEdge. */
@@ -220,7 +215,6 @@ export type ArticleConnection = {
  *
  */
 export type ArticleEdge = {
-  __typename?: 'ArticleEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of ArticleEdge. */
@@ -228,30 +222,28 @@ export type ArticleEdge = {
 };
 
 /** The set of valid sort keys for the Article query. */
-export enum ArticleSortKeys {
+export type ArticleSortKeys =
   /** Sort by the `author` value. */
-  Author = 'AUTHOR',
+  | 'AUTHOR'
   /** Sort by the `blog_title` value. */
-  BlogTitle = 'BLOG_TITLE',
+  | 'BLOG_TITLE'
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `published_at` value. */
-  PublishedAt = 'PUBLISHED_AT',
+  | 'PUBLISHED_AT'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  | 'TITLE'
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  | 'UPDATED_AT';
 
 /** Represents a generic custom attribute. */
 export type Attribute = {
-  __typename?: 'Attribute';
   /** Key or name of the attribute. */
   key: Scalars['String']['output'];
   /** Value of the attribute. */
@@ -271,7 +263,6 @@ export type AttributeInput = {
  *
  */
 export type AutomaticDiscountApplication = DiscountApplication & {
-  __typename?: 'AutomaticDiscountApplication';
   /** The method by which the discount's value is allocated to its entitled items. */
   allocationMethod: DiscountApplicationAllocationMethod;
   /** Which lines of targetType that the discount is allocated over. */
@@ -286,7 +277,6 @@ export type AutomaticDiscountApplication = DiscountApplication & {
 
 /** A collection of available shipping rates for a checkout. */
 export type AvailableShippingRates = {
-  __typename?: 'AvailableShippingRates';
   /**
    * Whether or not the shipping rates are ready.
    * The `shippingRates` field is `null` when this value is `false`.
@@ -346,7 +336,6 @@ export type BaseCartLineAttributeArgs = {
  *
  */
 export type BaseCartLineConnection = {
-  __typename?: 'BaseCartLineConnection';
   /** A list of edges. */
   edges: Array<BaseCartLineEdge>;
   /** A list of the nodes contained in BaseCartLineEdge. */
@@ -360,7 +349,6 @@ export type BaseCartLineConnection = {
  *
  */
 export type BaseCartLineEdge = {
-  __typename?: 'BaseCartLineEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of BaseCartLineEdge. */
@@ -369,7 +357,6 @@ export type BaseCartLineEdge = {
 
 /** An online store blog. */
 export type Blog = HasMetafields & Node & OnlineStorePublishable & {
-  __typename?: 'Blog';
   /** Find an article by its handle. */
   articleByHandle?: Maybe<Article>;
   /** List of the blog's articles. */
@@ -431,7 +418,6 @@ export type BlogMetafieldsArgs = {
  *
  */
 export type BlogConnection = {
-  __typename?: 'BlogConnection';
   /** A list of edges. */
   edges: Array<BlogEdge>;
   /** A list of the nodes contained in BlogEdge. */
@@ -445,7 +431,6 @@ export type BlogConnection = {
  *
  */
 export type BlogEdge = {
-  __typename?: 'BlogEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of BlogEdge. */
@@ -453,27 +438,25 @@ export type BlogEdge = {
 };
 
 /** The set of valid sort keys for the Blog query. */
-export enum BlogSortKeys {
+export type BlogSortKeys =
   /** Sort by the `handle` value. */
-  Handle = 'HANDLE',
+  | 'HANDLE'
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `title` value. */
-  Title = 'TITLE'
-}
+  | 'TITLE';
 
 /**
  * The store's [branding configuration](https://help.shopify.com/en/manual/promoting-marketing/managing-brand-assets).
  *
  */
 export type Brand = {
-  __typename?: 'Brand';
   /** The colors of the store's brand. */
   colors: BrandColors;
   /** The store's cover image. */
@@ -493,7 +476,6 @@ export type Brand = {
  *
  */
 export type BrandColorGroup = {
-  __typename?: 'BrandColorGroup';
   /** The background color. */
   background?: Maybe<Scalars['Color']['output']>;
   /** The foreground color. */
@@ -505,7 +487,6 @@ export type BrandColorGroup = {
  *
  */
 export type BrandColors = {
-  __typename?: 'BrandColors';
   /** The shop's primary brand colors. */
   primary: Array<BrandColorGroup>;
   /** The shop's secondary brand colors. */
@@ -513,20 +494,19 @@ export type BrandColors = {
 };
 
 /** Card brand, such as Visa or Mastercard, which can be used for payments. */
-export enum CardBrand {
+export type CardBrand =
   /** American Express. */
-  AmericanExpress = 'AMERICAN_EXPRESS',
+  | 'AMERICAN_EXPRESS'
   /** Diners Club. */
-  DinersClub = 'DINERS_CLUB',
+  | 'DINERS_CLUB'
   /** Discover. */
-  Discover = 'DISCOVER',
+  | 'DISCOVER'
   /** JCB. */
-  Jcb = 'JCB',
+  | 'JCB'
   /** Mastercard. */
-  Mastercard = 'MASTERCARD',
+  | 'MASTERCARD'
   /** Visa. */
-  Visa = 'VISA'
-}
+  | 'VISA';
 
 /**
  * A cart represents the merchandise that a buyer intends to purchase,
@@ -536,7 +516,6 @@ export enum CardBrand {
  *
  */
 export type Cart = HasMetafields & Node & {
-  __typename?: 'Cart';
   /** An attribute associated with the cart. */
   attribute?: Maybe<Attribute>;
   /** The attributes associated with the cart. Attributes are represented as key-value pairs. */
@@ -660,7 +639,6 @@ export type CartMetafieldsArgs = {
 
 /** Return type for `cartAttributesUpdate` mutation. */
 export type CartAttributesUpdatePayload = {
-  __typename?: 'CartAttributesUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -669,7 +647,6 @@ export type CartAttributesUpdatePayload = {
 
 /** The discounts automatically applied to the cart line based on prerequisites that have been met. */
 export type CartAutomaticDiscountAllocation = CartDiscountAllocation & {
-  __typename?: 'CartAutomaticDiscountAllocation';
   /** The discounted amount that has been applied to the cart line. */
   discountedAmount: MoneyV2;
   /** The title of the allocated discount. */
@@ -678,7 +655,6 @@ export type CartAutomaticDiscountAllocation = CartDiscountAllocation & {
 
 /** Represents information about the buyer that is interacting with the cart. */
 export type CartBuyerIdentity = {
-  __typename?: 'CartBuyerIdentity';
   /** The country where the buyer is located. */
   countryCode?: Maybe<CountryCode>;
   /** The customer account associated with the cart. */
@@ -736,7 +712,6 @@ export type CartBuyerIdentityInput = {
 
 /** Return type for `cartBuyerIdentityUpdate` mutation. */
 export type CartBuyerIdentityUpdatePayload = {
-  __typename?: 'CartBuyerIdentityUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -747,18 +722,16 @@ export type CartBuyerIdentityUpdatePayload = {
  * Represents how credit card details are provided for a direct payment.
  *
  */
-export enum CartCardSource {
+export type CartCardSource =
   /**
    * The credit card was provided by a third party and vaulted on their system.
    * Using this value requires a separate permission from Shopify.
    *
    */
-  SavedCreditCard = 'SAVED_CREDIT_CARD'
-}
+  | 'SAVED_CREDIT_CARD';
 
 /** The discount that has been applied to the cart line using a discount code. */
 export type CartCodeDiscountAllocation = CartDiscountAllocation & {
-  __typename?: 'CartCodeDiscountAllocation';
   /** The code used to apply the discount. */
   code: Scalars['String']['output'];
   /** The discounted amount that has been applied to the cart line. */
@@ -770,7 +743,6 @@ export type CartCompletionAction = CompletePaymentChallenge;
 
 /** The required completion action to checkout a cart. */
 export type CartCompletionActionRequired = {
-  __typename?: 'CartCompletionActionRequired';
   /** The action required to complete the cart completion attempt. */
   action?: Maybe<CartCompletionAction>;
   /** The ID of the cart completion attempt. */
@@ -782,7 +754,6 @@ export type CartCompletionAttemptResult = CartCompletionActionRequired | CartCom
 
 /** A failed completion to checkout a cart. */
 export type CartCompletionFailed = {
-  __typename?: 'CartCompletionFailed';
   /** The errors that caused the checkout to fail. */
   errors: Array<CompletionError>;
   /** The ID of the cart completion attempt. */
@@ -791,7 +762,6 @@ export type CartCompletionFailed = {
 
 /** A cart checkout completion that's still processing. */
 export type CartCompletionProcessing = {
-  __typename?: 'CartCompletionProcessing';
   /** The ID of the cart completion attempt. */
   id: Scalars['String']['output'];
   /** The number of milliseconds to wait before polling again. */
@@ -800,7 +770,6 @@ export type CartCompletionProcessing = {
 
 /** A successful completion to checkout a cart and a created order. */
 export type CartCompletionSuccess = {
-  __typename?: 'CartCompletionSuccess';
   /** The date and time when the job completed. */
   completedAt?: Maybe<Scalars['DateTime']['output']>;
   /** The ID of the cart completion attempt. */
@@ -818,7 +787,6 @@ export type CartCompletionSuccess = {
  *
  */
 export type CartCost = {
-  __typename?: 'CartCost';
   /**
    * The estimated amount, before taxes and discounts, for the customer to pay at
    * checkout. The checkout charge amount doesn't include any deferred payments
@@ -847,7 +815,6 @@ export type CartCost = {
 
 /** Return type for `cartCreate` mutation. */
 export type CartCreatePayload = {
-  __typename?: 'CartCreatePayload';
   /** The new cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -856,7 +823,6 @@ export type CartCreatePayload = {
 
 /** The discounts automatically applied to the cart line based on prerequisites that have been met. */
 export type CartCustomDiscountAllocation = CartDiscountAllocation & {
-  __typename?: 'CartCustomDiscountAllocation';
   /** The discounted amount that has been applied to the cart line. */
   discountedAmount: MoneyV2;
   /** The title of the allocated discount. */
@@ -865,7 +831,6 @@ export type CartCustomDiscountAllocation = CartDiscountAllocation & {
 
 /** Information about the options available for one or more line items to be delivered to a specific address. */
 export type CartDeliveryGroup = {
-  __typename?: 'CartDeliveryGroup';
   /** A list of cart lines for the delivery group. */
   cartLines: BaseCartLineConnection;
   /** The destination address for the delivery group. */
@@ -893,7 +858,6 @@ export type CartDeliveryGroupCartLinesArgs = {
  *
  */
 export type CartDeliveryGroupConnection = {
-  __typename?: 'CartDeliveryGroupConnection';
   /** A list of edges. */
   edges: Array<CartDeliveryGroupEdge>;
   /** A list of the nodes contained in CartDeliveryGroupEdge. */
@@ -907,7 +871,6 @@ export type CartDeliveryGroupConnection = {
  *
  */
 export type CartDeliveryGroupEdge = {
-  __typename?: 'CartDeliveryGroupEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of CartDeliveryGroupEdge. */
@@ -916,7 +879,6 @@ export type CartDeliveryGroupEdge = {
 
 /** Information about a delivery option. */
 export type CartDeliveryOption = {
-  __typename?: 'CartDeliveryOption';
   /** The code of the delivery option. */
   code?: Maybe<Scalars['String']['output']>;
   /** The method for the delivery option. */
@@ -952,7 +914,6 @@ export type CartDiscountAllocation = {
 
 /** The discount codes applied to the cart. */
 export type CartDiscountCode = {
-  __typename?: 'CartDiscountCode';
   /** Whether the discount code is applicable to the cart's current contents. */
   applicable: Scalars['Boolean']['output'];
   /** The code for the discount. */
@@ -961,7 +922,6 @@ export type CartDiscountCode = {
 
 /** Return type for `cartDiscountCodesUpdate` mutation. */
 export type CartDiscountCodesUpdatePayload = {
-  __typename?: 'CartDiscountCodesUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -969,30 +929,29 @@ export type CartDiscountCodesUpdatePayload = {
 };
 
 /** Possible error codes that can be returned by `CartUserError`. */
-export enum CartErrorCode {
+export type CartErrorCode =
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  | 'INVALID'
   /** Delivery group was not found in cart. */
-  InvalidDeliveryGroup = 'INVALID_DELIVERY_GROUP',
+  | 'INVALID_DELIVERY_GROUP'
   /** Delivery option was not valid. */
-  InvalidDeliveryOption = 'INVALID_DELIVERY_OPTION',
+  | 'INVALID_DELIVERY_OPTION'
   /** Merchandise line was not found in cart. */
-  InvalidMerchandiseLine = 'INVALID_MERCHANDISE_LINE',
+  | 'INVALID_MERCHANDISE_LINE'
   /** The metafields were not valid. */
-  InvalidMetafields = 'INVALID_METAFIELDS',
+  | 'INVALID_METAFIELDS'
   /** The payment wasn't valid. */
-  InvalidPayment = 'INVALID_PAYMENT',
+  | 'INVALID_PAYMENT'
   /** Cannot update payment on an empty cart */
-  InvalidPaymentEmptyCart = 'INVALID_PAYMENT_EMPTY_CART',
+  | 'INVALID_PAYMENT_EMPTY_CART'
   /** The input value should be less than the maximum value allowed. */
-  LessThan = 'LESS_THAN',
+  | 'LESS_THAN'
   /** Missing discount code. */
-  MissingDiscountCode = 'MISSING_DISCOUNT_CODE',
+  | 'MISSING_DISCOUNT_CODE'
   /** Missing note. */
-  MissingNote = 'MISSING_NOTE',
+  | 'MISSING_NOTE'
   /** The payment method is not supported. */
-  PaymentMethodNotSupported = 'PAYMENT_METHOD_NOT_SUPPORTED'
-}
+  | 'PAYMENT_METHOD_NOT_SUPPORTED';
 
 /**
  * The estimated costs that the buyer will pay at checkout.
@@ -1003,7 +962,6 @@ export enum CartErrorCode {
  *
  */
 export type CartEstimatedCost = {
-  __typename?: 'CartEstimatedCost';
   /** The estimated amount, before taxes and discounts, for the customer to pay at checkout. The checkout charge amount doesn't include any deferred payments that'll be paid at a later date. If the cart has no deferred payments, then the checkout charge amount is equivalent to`subtotal_amount`. */
   checkoutChargeAmount: MoneyV2;
   /** The estimated amount, before taxes and discounts, for the customer to pay. */
@@ -1071,7 +1029,6 @@ export type CartInputMetafieldInput = {
 
 /** Represents information about the merchandise in the cart. */
 export type CartLine = BaseCartLine & Node & {
-  __typename?: 'CartLine';
   /** An attribute associated with the cart line. */
   attribute?: Maybe<Attribute>;
   /** The attributes associated with the cart line. Attributes are represented as key-value pairs. */
@@ -1103,7 +1060,6 @@ export type CartLineAttributeArgs = {
 
 /** The cost of the merchandise line that the buyer will pay at checkout. */
 export type CartLineCost = {
-  __typename?: 'CartLineCost';
   /** The amount of the merchandise line. */
   amountPerQuantity: MoneyV2;
   /** The compare at amount of the merchandise line. */
@@ -1119,7 +1075,6 @@ export type CartLineCost = {
  *
  */
 export type CartLineEstimatedCost = {
-  __typename?: 'CartLineEstimatedCost';
   /** The amount of the merchandise line. */
   amount: MoneyV2;
   /** The compare at amount of the merchandise line. */
@@ -1158,7 +1113,6 @@ export type CartLineUpdateInput = {
 
 /** Return type for `cartLinesAdd` mutation. */
 export type CartLinesAddPayload = {
-  __typename?: 'CartLinesAddPayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1167,7 +1121,6 @@ export type CartLinesAddPayload = {
 
 /** Return type for `cartLinesRemove` mutation. */
 export type CartLinesRemovePayload = {
-  __typename?: 'CartLinesRemovePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1176,7 +1129,6 @@ export type CartLinesRemovePayload = {
 
 /** Return type for `cartLinesUpdate` mutation. */
 export type CartLinesUpdatePayload = {
-  __typename?: 'CartLinesUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1197,7 +1149,6 @@ export type CartMetafieldDeleteInput = {
 
 /** Return type for `cartMetafieldDelete` mutation. */
 export type CartMetafieldDeletePayload = {
-  __typename?: 'CartMetafieldDeletePayload';
   /** The ID of the deleted cart metafield. */
   deletedId?: Maybe<Scalars['ID']['output']>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1225,7 +1176,6 @@ export type CartMetafieldsSetInput = {
 
 /** Return type for `cartMetafieldsSet` mutation. */
 export type CartMetafieldsSetPayload = {
-  __typename?: 'CartMetafieldsSetPayload';
   /** The list of cart metafields that were set. */
   metafields?: Maybe<Array<Metafield>>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1234,7 +1184,6 @@ export type CartMetafieldsSetPayload = {
 
 /** Return type for `cartNoteUpdate` mutation. */
 export type CartNoteUpdatePayload = {
-  __typename?: 'CartNoteUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1274,7 +1223,6 @@ export type CartPaymentInput = {
 
 /** Return type for `cartPaymentUpdate` mutation. */
 export type CartPaymentUpdatePayload = {
-  __typename?: 'CartPaymentUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1294,7 +1242,6 @@ export type CartSelectedDeliveryOptionInput = {
 
 /** Return type for `cartSelectedDeliveryOptionsUpdate` mutation. */
 export type CartSelectedDeliveryOptionsUpdatePayload = {
-  __typename?: 'CartSelectedDeliveryOptionsUpdatePayload';
   /** The updated cart. */
   cart?: Maybe<Cart>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1303,7 +1250,6 @@ export type CartSelectedDeliveryOptionsUpdatePayload = {
 
 /** Return type for `cartSubmitForCompletion` mutation. */
 export type CartSubmitForCompletionPayload = {
-  __typename?: 'CartSubmitForCompletionPayload';
   /** The result of cart submission for completion. */
   result?: Maybe<CartSubmitForCompletionResult>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1315,7 +1261,6 @@ export type CartSubmitForCompletionResult = SubmitAlreadyAccepted | SubmitFailed
 
 /** Represents an error that happens during execution of a cart mutation. */
 export type CartUserError = DisplayableError & {
-  __typename?: 'CartUserError';
   /** The error code. */
   code?: Maybe<CartErrorCode>;
   /** The path to the input field that caused the error. */
@@ -1337,7 +1282,6 @@ export type CartWalletPaymentMethodInput = {
 
 /** A container for all the information required to checkout items and pay. */
 export type Checkout = Node & {
-  __typename?: 'Checkout';
   /** The gift cards used on the checkout. */
   appliedGiftCards: Array<AppliedGiftCard>;
   /**
@@ -1470,7 +1414,6 @@ export type CheckoutAttributesUpdateV2Input = {
 
 /** Return type for `checkoutAttributesUpdateV2` mutation. */
 export type CheckoutAttributesUpdateV2Payload = {
-  __typename?: 'CheckoutAttributesUpdateV2Payload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1484,7 +1427,6 @@ export type CheckoutAttributesUpdateV2Payload = {
 
 /** The identity of the customer associated with the checkout. */
 export type CheckoutBuyerIdentity = {
-  __typename?: 'CheckoutBuyerIdentity';
   /** The country code for the checkout. For example, `CA`. */
   countryCode?: Maybe<CountryCode>;
 };
@@ -1502,7 +1444,6 @@ export type CheckoutBuyerIdentityInput = {
 
 /** Return type for `checkoutCompleteFree` mutation. */
 export type CheckoutCompleteFreePayload = {
-  __typename?: 'CheckoutCompleteFreePayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1516,7 +1457,6 @@ export type CheckoutCompleteFreePayload = {
 
 /** Return type for `checkoutCompleteWithCreditCardV2` mutation. */
 export type CheckoutCompleteWithCreditCardV2Payload = {
-  __typename?: 'CheckoutCompleteWithCreditCardV2Payload';
   /** The checkout on which the payment was applied. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1532,7 +1472,6 @@ export type CheckoutCompleteWithCreditCardV2Payload = {
 
 /** Return type for `checkoutCompleteWithTokenizedPaymentV3` mutation. */
 export type CheckoutCompleteWithTokenizedPaymentV3Payload = {
-  __typename?: 'CheckoutCompleteWithTokenizedPaymentV3Payload';
   /** The checkout on which the payment was applied. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1571,7 +1510,6 @@ export type CheckoutCreateInput = {
 
 /** Return type for `checkoutCreate` mutation. */
 export type CheckoutCreatePayload = {
-  __typename?: 'CheckoutCreatePayload';
   /** The new checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1587,7 +1525,6 @@ export type CheckoutCreatePayload = {
 
 /** Return type for `checkoutCustomerAssociateV2` mutation. */
 export type CheckoutCustomerAssociateV2Payload = {
-  __typename?: 'CheckoutCustomerAssociateV2Payload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1603,7 +1540,6 @@ export type CheckoutCustomerAssociateV2Payload = {
 
 /** Return type for `checkoutCustomerDisassociateV2` mutation. */
 export type CheckoutCustomerDisassociateV2Payload = {
-  __typename?: 'CheckoutCustomerDisassociateV2Payload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1617,7 +1553,6 @@ export type CheckoutCustomerDisassociateV2Payload = {
 
 /** Return type for `checkoutDiscountCodeApplyV2` mutation. */
 export type CheckoutDiscountCodeApplyV2Payload = {
-  __typename?: 'CheckoutDiscountCodeApplyV2Payload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1631,7 +1566,6 @@ export type CheckoutDiscountCodeApplyV2Payload = {
 
 /** Return type for `checkoutDiscountCodeRemove` mutation. */
 export type CheckoutDiscountCodeRemovePayload = {
-  __typename?: 'CheckoutDiscountCodeRemovePayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1645,7 +1579,6 @@ export type CheckoutDiscountCodeRemovePayload = {
 
 /** Return type for `checkoutEmailUpdateV2` mutation. */
 export type CheckoutEmailUpdateV2Payload = {
-  __typename?: 'CheckoutEmailUpdateV2Payload';
   /** The checkout object with the updated email. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1658,104 +1591,102 @@ export type CheckoutEmailUpdateV2Payload = {
 };
 
 /** Possible error codes that can be returned by `CheckoutUserError`. */
-export enum CheckoutErrorCode {
+export type CheckoutErrorCode =
   /** Checkout is already completed. */
-  AlreadyCompleted = 'ALREADY_COMPLETED',
+  | 'ALREADY_COMPLETED'
   /** Input email contains an invalid domain name. */
-  BadDomain = 'BAD_DOMAIN',
+  | 'BAD_DOMAIN'
   /** The input value is blank. */
-  Blank = 'BLANK',
+  | 'BLANK'
   /** Cart does not meet discount requirements notice. */
-  CartDoesNotMeetDiscountRequirementsNotice = 'CART_DOES_NOT_MEET_DISCOUNT_REQUIREMENTS_NOTICE',
+  | 'CART_DOES_NOT_MEET_DISCOUNT_REQUIREMENTS_NOTICE'
   /** Customer already used once per customer discount notice. */
-  CustomerAlreadyUsedOncePerCustomerDiscountNotice = 'CUSTOMER_ALREADY_USED_ONCE_PER_CUSTOMER_DISCOUNT_NOTICE',
+  | 'CUSTOMER_ALREADY_USED_ONCE_PER_CUSTOMER_DISCOUNT_NOTICE'
   /** Discount already applied. */
-  DiscountAlreadyApplied = 'DISCOUNT_ALREADY_APPLIED',
+  | 'DISCOUNT_ALREADY_APPLIED'
   /** Discount code isn't working right now. Please contact us for help. */
-  DiscountCodeApplicationFailed = 'DISCOUNT_CODE_APPLICATION_FAILED',
+  | 'DISCOUNT_CODE_APPLICATION_FAILED'
   /** Discount disabled. */
-  DiscountDisabled = 'DISCOUNT_DISABLED',
+  | 'DISCOUNT_DISABLED'
   /** Discount expired. */
-  DiscountExpired = 'DISCOUNT_EXPIRED',
+  | 'DISCOUNT_EXPIRED'
   /** Discount limit reached. */
-  DiscountLimitReached = 'DISCOUNT_LIMIT_REACHED',
+  | 'DISCOUNT_LIMIT_REACHED'
   /** Discount not found. */
-  DiscountNotFound = 'DISCOUNT_NOT_FOUND',
+  | 'DISCOUNT_NOT_FOUND'
   /** Checkout is already completed. */
-  Empty = 'EMPTY',
+  | 'EMPTY'
   /** Queue token has expired. */
-  ExpiredQueueToken = 'EXPIRED_QUEUE_TOKEN',
+  | 'EXPIRED_QUEUE_TOKEN'
   /** Gift card has already been applied. */
-  GiftCardAlreadyApplied = 'GIFT_CARD_ALREADY_APPLIED',
+  | 'GIFT_CARD_ALREADY_APPLIED'
   /** Gift card code is invalid. */
-  GiftCardCodeInvalid = 'GIFT_CARD_CODE_INVALID',
+  | 'GIFT_CARD_CODE_INVALID'
   /** Gift card currency does not match checkout currency. */
-  GiftCardCurrencyMismatch = 'GIFT_CARD_CURRENCY_MISMATCH',
+  | 'GIFT_CARD_CURRENCY_MISMATCH'
   /** Gift card has no funds left. */
-  GiftCardDepleted = 'GIFT_CARD_DEPLETED',
+  | 'GIFT_CARD_DEPLETED'
   /** Gift card is disabled. */
-  GiftCardDisabled = 'GIFT_CARD_DISABLED',
+  | 'GIFT_CARD_DISABLED'
   /** Gift card is expired. */
-  GiftCardExpired = 'GIFT_CARD_EXPIRED',
+  | 'GIFT_CARD_EXPIRED'
   /** Gift card was not found. */
-  GiftCardNotFound = 'GIFT_CARD_NOT_FOUND',
+  | 'GIFT_CARD_NOT_FOUND'
   /** Gift card cannot be applied to a checkout that contains a gift card. */
-  GiftCardUnusable = 'GIFT_CARD_UNUSABLE',
+  | 'GIFT_CARD_UNUSABLE'
   /** The input value should be greater than or equal to the minimum value allowed. */
-  GreaterThanOrEqualTo = 'GREATER_THAN_OR_EQUAL_TO',
+  | 'GREATER_THAN_OR_EQUAL_TO'
   /** Higher value discount applied. */
-  HigherValueDiscountApplied = 'HIGHER_VALUE_DISCOUNT_APPLIED',
+  | 'HIGHER_VALUE_DISCOUNT_APPLIED'
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  | 'INVALID'
   /** Cannot specify country and presentment currency code. */
-  InvalidCountryAndCurrency = 'INVALID_COUNTRY_AND_CURRENCY',
+  | 'INVALID_COUNTRY_AND_CURRENCY'
   /** Input Zip is invalid for country provided. */
-  InvalidForCountry = 'INVALID_FOR_COUNTRY',
+  | 'INVALID_FOR_COUNTRY'
   /** Input Zip is invalid for country and province provided. */
-  InvalidForCountryAndProvince = 'INVALID_FOR_COUNTRY_AND_PROVINCE',
+  | 'INVALID_FOR_COUNTRY_AND_PROVINCE'
   /** Invalid province in country. */
-  InvalidProvinceInCountry = 'INVALID_PROVINCE_IN_COUNTRY',
+  | 'INVALID_PROVINCE_IN_COUNTRY'
   /** Queue token is invalid. */
-  InvalidQueueToken = 'INVALID_QUEUE_TOKEN',
+  | 'INVALID_QUEUE_TOKEN'
   /** Invalid region in country. */
-  InvalidRegionInCountry = 'INVALID_REGION_IN_COUNTRY',
+  | 'INVALID_REGION_IN_COUNTRY'
   /** Invalid state in country. */
-  InvalidStateInCountry = 'INVALID_STATE_IN_COUNTRY',
+  | 'INVALID_STATE_IN_COUNTRY'
   /** The input value should be less than the maximum value allowed. */
-  LessThan = 'LESS_THAN',
+  | 'LESS_THAN'
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  | 'LESS_THAN_OR_EQUAL_TO'
   /** Line item was not found in checkout. */
-  LineItemNotFound = 'LINE_ITEM_NOT_FOUND',
+  | 'LINE_ITEM_NOT_FOUND'
   /** Checkout is locked. */
-  Locked = 'LOCKED',
+  | 'LOCKED'
   /** Maximum number of discount codes limit reached. */
-  MaximumDiscountCodeLimitReached = 'MAXIMUM_DISCOUNT_CODE_LIMIT_REACHED',
+  | 'MAXIMUM_DISCOUNT_CODE_LIMIT_REACHED'
   /** Missing payment input. */
-  MissingPaymentInput = 'MISSING_PAYMENT_INPUT',
+  | 'MISSING_PAYMENT_INPUT'
   /** Not enough in stock. */
-  NotEnoughInStock = 'NOT_ENOUGH_IN_STOCK',
+  | 'NOT_ENOUGH_IN_STOCK'
   /** Input value is not supported. */
-  NotSupported = 'NOT_SUPPORTED',
+  | 'NOT_SUPPORTED'
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  | 'PRESENT'
   /** Product is not published for this customer. */
-  ProductNotAvailable = 'PRODUCT_NOT_AVAILABLE',
+  | 'PRODUCT_NOT_AVAILABLE'
   /** Shipping rate expired. */
-  ShippingRateExpired = 'SHIPPING_RATE_EXPIRED',
+  | 'SHIPPING_RATE_EXPIRED'
   /** Throttled during checkout. */
-  ThrottledDuringCheckout = 'THROTTLED_DURING_CHECKOUT',
+  | 'THROTTLED_DURING_CHECKOUT'
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  | 'TOO_LONG'
   /** The amount of the payment does not match the value to be paid. */
-  TotalPriceMismatch = 'TOTAL_PRICE_MISMATCH',
+  | 'TOTAL_PRICE_MISMATCH'
   /** Unable to apply discount. */
-  UnableToApply = 'UNABLE_TO_APPLY'
-}
+  | 'UNABLE_TO_APPLY';
 
 /** Return type for `checkoutGiftCardRemoveV2` mutation. */
 export type CheckoutGiftCardRemoveV2Payload = {
-  __typename?: 'CheckoutGiftCardRemoveV2Payload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1769,7 +1700,6 @@ export type CheckoutGiftCardRemoveV2Payload = {
 
 /** Return type for `checkoutGiftCardsAppend` mutation. */
 export type CheckoutGiftCardsAppendPayload = {
-  __typename?: 'CheckoutGiftCardsAppendPayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1783,7 +1713,6 @@ export type CheckoutGiftCardsAppendPayload = {
 
 /** A single line item in the checkout, grouped by variant and attributes. */
 export type CheckoutLineItem = Node & {
-  __typename?: 'CheckoutLineItem';
   /** Extra information in the form of an array of Key-Value pairs about the line item. */
   customAttributes: Array<Attribute>;
   /** The discounts that have been allocated onto the checkout line item by discount applications. */
@@ -1805,7 +1734,6 @@ export type CheckoutLineItem = Node & {
  *
  */
 export type CheckoutLineItemConnection = {
-  __typename?: 'CheckoutLineItemConnection';
   /** A list of edges. */
   edges: Array<CheckoutLineItemEdge>;
   /** A list of the nodes contained in CheckoutLineItemEdge. */
@@ -1819,7 +1747,6 @@ export type CheckoutLineItemConnection = {
  *
  */
 export type CheckoutLineItemEdge = {
-  __typename?: 'CheckoutLineItemEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of CheckoutLineItemEdge. */
@@ -1850,7 +1777,6 @@ export type CheckoutLineItemUpdateInput = {
 
 /** Return type for `checkoutLineItemsAdd` mutation. */
 export type CheckoutLineItemsAddPayload = {
-  __typename?: 'CheckoutLineItemsAddPayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1864,7 +1790,6 @@ export type CheckoutLineItemsAddPayload = {
 
 /** Return type for `checkoutLineItemsRemove` mutation. */
 export type CheckoutLineItemsRemovePayload = {
-  __typename?: 'CheckoutLineItemsRemovePayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1878,7 +1803,6 @@ export type CheckoutLineItemsRemovePayload = {
 
 /** Return type for `checkoutLineItemsReplace` mutation. */
 export type CheckoutLineItemsReplacePayload = {
-  __typename?: 'CheckoutLineItemsReplacePayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1887,7 +1811,6 @@ export type CheckoutLineItemsReplacePayload = {
 
 /** Return type for `checkoutLineItemsUpdate` mutation. */
 export type CheckoutLineItemsUpdatePayload = {
-  __typename?: 'CheckoutLineItemsUpdatePayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1901,7 +1824,6 @@ export type CheckoutLineItemsUpdatePayload = {
 
 /** Return type for `checkoutShippingAddressUpdateV2` mutation. */
 export type CheckoutShippingAddressUpdateV2Payload = {
-  __typename?: 'CheckoutShippingAddressUpdateV2Payload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1915,7 +1837,6 @@ export type CheckoutShippingAddressUpdateV2Payload = {
 
 /** Return type for `checkoutShippingLineUpdate` mutation. */
 export type CheckoutShippingLineUpdatePayload = {
-  __typename?: 'CheckoutShippingLineUpdatePayload';
   /** The updated checkout object. */
   checkout?: Maybe<Checkout>;
   /** The list of errors that occurred from executing the mutation. */
@@ -1929,7 +1850,6 @@ export type CheckoutShippingLineUpdatePayload = {
 
 /** Represents an error that happens during execution of a checkout mutation. */
 export type CheckoutUserError = DisplayableError & {
-  __typename?: 'CheckoutUserError';
   /** The error code. */
   code?: Maybe<CheckoutErrorCode>;
   /** The path to the input field that caused the error. */
@@ -1944,7 +1864,6 @@ export type CheckoutUserError = DisplayableError & {
  *
  */
 export type Collection = HasMetafields & Node & OnlineStorePublishable & Trackable & {
-  __typename?: 'Collection';
   /** Stripped description of the collection, single line with HTML tags removed. */
   description: Scalars['String']['output'];
   /** The description of the collection, complete with HTML formatting. */
@@ -2029,7 +1948,6 @@ export type CollectionProductsArgs = {
  *
  */
 export type CollectionConnection = {
-  __typename?: 'CollectionConnection';
   /** A list of edges. */
   edges: Array<CollectionEdge>;
   /** A list of the nodes contained in CollectionEdge. */
@@ -2045,7 +1963,6 @@ export type CollectionConnection = {
  *
  */
 export type CollectionEdge = {
-  __typename?: 'CollectionEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of CollectionEdge. */
@@ -2053,24 +1970,22 @@ export type CollectionEdge = {
 };
 
 /** The set of valid sort keys for the Collection query. */
-export enum CollectionSortKeys {
+export type CollectionSortKeys =
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  | 'TITLE'
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  | 'UPDATED_AT';
 
 /** A comment on an article. */
 export type Comment = Node & {
-  __typename?: 'Comment';
   /** The comment’s author. */
   author: CommentAuthor;
   /** Stripped content of the comment, single line with HTML tags removed. */
@@ -2089,7 +2004,6 @@ export type CommentContentArgs = {
 
 /** The author of a comment. */
 export type CommentAuthor = {
-  __typename?: 'CommentAuthor';
   /** The author's email. */
   email: Scalars['String']['output'];
   /** The author’s name. */
@@ -2101,7 +2015,6 @@ export type CommentAuthor = {
  *
  */
 export type CommentConnection = {
-  __typename?: 'CommentConnection';
   /** A list of edges. */
   edges: Array<CommentEdge>;
   /** A list of the nodes contained in CommentEdge. */
@@ -2115,7 +2028,6 @@ export type CommentConnection = {
  *
  */
 export type CommentEdge = {
-  __typename?: 'CommentEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of CommentEdge. */
@@ -2124,14 +2036,12 @@ export type CommentEdge = {
 
 /** The action for the 3DS payment redirect. */
 export type CompletePaymentChallenge = {
-  __typename?: 'CompletePaymentChallenge';
   /** The URL for the 3DS payment redirect. */
   redirectUrl?: Maybe<Scalars['URL']['output']>;
 };
 
 /** An error that occurred during a cart completion attempt. */
 export type CompletionError = {
-  __typename?: 'CompletionError';
   /** The error code. */
   code: CompletionErrorCode;
   /** The error message. */
@@ -2139,25 +2049,23 @@ export type CompletionError = {
 };
 
 /** The code of the error that occurred during a cart completion attempt. */
-export enum CompletionErrorCode {
-  Error = 'ERROR',
-  InventoryReservationError = 'INVENTORY_RESERVATION_ERROR',
-  PaymentAmountTooSmall = 'PAYMENT_AMOUNT_TOO_SMALL',
-  PaymentCallIssuer = 'PAYMENT_CALL_ISSUER',
-  PaymentCardDeclined = 'PAYMENT_CARD_DECLINED',
-  PaymentError = 'PAYMENT_ERROR',
-  PaymentGatewayNotEnabledError = 'PAYMENT_GATEWAY_NOT_ENABLED_ERROR',
-  PaymentInsufficientFunds = 'PAYMENT_INSUFFICIENT_FUNDS',
-  PaymentInvalidBillingAddress = 'PAYMENT_INVALID_BILLING_ADDRESS',
-  PaymentInvalidCreditCard = 'PAYMENT_INVALID_CREDIT_CARD',
-  PaymentInvalidCurrency = 'PAYMENT_INVALID_CURRENCY',
-  PaymentInvalidPaymentMethod = 'PAYMENT_INVALID_PAYMENT_METHOD',
-  PaymentTransientError = 'PAYMENT_TRANSIENT_ERROR'
-}
+export type CompletionErrorCode =
+  | 'ERROR'
+  | 'INVENTORY_RESERVATION_ERROR'
+  | 'PAYMENT_AMOUNT_TOO_SMALL'
+  | 'PAYMENT_CALL_ISSUER'
+  | 'PAYMENT_CARD_DECLINED'
+  | 'PAYMENT_ERROR'
+  | 'PAYMENT_GATEWAY_NOT_ENABLED_ERROR'
+  | 'PAYMENT_INSUFFICIENT_FUNDS'
+  | 'PAYMENT_INVALID_BILLING_ADDRESS'
+  | 'PAYMENT_INVALID_CREDIT_CARD'
+  | 'PAYMENT_INVALID_CURRENCY'
+  | 'PAYMENT_INVALID_PAYMENT_METHOD'
+  | 'PAYMENT_TRANSIENT_ERROR';
 
 /** Represents information about the grouped merchandise in the cart. */
 export type ComponentizableCartLine = BaseCartLine & Node & {
-  __typename?: 'ComponentizableCartLine';
   /** An attribute associated with the cart line. */
   attribute?: Maybe<Attribute>;
   /** The attributes associated with the cart line. Attributes are represented as key-value pairs. */
@@ -2191,7 +2099,6 @@ export type ComponentizableCartLineAttributeArgs = {
 
 /** A country. */
 export type Country = {
-  __typename?: 'Country';
   /** The languages available for the country. */
   availableLanguages: Array<Language>;
   /** The currency of the country. */
@@ -2213,502 +2120,500 @@ export type Country = {
  * and the territories associated with the United States of America are represented by the country code `US`.
  *
  */
-export enum CountryCode {
+export type CountryCode =
   /** Ascension Island. */
-  Ac = 'AC',
+  | 'AC'
   /** Andorra. */
-  Ad = 'AD',
+  | 'AD'
   /** United Arab Emirates. */
-  Ae = 'AE',
+  | 'AE'
   /** Afghanistan. */
-  Af = 'AF',
+  | 'AF'
   /** Antigua & Barbuda. */
-  Ag = 'AG',
+  | 'AG'
   /** Anguilla. */
-  Ai = 'AI',
+  | 'AI'
   /** Albania. */
-  Al = 'AL',
+  | 'AL'
   /** Armenia. */
-  Am = 'AM',
+  | 'AM'
   /** Netherlands Antilles. */
-  An = 'AN',
+  | 'AN'
   /** Angola. */
-  Ao = 'AO',
+  | 'AO'
   /** Argentina. */
-  Ar = 'AR',
+  | 'AR'
   /** Austria. */
-  At = 'AT',
+  | 'AT'
   /** Australia. */
-  Au = 'AU',
+  | 'AU'
   /** Aruba. */
-  Aw = 'AW',
+  | 'AW'
   /** Åland Islands. */
-  Ax = 'AX',
+  | 'AX'
   /** Azerbaijan. */
-  Az = 'AZ',
+  | 'AZ'
   /** Bosnia & Herzegovina. */
-  Ba = 'BA',
+  | 'BA'
   /** Barbados. */
-  Bb = 'BB',
+  | 'BB'
   /** Bangladesh. */
-  Bd = 'BD',
+  | 'BD'
   /** Belgium. */
-  Be = 'BE',
+  | 'BE'
   /** Burkina Faso. */
-  Bf = 'BF',
+  | 'BF'
   /** Bulgaria. */
-  Bg = 'BG',
+  | 'BG'
   /** Bahrain. */
-  Bh = 'BH',
+  | 'BH'
   /** Burundi. */
-  Bi = 'BI',
+  | 'BI'
   /** Benin. */
-  Bj = 'BJ',
+  | 'BJ'
   /** St. Barthélemy. */
-  Bl = 'BL',
+  | 'BL'
   /** Bermuda. */
-  Bm = 'BM',
+  | 'BM'
   /** Brunei. */
-  Bn = 'BN',
+  | 'BN'
   /** Bolivia. */
-  Bo = 'BO',
+  | 'BO'
   /** Caribbean Netherlands. */
-  Bq = 'BQ',
+  | 'BQ'
   /** Brazil. */
-  Br = 'BR',
+  | 'BR'
   /** Bahamas. */
-  Bs = 'BS',
+  | 'BS'
   /** Bhutan. */
-  Bt = 'BT',
+  | 'BT'
   /** Bouvet Island. */
-  Bv = 'BV',
+  | 'BV'
   /** Botswana. */
-  Bw = 'BW',
+  | 'BW'
   /** Belarus. */
-  By = 'BY',
+  | 'BY'
   /** Belize. */
-  Bz = 'BZ',
+  | 'BZ'
   /** Canada. */
-  Ca = 'CA',
+  | 'CA'
   /** Cocos (Keeling) Islands. */
-  Cc = 'CC',
+  | 'CC'
   /** Congo - Kinshasa. */
-  Cd = 'CD',
+  | 'CD'
   /** Central African Republic. */
-  Cf = 'CF',
+  | 'CF'
   /** Congo - Brazzaville. */
-  Cg = 'CG',
+  | 'CG'
   /** Switzerland. */
-  Ch = 'CH',
+  | 'CH'
   /** Côte d’Ivoire. */
-  Ci = 'CI',
+  | 'CI'
   /** Cook Islands. */
-  Ck = 'CK',
+  | 'CK'
   /** Chile. */
-  Cl = 'CL',
+  | 'CL'
   /** Cameroon. */
-  Cm = 'CM',
+  | 'CM'
   /** China. */
-  Cn = 'CN',
+  | 'CN'
   /** Colombia. */
-  Co = 'CO',
+  | 'CO'
   /** Costa Rica. */
-  Cr = 'CR',
+  | 'CR'
   /** Cuba. */
-  Cu = 'CU',
+  | 'CU'
   /** Cape Verde. */
-  Cv = 'CV',
+  | 'CV'
   /** Curaçao. */
-  Cw = 'CW',
+  | 'CW'
   /** Christmas Island. */
-  Cx = 'CX',
+  | 'CX'
   /** Cyprus. */
-  Cy = 'CY',
+  | 'CY'
   /** Czechia. */
-  Cz = 'CZ',
+  | 'CZ'
   /** Germany. */
-  De = 'DE',
+  | 'DE'
   /** Djibouti. */
-  Dj = 'DJ',
+  | 'DJ'
   /** Denmark. */
-  Dk = 'DK',
+  | 'DK'
   /** Dominica. */
-  Dm = 'DM',
+  | 'DM'
   /** Dominican Republic. */
-  Do = 'DO',
+  | 'DO'
   /** Algeria. */
-  Dz = 'DZ',
+  | 'DZ'
   /** Ecuador. */
-  Ec = 'EC',
+  | 'EC'
   /** Estonia. */
-  Ee = 'EE',
+  | 'EE'
   /** Egypt. */
-  Eg = 'EG',
+  | 'EG'
   /** Western Sahara. */
-  Eh = 'EH',
+  | 'EH'
   /** Eritrea. */
-  Er = 'ER',
+  | 'ER'
   /** Spain. */
-  Es = 'ES',
+  | 'ES'
   /** Ethiopia. */
-  Et = 'ET',
+  | 'ET'
   /** Finland. */
-  Fi = 'FI',
+  | 'FI'
   /** Fiji. */
-  Fj = 'FJ',
+  | 'FJ'
   /** Falkland Islands. */
-  Fk = 'FK',
+  | 'FK'
   /** Faroe Islands. */
-  Fo = 'FO',
+  | 'FO'
   /** France. */
-  Fr = 'FR',
+  | 'FR'
   /** Gabon. */
-  Ga = 'GA',
+  | 'GA'
   /** United Kingdom. */
-  Gb = 'GB',
+  | 'GB'
   /** Grenada. */
-  Gd = 'GD',
+  | 'GD'
   /** Georgia. */
-  Ge = 'GE',
+  | 'GE'
   /** French Guiana. */
-  Gf = 'GF',
+  | 'GF'
   /** Guernsey. */
-  Gg = 'GG',
+  | 'GG'
   /** Ghana. */
-  Gh = 'GH',
+  | 'GH'
   /** Gibraltar. */
-  Gi = 'GI',
+  | 'GI'
   /** Greenland. */
-  Gl = 'GL',
+  | 'GL'
   /** Gambia. */
-  Gm = 'GM',
+  | 'GM'
   /** Guinea. */
-  Gn = 'GN',
+  | 'GN'
   /** Guadeloupe. */
-  Gp = 'GP',
+  | 'GP'
   /** Equatorial Guinea. */
-  Gq = 'GQ',
+  | 'GQ'
   /** Greece. */
-  Gr = 'GR',
+  | 'GR'
   /** South Georgia & South Sandwich Islands. */
-  Gs = 'GS',
+  | 'GS'
   /** Guatemala. */
-  Gt = 'GT',
+  | 'GT'
   /** Guinea-Bissau. */
-  Gw = 'GW',
+  | 'GW'
   /** Guyana. */
-  Gy = 'GY',
+  | 'GY'
   /** Hong Kong SAR. */
-  Hk = 'HK',
+  | 'HK'
   /** Heard & McDonald Islands. */
-  Hm = 'HM',
+  | 'HM'
   /** Honduras. */
-  Hn = 'HN',
+  | 'HN'
   /** Croatia. */
-  Hr = 'HR',
+  | 'HR'
   /** Haiti. */
-  Ht = 'HT',
+  | 'HT'
   /** Hungary. */
-  Hu = 'HU',
+  | 'HU'
   /** Indonesia. */
-  Id = 'ID',
+  | 'ID'
   /** Ireland. */
-  Ie = 'IE',
+  | 'IE'
   /** Israel. */
-  Il = 'IL',
+  | 'IL'
   /** Isle of Man. */
-  Im = 'IM',
+  | 'IM'
   /** India. */
-  In = 'IN',
+  | 'IN'
   /** British Indian Ocean Territory. */
-  Io = 'IO',
+  | 'IO'
   /** Iraq. */
-  Iq = 'IQ',
+  | 'IQ'
   /** Iran. */
-  Ir = 'IR',
+  | 'IR'
   /** Iceland. */
-  Is = 'IS',
+  | 'IS'
   /** Italy. */
-  It = 'IT',
+  | 'IT'
   /** Jersey. */
-  Je = 'JE',
+  | 'JE'
   /** Jamaica. */
-  Jm = 'JM',
+  | 'JM'
   /** Jordan. */
-  Jo = 'JO',
+  | 'JO'
   /** Japan. */
-  Jp = 'JP',
+  | 'JP'
   /** Kenya. */
-  Ke = 'KE',
+  | 'KE'
   /** Kyrgyzstan. */
-  Kg = 'KG',
+  | 'KG'
   /** Cambodia. */
-  Kh = 'KH',
+  | 'KH'
   /** Kiribati. */
-  Ki = 'KI',
+  | 'KI'
   /** Comoros. */
-  Km = 'KM',
+  | 'KM'
   /** St. Kitts & Nevis. */
-  Kn = 'KN',
+  | 'KN'
   /** North Korea. */
-  Kp = 'KP',
+  | 'KP'
   /** South Korea. */
-  Kr = 'KR',
+  | 'KR'
   /** Kuwait. */
-  Kw = 'KW',
+  | 'KW'
   /** Cayman Islands. */
-  Ky = 'KY',
+  | 'KY'
   /** Kazakhstan. */
-  Kz = 'KZ',
+  | 'KZ'
   /** Laos. */
-  La = 'LA',
+  | 'LA'
   /** Lebanon. */
-  Lb = 'LB',
+  | 'LB'
   /** St. Lucia. */
-  Lc = 'LC',
+  | 'LC'
   /** Liechtenstein. */
-  Li = 'LI',
+  | 'LI'
   /** Sri Lanka. */
-  Lk = 'LK',
+  | 'LK'
   /** Liberia. */
-  Lr = 'LR',
+  | 'LR'
   /** Lesotho. */
-  Ls = 'LS',
+  | 'LS'
   /** Lithuania. */
-  Lt = 'LT',
+  | 'LT'
   /** Luxembourg. */
-  Lu = 'LU',
+  | 'LU'
   /** Latvia. */
-  Lv = 'LV',
+  | 'LV'
   /** Libya. */
-  Ly = 'LY',
+  | 'LY'
   /** Morocco. */
-  Ma = 'MA',
+  | 'MA'
   /** Monaco. */
-  Mc = 'MC',
+  | 'MC'
   /** Moldova. */
-  Md = 'MD',
+  | 'MD'
   /** Montenegro. */
-  Me = 'ME',
+  | 'ME'
   /** St. Martin. */
-  Mf = 'MF',
+  | 'MF'
   /** Madagascar. */
-  Mg = 'MG',
+  | 'MG'
   /** North Macedonia. */
-  Mk = 'MK',
+  | 'MK'
   /** Mali. */
-  Ml = 'ML',
+  | 'ML'
   /** Myanmar (Burma). */
-  Mm = 'MM',
+  | 'MM'
   /** Mongolia. */
-  Mn = 'MN',
+  | 'MN'
   /** Macao SAR. */
-  Mo = 'MO',
+  | 'MO'
   /** Martinique. */
-  Mq = 'MQ',
+  | 'MQ'
   /** Mauritania. */
-  Mr = 'MR',
+  | 'MR'
   /** Montserrat. */
-  Ms = 'MS',
+  | 'MS'
   /** Malta. */
-  Mt = 'MT',
+  | 'MT'
   /** Mauritius. */
-  Mu = 'MU',
+  | 'MU'
   /** Maldives. */
-  Mv = 'MV',
+  | 'MV'
   /** Malawi. */
-  Mw = 'MW',
+  | 'MW'
   /** Mexico. */
-  Mx = 'MX',
+  | 'MX'
   /** Malaysia. */
-  My = 'MY',
+  | 'MY'
   /** Mozambique. */
-  Mz = 'MZ',
+  | 'MZ'
   /** Namibia. */
-  Na = 'NA',
+  | 'NA'
   /** New Caledonia. */
-  Nc = 'NC',
+  | 'NC'
   /** Niger. */
-  Ne = 'NE',
+  | 'NE'
   /** Norfolk Island. */
-  Nf = 'NF',
+  | 'NF'
   /** Nigeria. */
-  Ng = 'NG',
+  | 'NG'
   /** Nicaragua. */
-  Ni = 'NI',
+  | 'NI'
   /** Netherlands. */
-  Nl = 'NL',
+  | 'NL'
   /** Norway. */
-  No = 'NO',
+  | 'NO'
   /** Nepal. */
-  Np = 'NP',
+  | 'NP'
   /** Nauru. */
-  Nr = 'NR',
+  | 'NR'
   /** Niue. */
-  Nu = 'NU',
+  | 'NU'
   /** New Zealand. */
-  Nz = 'NZ',
+  | 'NZ'
   /** Oman. */
-  Om = 'OM',
+  | 'OM'
   /** Panama. */
-  Pa = 'PA',
+  | 'PA'
   /** Peru. */
-  Pe = 'PE',
+  | 'PE'
   /** French Polynesia. */
-  Pf = 'PF',
+  | 'PF'
   /** Papua New Guinea. */
-  Pg = 'PG',
+  | 'PG'
   /** Philippines. */
-  Ph = 'PH',
+  | 'PH'
   /** Pakistan. */
-  Pk = 'PK',
+  | 'PK'
   /** Poland. */
-  Pl = 'PL',
+  | 'PL'
   /** St. Pierre & Miquelon. */
-  Pm = 'PM',
+  | 'PM'
   /** Pitcairn Islands. */
-  Pn = 'PN',
+  | 'PN'
   /** Palestinian Territories. */
-  Ps = 'PS',
+  | 'PS'
   /** Portugal. */
-  Pt = 'PT',
+  | 'PT'
   /** Paraguay. */
-  Py = 'PY',
+  | 'PY'
   /** Qatar. */
-  Qa = 'QA',
+  | 'QA'
   /** Réunion. */
-  Re = 'RE',
+  | 'RE'
   /** Romania. */
-  Ro = 'RO',
+  | 'RO'
   /** Serbia. */
-  Rs = 'RS',
+  | 'RS'
   /** Russia. */
-  Ru = 'RU',
+  | 'RU'
   /** Rwanda. */
-  Rw = 'RW',
+  | 'RW'
   /** Saudi Arabia. */
-  Sa = 'SA',
+  | 'SA'
   /** Solomon Islands. */
-  Sb = 'SB',
+  | 'SB'
   /** Seychelles. */
-  Sc = 'SC',
+  | 'SC'
   /** Sudan. */
-  Sd = 'SD',
+  | 'SD'
   /** Sweden. */
-  Se = 'SE',
+  | 'SE'
   /** Singapore. */
-  Sg = 'SG',
+  | 'SG'
   /** St. Helena. */
-  Sh = 'SH',
+  | 'SH'
   /** Slovenia. */
-  Si = 'SI',
+  | 'SI'
   /** Svalbard & Jan Mayen. */
-  Sj = 'SJ',
+  | 'SJ'
   /** Slovakia. */
-  Sk = 'SK',
+  | 'SK'
   /** Sierra Leone. */
-  Sl = 'SL',
+  | 'SL'
   /** San Marino. */
-  Sm = 'SM',
+  | 'SM'
   /** Senegal. */
-  Sn = 'SN',
+  | 'SN'
   /** Somalia. */
-  So = 'SO',
+  | 'SO'
   /** Suriname. */
-  Sr = 'SR',
+  | 'SR'
   /** South Sudan. */
-  Ss = 'SS',
+  | 'SS'
   /** São Tomé & Príncipe. */
-  St = 'ST',
+  | 'ST'
   /** El Salvador. */
-  Sv = 'SV',
+  | 'SV'
   /** Sint Maarten. */
-  Sx = 'SX',
+  | 'SX'
   /** Syria. */
-  Sy = 'SY',
+  | 'SY'
   /** Eswatini. */
-  Sz = 'SZ',
+  | 'SZ'
   /** Tristan da Cunha. */
-  Ta = 'TA',
+  | 'TA'
   /** Turks & Caicos Islands. */
-  Tc = 'TC',
+  | 'TC'
   /** Chad. */
-  Td = 'TD',
+  | 'TD'
   /** French Southern Territories. */
-  Tf = 'TF',
+  | 'TF'
   /** Togo. */
-  Tg = 'TG',
+  | 'TG'
   /** Thailand. */
-  Th = 'TH',
+  | 'TH'
   /** Tajikistan. */
-  Tj = 'TJ',
+  | 'TJ'
   /** Tokelau. */
-  Tk = 'TK',
+  | 'TK'
   /** Timor-Leste. */
-  Tl = 'TL',
+  | 'TL'
   /** Turkmenistan. */
-  Tm = 'TM',
+  | 'TM'
   /** Tunisia. */
-  Tn = 'TN',
+  | 'TN'
   /** Tonga. */
-  To = 'TO',
+  | 'TO'
   /** Turkey. */
-  Tr = 'TR',
+  | 'TR'
   /** Trinidad & Tobago. */
-  Tt = 'TT',
+  | 'TT'
   /** Tuvalu. */
-  Tv = 'TV',
+  | 'TV'
   /** Taiwan. */
-  Tw = 'TW',
+  | 'TW'
   /** Tanzania. */
-  Tz = 'TZ',
+  | 'TZ'
   /** Ukraine. */
-  Ua = 'UA',
+  | 'UA'
   /** Uganda. */
-  Ug = 'UG',
+  | 'UG'
   /** U.S. Outlying Islands. */
-  Um = 'UM',
+  | 'UM'
   /** United States. */
-  Us = 'US',
+  | 'US'
   /** Uruguay. */
-  Uy = 'UY',
+  | 'UY'
   /** Uzbekistan. */
-  Uz = 'UZ',
+  | 'UZ'
   /** Vatican City. */
-  Va = 'VA',
+  | 'VA'
   /** St. Vincent & Grenadines. */
-  Vc = 'VC',
+  | 'VC'
   /** Venezuela. */
-  Ve = 'VE',
+  | 'VE'
   /** British Virgin Islands. */
-  Vg = 'VG',
+  | 'VG'
   /** Vietnam. */
-  Vn = 'VN',
+  | 'VN'
   /** Vanuatu. */
-  Vu = 'VU',
+  | 'VU'
   /** Wallis & Futuna. */
-  Wf = 'WF',
+  | 'WF'
   /** Samoa. */
-  Ws = 'WS',
+  | 'WS'
   /** Kosovo. */
-  Xk = 'XK',
+  | 'XK'
   /** Yemen. */
-  Ye = 'YE',
+  | 'YE'
   /** Mayotte. */
-  Yt = 'YT',
+  | 'YT'
   /** South Africa. */
-  Za = 'ZA',
+  | 'ZA'
   /** Zambia. */
-  Zm = 'ZM',
+  | 'ZM'
   /** Zimbabwe. */
-  Zw = 'ZW',
+  | 'ZW'
   /** Unknown Region. */
-  Zz = 'ZZ'
-}
+  | 'ZZ';
 
 /** Credit card information used for a payment. */
 export type CreditCard = {
-  __typename?: 'CreditCard';
   /** The brand of the credit card. */
   brand?: Maybe<Scalars['String']['output']>;
   /** The expiry month of the credit card. */
@@ -2746,22 +2651,20 @@ export type CreditCardPaymentInputV2 = {
 };
 
 /** The part of the image that should remain after cropping. */
-export enum CropRegion {
+export type CropRegion =
   /** Keep the bottom of the image. */
-  Bottom = 'BOTTOM',
+  | 'BOTTOM'
   /** Keep the center of the image. */
-  Center = 'CENTER',
+  | 'CENTER'
   /** Keep the left of the image. */
-  Left = 'LEFT',
+  | 'LEFT'
   /** Keep the right of the image. */
-  Right = 'RIGHT',
+  | 'RIGHT'
   /** Keep the top of the image. */
-  Top = 'TOP'
-}
+  | 'TOP';
 
 /** A currency. */
 export type Currency = {
-  __typename?: 'Currency';
   /** The ISO code of the currency. */
   isoCode: CurrencyCode;
   /** The name of the currency. */
@@ -2776,343 +2679,332 @@ export type Currency = {
  * and non-standard codes.
  *
  */
-export enum CurrencyCode {
+export type CurrencyCode =
   /** United Arab Emirates Dirham (AED). */
-  Aed = 'AED',
+  | 'AED'
   /** Afghan Afghani (AFN). */
-  Afn = 'AFN',
+  | 'AFN'
   /** Albanian Lek (ALL). */
-  All = 'ALL',
+  | 'ALL'
   /** Armenian Dram (AMD). */
-  Amd = 'AMD',
+  | 'AMD'
   /** Netherlands Antillean Guilder. */
-  Ang = 'ANG',
+  | 'ANG'
   /** Angolan Kwanza (AOA). */
-  Aoa = 'AOA',
+  | 'AOA'
   /** Argentine Pesos (ARS). */
-  Ars = 'ARS',
+  | 'ARS'
   /** Australian Dollars (AUD). */
-  Aud = 'AUD',
+  | 'AUD'
   /** Aruban Florin (AWG). */
-  Awg = 'AWG',
+  | 'AWG'
   /** Azerbaijani Manat (AZN). */
-  Azn = 'AZN',
+  | 'AZN'
   /** Bosnia and Herzegovina Convertible Mark (BAM). */
-  Bam = 'BAM',
+  | 'BAM'
   /** Barbadian Dollar (BBD). */
-  Bbd = 'BBD',
+  | 'BBD'
   /** Bangladesh Taka (BDT). */
-  Bdt = 'BDT',
+  | 'BDT'
   /** Bulgarian Lev (BGN). */
-  Bgn = 'BGN',
+  | 'BGN'
   /** Bahraini Dinar (BHD). */
-  Bhd = 'BHD',
+  | 'BHD'
   /** Burundian Franc (BIF). */
-  Bif = 'BIF',
+  | 'BIF'
   /** Bermudian Dollar (BMD). */
-  Bmd = 'BMD',
+  | 'BMD'
   /** Brunei Dollar (BND). */
-  Bnd = 'BND',
+  | 'BND'
   /** Bolivian Boliviano (BOB). */
-  Bob = 'BOB',
+  | 'BOB'
   /** Brazilian Real (BRL). */
-  Brl = 'BRL',
+  | 'BRL'
   /** Bahamian Dollar (BSD). */
-  Bsd = 'BSD',
+  | 'BSD'
   /** Bhutanese Ngultrum (BTN). */
-  Btn = 'BTN',
+  | 'BTN'
   /** Botswana Pula (BWP). */
-  Bwp = 'BWP',
+  | 'BWP'
   /** Belarusian Ruble (BYN). */
-  Byn = 'BYN',
-  /**
-   * Belarusian Ruble (BYR).
-   * @deprecated `BYR` is deprecated. Use `BYN` available from version `2021-01` onwards instead.
-   */
-  Byr = 'BYR',
+  | 'BYN'
+  /** Belarusian Ruble (BYR). */
+  | 'BYR'
   /** Belize Dollar (BZD). */
-  Bzd = 'BZD',
+  | 'BZD'
   /** Canadian Dollars (CAD). */
-  Cad = 'CAD',
+  | 'CAD'
   /** Congolese franc (CDF). */
-  Cdf = 'CDF',
+  | 'CDF'
   /** Swiss Francs (CHF). */
-  Chf = 'CHF',
+  | 'CHF'
   /** Chilean Peso (CLP). */
-  Clp = 'CLP',
+  | 'CLP'
   /** Chinese Yuan Renminbi (CNY). */
-  Cny = 'CNY',
+  | 'CNY'
   /** Colombian Peso (COP). */
-  Cop = 'COP',
+  | 'COP'
   /** Costa Rican Colones (CRC). */
-  Crc = 'CRC',
+  | 'CRC'
   /** Cape Verdean escudo (CVE). */
-  Cve = 'CVE',
+  | 'CVE'
   /** Czech Koruny (CZK). */
-  Czk = 'CZK',
+  | 'CZK'
   /** Djiboutian Franc (DJF). */
-  Djf = 'DJF',
+  | 'DJF'
   /** Danish Kroner (DKK). */
-  Dkk = 'DKK',
+  | 'DKK'
   /** Dominican Peso (DOP). */
-  Dop = 'DOP',
+  | 'DOP'
   /** Algerian Dinar (DZD). */
-  Dzd = 'DZD',
+  | 'DZD'
   /** Egyptian Pound (EGP). */
-  Egp = 'EGP',
+  | 'EGP'
   /** Eritrean Nakfa (ERN). */
-  Ern = 'ERN',
+  | 'ERN'
   /** Ethiopian Birr (ETB). */
-  Etb = 'ETB',
+  | 'ETB'
   /** Euro (EUR). */
-  Eur = 'EUR',
+  | 'EUR'
   /** Fijian Dollars (FJD). */
-  Fjd = 'FJD',
+  | 'FJD'
   /** Falkland Islands Pounds (FKP). */
-  Fkp = 'FKP',
+  | 'FKP'
   /** United Kingdom Pounds (GBP). */
-  Gbp = 'GBP',
+  | 'GBP'
   /** Georgian Lari (GEL). */
-  Gel = 'GEL',
+  | 'GEL'
   /** Ghanaian Cedi (GHS). */
-  Ghs = 'GHS',
+  | 'GHS'
   /** Gibraltar Pounds (GIP). */
-  Gip = 'GIP',
+  | 'GIP'
   /** Gambian Dalasi (GMD). */
-  Gmd = 'GMD',
+  | 'GMD'
   /** Guinean Franc (GNF). */
-  Gnf = 'GNF',
+  | 'GNF'
   /** Guatemalan Quetzal (GTQ). */
-  Gtq = 'GTQ',
+  | 'GTQ'
   /** Guyanese Dollar (GYD). */
-  Gyd = 'GYD',
+  | 'GYD'
   /** Hong Kong Dollars (HKD). */
-  Hkd = 'HKD',
+  | 'HKD'
   /** Honduran Lempira (HNL). */
-  Hnl = 'HNL',
+  | 'HNL'
   /** Croatian Kuna (HRK). */
-  Hrk = 'HRK',
+  | 'HRK'
   /** Haitian Gourde (HTG). */
-  Htg = 'HTG',
+  | 'HTG'
   /** Hungarian Forint (HUF). */
-  Huf = 'HUF',
+  | 'HUF'
   /** Indonesian Rupiah (IDR). */
-  Idr = 'IDR',
+  | 'IDR'
   /** Israeli New Shekel (NIS). */
-  Ils = 'ILS',
+  | 'ILS'
   /** Indian Rupees (INR). */
-  Inr = 'INR',
+  | 'INR'
   /** Iraqi Dinar (IQD). */
-  Iqd = 'IQD',
+  | 'IQD'
   /** Iranian Rial (IRR). */
-  Irr = 'IRR',
+  | 'IRR'
   /** Icelandic Kronur (ISK). */
-  Isk = 'ISK',
+  | 'ISK'
   /** Jersey Pound. */
-  Jep = 'JEP',
+  | 'JEP'
   /** Jamaican Dollars (JMD). */
-  Jmd = 'JMD',
+  | 'JMD'
   /** Jordanian Dinar (JOD). */
-  Jod = 'JOD',
+  | 'JOD'
   /** Japanese Yen (JPY). */
-  Jpy = 'JPY',
+  | 'JPY'
   /** Kenyan Shilling (KES). */
-  Kes = 'KES',
+  | 'KES'
   /** Kyrgyzstani Som (KGS). */
-  Kgs = 'KGS',
+  | 'KGS'
   /** Cambodian Riel. */
-  Khr = 'KHR',
+  | 'KHR'
   /** Kiribati Dollar (KID). */
-  Kid = 'KID',
+  | 'KID'
   /** Comorian Franc (KMF). */
-  Kmf = 'KMF',
+  | 'KMF'
   /** South Korean Won (KRW). */
-  Krw = 'KRW',
+  | 'KRW'
   /** Kuwaiti Dinar (KWD). */
-  Kwd = 'KWD',
+  | 'KWD'
   /** Cayman Dollars (KYD). */
-  Kyd = 'KYD',
+  | 'KYD'
   /** Kazakhstani Tenge (KZT). */
-  Kzt = 'KZT',
+  | 'KZT'
   /** Laotian Kip (LAK). */
-  Lak = 'LAK',
+  | 'LAK'
   /** Lebanese Pounds (LBP). */
-  Lbp = 'LBP',
+  | 'LBP'
   /** Sri Lankan Rupees (LKR). */
-  Lkr = 'LKR',
+  | 'LKR'
   /** Liberian Dollar (LRD). */
-  Lrd = 'LRD',
+  | 'LRD'
   /** Lesotho Loti (LSL). */
-  Lsl = 'LSL',
+  | 'LSL'
   /** Lithuanian Litai (LTL). */
-  Ltl = 'LTL',
+  | 'LTL'
   /** Latvian Lati (LVL). */
-  Lvl = 'LVL',
+  | 'LVL'
   /** Libyan Dinar (LYD). */
-  Lyd = 'LYD',
+  | 'LYD'
   /** Moroccan Dirham. */
-  Mad = 'MAD',
+  | 'MAD'
   /** Moldovan Leu (MDL). */
-  Mdl = 'MDL',
+  | 'MDL'
   /** Malagasy Ariary (MGA). */
-  Mga = 'MGA',
+  | 'MGA'
   /** Macedonia Denar (MKD). */
-  Mkd = 'MKD',
+  | 'MKD'
   /** Burmese Kyat (MMK). */
-  Mmk = 'MMK',
+  | 'MMK'
   /** Mongolian Tugrik. */
-  Mnt = 'MNT',
+  | 'MNT'
   /** Macanese Pataca (MOP). */
-  Mop = 'MOP',
+  | 'MOP'
   /** Mauritanian Ouguiya (MRU). */
-  Mru = 'MRU',
+  | 'MRU'
   /** Mauritian Rupee (MUR). */
-  Mur = 'MUR',
+  | 'MUR'
   /** Maldivian Rufiyaa (MVR). */
-  Mvr = 'MVR',
+  | 'MVR'
   /** Malawian Kwacha (MWK). */
-  Mwk = 'MWK',
+  | 'MWK'
   /** Mexican Pesos (MXN). */
-  Mxn = 'MXN',
+  | 'MXN'
   /** Malaysian Ringgits (MYR). */
-  Myr = 'MYR',
+  | 'MYR'
   /** Mozambican Metical. */
-  Mzn = 'MZN',
+  | 'MZN'
   /** Namibian Dollar. */
-  Nad = 'NAD',
+  | 'NAD'
   /** Nigerian Naira (NGN). */
-  Ngn = 'NGN',
+  | 'NGN'
   /** Nicaraguan Córdoba (NIO). */
-  Nio = 'NIO',
+  | 'NIO'
   /** Norwegian Kroner (NOK). */
-  Nok = 'NOK',
+  | 'NOK'
   /** Nepalese Rupee (NPR). */
-  Npr = 'NPR',
+  | 'NPR'
   /** New Zealand Dollars (NZD). */
-  Nzd = 'NZD',
+  | 'NZD'
   /** Omani Rial (OMR). */
-  Omr = 'OMR',
+  | 'OMR'
   /** Panamian Balboa (PAB). */
-  Pab = 'PAB',
+  | 'PAB'
   /** Peruvian Nuevo Sol (PEN). */
-  Pen = 'PEN',
+  | 'PEN'
   /** Papua New Guinean Kina (PGK). */
-  Pgk = 'PGK',
+  | 'PGK'
   /** Philippine Peso (PHP). */
-  Php = 'PHP',
+  | 'PHP'
   /** Pakistani Rupee (PKR). */
-  Pkr = 'PKR',
+  | 'PKR'
   /** Polish Zlotych (PLN). */
-  Pln = 'PLN',
+  | 'PLN'
   /** Paraguayan Guarani (PYG). */
-  Pyg = 'PYG',
+  | 'PYG'
   /** Qatari Rial (QAR). */
-  Qar = 'QAR',
+  | 'QAR'
   /** Romanian Lei (RON). */
-  Ron = 'RON',
+  | 'RON'
   /** Serbian dinar (RSD). */
-  Rsd = 'RSD',
+  | 'RSD'
   /** Russian Rubles (RUB). */
-  Rub = 'RUB',
+  | 'RUB'
   /** Rwandan Franc (RWF). */
-  Rwf = 'RWF',
+  | 'RWF'
   /** Saudi Riyal (SAR). */
-  Sar = 'SAR',
+  | 'SAR'
   /** Solomon Islands Dollar (SBD). */
-  Sbd = 'SBD',
+  | 'SBD'
   /** Seychellois Rupee (SCR). */
-  Scr = 'SCR',
+  | 'SCR'
   /** Sudanese Pound (SDG). */
-  Sdg = 'SDG',
+  | 'SDG'
   /** Swedish Kronor (SEK). */
-  Sek = 'SEK',
+  | 'SEK'
   /** Singapore Dollars (SGD). */
-  Sgd = 'SGD',
+  | 'SGD'
   /** Saint Helena Pounds (SHP). */
-  Shp = 'SHP',
+  | 'SHP'
   /** Sierra Leonean Leone (SLL). */
-  Sll = 'SLL',
+  | 'SLL'
   /** Somali Shilling (SOS). */
-  Sos = 'SOS',
+  | 'SOS'
   /** Surinamese Dollar (SRD). */
-  Srd = 'SRD',
+  | 'SRD'
   /** South Sudanese Pound (SSP). */
-  Ssp = 'SSP',
-  /**
-   * Sao Tome And Principe Dobra (STD).
-   * @deprecated `STD` is deprecated. Use `STN` available from version `2022-07` onwards instead.
-   */
-  Std = 'STD',
+  | 'SSP'
+  /** Sao Tome And Principe Dobra (STD). */
+  | 'STD'
   /** Sao Tome And Principe Dobra (STN). */
-  Stn = 'STN',
+  | 'STN'
   /** Syrian Pound (SYP). */
-  Syp = 'SYP',
+  | 'SYP'
   /** Swazi Lilangeni (SZL). */
-  Szl = 'SZL',
+  | 'SZL'
   /** Thai baht (THB). */
-  Thb = 'THB',
+  | 'THB'
   /** Tajikistani Somoni (TJS). */
-  Tjs = 'TJS',
+  | 'TJS'
   /** Turkmenistani Manat (TMT). */
-  Tmt = 'TMT',
+  | 'TMT'
   /** Tunisian Dinar (TND). */
-  Tnd = 'TND',
+  | 'TND'
   /** Tongan Pa'anga (TOP). */
-  Top = 'TOP',
+  | 'TOP'
   /** Turkish Lira (TRY). */
-  Try = 'TRY',
+  | 'TRY'
   /** Trinidad and Tobago Dollars (TTD). */
-  Ttd = 'TTD',
+  | 'TTD'
   /** Taiwan Dollars (TWD). */
-  Twd = 'TWD',
+  | 'TWD'
   /** Tanzanian Shilling (TZS). */
-  Tzs = 'TZS',
+  | 'TZS'
   /** Ukrainian Hryvnia (UAH). */
-  Uah = 'UAH',
+  | 'UAH'
   /** Ugandan Shilling (UGX). */
-  Ugx = 'UGX',
+  | 'UGX'
   /** United States Dollars (USD). */
-  Usd = 'USD',
+  | 'USD'
   /** Uruguayan Pesos (UYU). */
-  Uyu = 'UYU',
+  | 'UYU'
   /** Uzbekistan som (UZS). */
-  Uzs = 'UZS',
+  | 'UZS'
   /** Venezuelan Bolivares (VED). */
-  Ved = 'VED',
-  /**
-   * Venezuelan Bolivares (VEF).
-   * @deprecated `VEF` is deprecated. Use `VES` available from version `2020-10` onwards instead.
-   */
-  Vef = 'VEF',
+  | 'VED'
+  /** Venezuelan Bolivares (VEF). */
+  | 'VEF'
   /** Venezuelan Bolivares (VES). */
-  Ves = 'VES',
+  | 'VES'
   /** Vietnamese đồng (VND). */
-  Vnd = 'VND',
+  | 'VND'
   /** Vanuatu Vatu (VUV). */
-  Vuv = 'VUV',
+  | 'VUV'
   /** Samoan Tala (WST). */
-  Wst = 'WST',
+  | 'WST'
   /** Central African CFA Franc (XAF). */
-  Xaf = 'XAF',
+  | 'XAF'
   /** East Caribbean Dollar (XCD). */
-  Xcd = 'XCD',
+  | 'XCD'
   /** West African CFA franc (XOF). */
-  Xof = 'XOF',
+  | 'XOF'
   /** CFP Franc (XPF). */
-  Xpf = 'XPF',
+  | 'XPF'
   /** Unrecognized currency. */
-  Xxx = 'XXX',
+  | 'XXX'
   /** Yemeni Rial (YER). */
-  Yer = 'YER',
+  | 'YER'
   /** South African Rand (ZAR). */
-  Zar = 'ZAR',
+  | 'ZAR'
   /** Zambian Kwacha (ZMW). */
-  Zmw = 'ZMW'
-}
+  | 'ZMW';
 
 /** A customer represents a customer account with the shop. Customer accounts store contact information for the customer, saving logged-in customers the trouble of having to provide it at every checkout. */
 export type Customer = HasMetafields & {
-  __typename?: 'Customer';
   /** Indicates whether the customer has consented to be sent marketing material via email. */
   acceptsMarketing: Scalars['Boolean']['output'];
   /** A list of addresses for the customer. */
@@ -3190,7 +3082,6 @@ export type CustomerOrdersArgs = {
 
 /** A CustomerAccessToken represents the unique token required to make modifications to the customer object. */
 export type CustomerAccessToken = {
-  __typename?: 'CustomerAccessToken';
   /** The customer’s access token. */
   accessToken: Scalars['String']['output'];
   /** The date and time when the customer access token expires. */
@@ -3207,7 +3098,6 @@ export type CustomerAccessTokenCreateInput = {
 
 /** Return type for `customerAccessTokenCreate` mutation. */
 export type CustomerAccessTokenCreatePayload = {
-  __typename?: 'CustomerAccessTokenCreatePayload';
   /** The newly created customer access token object. */
   customerAccessToken?: Maybe<CustomerAccessToken>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3221,7 +3111,6 @@ export type CustomerAccessTokenCreatePayload = {
 
 /** Return type for `customerAccessTokenCreateWithMultipass` mutation. */
 export type CustomerAccessTokenCreateWithMultipassPayload = {
-  __typename?: 'CustomerAccessTokenCreateWithMultipassPayload';
   /** An access token object associated with the customer. */
   customerAccessToken?: Maybe<CustomerAccessToken>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3230,7 +3119,6 @@ export type CustomerAccessTokenCreateWithMultipassPayload = {
 
 /** Return type for `customerAccessTokenDelete` mutation. */
 export type CustomerAccessTokenDeletePayload = {
-  __typename?: 'CustomerAccessTokenDeletePayload';
   /** The destroyed access token. */
   deletedAccessToken?: Maybe<Scalars['String']['output']>;
   /** ID of the destroyed customer access token. */
@@ -3241,7 +3129,6 @@ export type CustomerAccessTokenDeletePayload = {
 
 /** Return type for `customerAccessTokenRenew` mutation. */
 export type CustomerAccessTokenRenewPayload = {
-  __typename?: 'CustomerAccessTokenRenewPayload';
   /** The renewed customer access token object. */
   customerAccessToken?: Maybe<CustomerAccessToken>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3250,7 +3137,6 @@ export type CustomerAccessTokenRenewPayload = {
 
 /** Return type for `customerActivateByUrl` mutation. */
 export type CustomerActivateByUrlPayload = {
-  __typename?: 'CustomerActivateByUrlPayload';
   /** The customer that was activated. */
   customer?: Maybe<Customer>;
   /** A new customer access token for the customer. */
@@ -3269,7 +3155,6 @@ export type CustomerActivateInput = {
 
 /** Return type for `customerActivate` mutation. */
 export type CustomerActivatePayload = {
-  __typename?: 'CustomerActivatePayload';
   /** The customer object. */
   customer?: Maybe<Customer>;
   /** A newly created customer access token object for the customer. */
@@ -3285,7 +3170,6 @@ export type CustomerActivatePayload = {
 
 /** Return type for `customerAddressCreate` mutation. */
 export type CustomerAddressCreatePayload = {
-  __typename?: 'CustomerAddressCreatePayload';
   /** The new customer address object. */
   customerAddress?: Maybe<MailingAddress>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3299,7 +3183,6 @@ export type CustomerAddressCreatePayload = {
 
 /** Return type for `customerAddressDelete` mutation. */
 export type CustomerAddressDeletePayload = {
-  __typename?: 'CustomerAddressDeletePayload';
   /** The list of errors that occurred from executing the mutation. */
   customerUserErrors: Array<CustomerUserError>;
   /** ID of the deleted customer address. */
@@ -3313,7 +3196,6 @@ export type CustomerAddressDeletePayload = {
 
 /** Return type for `customerAddressUpdate` mutation. */
 export type CustomerAddressUpdatePayload = {
-  __typename?: 'CustomerAddressUpdatePayload';
   /** The customer’s updated mailing address. */
   customerAddress?: Maybe<MailingAddress>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3348,7 +3230,6 @@ export type CustomerCreateInput = {
 
 /** Return type for `customerCreate` mutation. */
 export type CustomerCreatePayload = {
-  __typename?: 'CustomerCreatePayload';
   /** The created customer object. */
   customer?: Maybe<Customer>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3362,7 +3243,6 @@ export type CustomerCreatePayload = {
 
 /** Return type for `customerDefaultAddressUpdate` mutation. */
 export type CustomerDefaultAddressUpdatePayload = {
-  __typename?: 'CustomerDefaultAddressUpdatePayload';
   /** The updated customer object. */
   customer?: Maybe<Customer>;
   /** The list of errors that occurred from executing the mutation. */
@@ -3375,42 +3255,40 @@ export type CustomerDefaultAddressUpdatePayload = {
 };
 
 /** Possible error codes that can be returned by `CustomerUserError`. */
-export enum CustomerErrorCode {
+export type CustomerErrorCode =
   /** Customer already enabled. */
-  AlreadyEnabled = 'ALREADY_ENABLED',
+  | 'ALREADY_ENABLED'
   /** Input email contains an invalid domain name. */
-  BadDomain = 'BAD_DOMAIN',
+  | 'BAD_DOMAIN'
   /** The input value is blank. */
-  Blank = 'BLANK',
+  | 'BLANK'
   /** Input contains HTML tags. */
-  ContainsHtmlTags = 'CONTAINS_HTML_TAGS',
+  | 'CONTAINS_HTML_TAGS'
   /** Input contains URL. */
-  ContainsUrl = 'CONTAINS_URL',
+  | 'CONTAINS_URL'
   /** Customer is disabled. */
-  CustomerDisabled = 'CUSTOMER_DISABLED',
+  | 'CUSTOMER_DISABLED'
   /** The input value is invalid. */
-  Invalid = 'INVALID',
+  | 'INVALID'
   /** Multipass token is not valid. */
-  InvalidMultipassRequest = 'INVALID_MULTIPASS_REQUEST',
+  | 'INVALID_MULTIPASS_REQUEST'
   /** Address does not exist. */
-  NotFound = 'NOT_FOUND',
+  | 'NOT_FOUND'
   /** Input password starts or ends with whitespace. */
-  PasswordStartsOrEndsWithWhitespace = 'PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE',
+  | 'PASSWORD_STARTS_OR_ENDS_WITH_WHITESPACE'
   /** The input value is already taken. */
-  Taken = 'TAKEN',
+  | 'TAKEN'
   /** Invalid activation token. */
-  TokenInvalid = 'TOKEN_INVALID',
+  | 'TOKEN_INVALID'
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  | 'TOO_LONG'
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT',
+  | 'TOO_SHORT'
   /** Unidentified customer. */
-  UnidentifiedCustomer = 'UNIDENTIFIED_CUSTOMER'
-}
+  | 'UNIDENTIFIED_CUSTOMER';
 
 /** Return type for `customerRecover` mutation. */
 export type CustomerRecoverPayload = {
-  __typename?: 'CustomerRecoverPayload';
   /** The list of errors that occurred from executing the mutation. */
   customerUserErrors: Array<CustomerUserError>;
   /**
@@ -3422,7 +3300,6 @@ export type CustomerRecoverPayload = {
 
 /** Return type for `customerResetByUrl` mutation. */
 export type CustomerResetByUrlPayload = {
-  __typename?: 'CustomerResetByUrlPayload';
   /** The customer object which was reset. */
   customer?: Maybe<Customer>;
   /** A newly created customer access token object for the customer. */
@@ -3446,7 +3323,6 @@ export type CustomerResetInput = {
 
 /** Return type for `customerReset` mutation. */
 export type CustomerResetPayload = {
-  __typename?: 'CustomerResetPayload';
   /** The customer object which was reset. */
   customer?: Maybe<Customer>;
   /** A newly created customer access token object for the customer. */
@@ -3483,7 +3359,6 @@ export type CustomerUpdateInput = {
 
 /** Return type for `customerUpdate` mutation. */
 export type CustomerUpdatePayload = {
-  __typename?: 'CustomerUpdatePayload';
   /** The updated customer object. */
   customer?: Maybe<Customer>;
   /**
@@ -3503,7 +3378,6 @@ export type CustomerUpdatePayload = {
 
 /** Represents an error that happens during execution of a customer mutation. */
 export type CustomerUserError = DisplayableError & {
-  __typename?: 'CustomerUserError';
   /** The error code. */
   code?: Maybe<CustomerErrorCode>;
   /** The path to the input field that caused the error. */
@@ -3530,39 +3404,36 @@ export type DeliveryAddressInput = {
 };
 
 /** List of different delivery method types. */
-export enum DeliveryMethodType {
+export type DeliveryMethodType =
   /** Local Delivery. */
-  Local = 'LOCAL',
+  | 'LOCAL'
   /** None. */
-  None = 'NONE',
+  | 'NONE'
   /** Shipping to a Pickup Point. */
-  PickupPoint = 'PICKUP_POINT',
+  | 'PICKUP_POINT'
   /** Local Pickup. */
-  PickUp = 'PICK_UP',
+  | 'PICK_UP'
   /** Retail. */
-  Retail = 'RETAIL',
+  | 'RETAIL'
   /** Shipping. */
-  Shipping = 'SHIPPING'
-}
+  | 'SHIPPING';
 
 /** Digital wallet, such as Apple Pay, which can be used for accelerated checkouts. */
-export enum DigitalWallet {
+export type DigitalWallet =
   /** Android Pay. */
-  AndroidPay = 'ANDROID_PAY',
+  | 'ANDROID_PAY'
   /** Apple Pay. */
-  ApplePay = 'APPLE_PAY',
+  | 'APPLE_PAY'
   /** Google Pay. */
-  GooglePay = 'GOOGLE_PAY',
+  | 'GOOGLE_PAY'
   /** Shopify Pay. */
-  ShopifyPay = 'SHOPIFY_PAY'
-}
+  | 'SHOPIFY_PAY';
 
 /**
  * An amount discounting the line that has been allocated by a discount.
  *
  */
 export type DiscountAllocation = {
-  __typename?: 'DiscountAllocation';
   /** Amount of discount allocated. */
   allocatedAmount: MoneyV2;
   /** The discount this allocated amount originated from. */
@@ -3586,24 +3457,19 @@ export type DiscountApplication = {
 };
 
 /** The method by which the discount's value is allocated onto its entitled lines. */
-export enum DiscountApplicationAllocationMethod {
+export type DiscountApplicationAllocationMethod =
   /** The value is spread across all entitled lines. */
-  Across = 'ACROSS',
+  | 'ACROSS'
   /** The value is applied onto every entitled line. */
-  Each = 'EACH',
-  /**
-   * The value is specifically applied onto a particular line.
-   * @deprecated Use ACROSS instead.
-   */
-  One = 'ONE'
-}
+  | 'EACH'
+  /** The value is specifically applied onto a particular line. */
+  | 'ONE';
 
 /**
  * An auto-generated type for paginating through multiple DiscountApplications.
  *
  */
 export type DiscountApplicationConnection = {
-  __typename?: 'DiscountApplicationConnection';
   /** A list of edges. */
   edges: Array<DiscountApplicationEdge>;
   /** A list of the nodes contained in DiscountApplicationEdge. */
@@ -3617,7 +3483,6 @@ export type DiscountApplicationConnection = {
  *
  */
 export type DiscountApplicationEdge = {
-  __typename?: 'DiscountApplicationEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of DiscountApplicationEdge. */
@@ -3631,25 +3496,23 @@ export type DiscountApplicationEdge = {
  * The value `ALL`, combined with a `targetType` of `SHIPPING_LINE`, applies the discount on all shipping lines.
  *
  */
-export enum DiscountApplicationTargetSelection {
+export type DiscountApplicationTargetSelection =
   /** The discount is allocated onto all the lines. */
-  All = 'ALL',
+  | 'ALL'
   /** The discount is allocated onto only the lines that it's entitled for. */
-  Entitled = 'ENTITLED',
+  | 'ENTITLED'
   /** The discount is allocated onto explicitly chosen lines. */
-  Explicit = 'EXPLICIT'
-}
+  | 'EXPLICIT';
 
 /**
  * The type of line (i.e. line item or shipping line) on an order that the discount is applicable towards.
  *
  */
-export enum DiscountApplicationTargetType {
+export type DiscountApplicationTargetType =
   /** The discount applies onto line items. */
-  LineItem = 'LINE_ITEM',
+  | 'LINE_ITEM'
   /** The discount applies onto shipping lines. */
-  ShippingLine = 'SHIPPING_LINE'
-}
+  | 'SHIPPING_LINE';
 
 /**
  * Discount code applications capture the intentions of a discount code at
@@ -3657,7 +3520,6 @@ export enum DiscountApplicationTargetType {
  *
  */
 export type DiscountCodeApplication = DiscountApplication & {
-  __typename?: 'DiscountCodeApplication';
   /** The method by which the discount's value is allocated to its entitled items. */
   allocationMethod: DiscountApplicationAllocationMethod;
   /** Specifies whether the discount code was applied successfully. */
@@ -3682,7 +3544,6 @@ export type DisplayableError = {
 
 /** Represents a web address. */
 export type Domain = {
-  __typename?: 'Domain';
   /** The host name of the domain (eg: `example.com`). */
   host: Scalars['String']['output'];
   /** Whether SSL is enabled or not. */
@@ -3693,7 +3554,6 @@ export type Domain = {
 
 /** Represents a video hosted outside of Shopify. */
 export type ExternalVideo = Media & Node & {
-  __typename?: 'ExternalVideo';
   /** A word or phrase to share the nature or contents of a media. */
   alt?: Maybe<Scalars['String']['output']>;
   /** The embed URL of the video for the respective host. */
@@ -3719,7 +3579,6 @@ export type ExternalVideo = Media & Node & {
 
 /** A filter that is supported on the parent field. */
 export type Filter = {
-  __typename?: 'Filter';
   /** A unique identifier. */
   id: Scalars['String']['output'];
   /** A human-friendly string for this filter. */
@@ -3737,18 +3596,16 @@ export type Filter = {
  * (https://shopify.dev/custom-storefronts/products-collections/filter-products).
  *
  */
-export enum FilterType {
+export type FilterType =
   /** A boolean value. */
-  Boolean = 'BOOLEAN',
+  | 'BOOLEAN'
   /** A list of selectable values. */
-  List = 'LIST',
+  | 'LIST'
   /** A range of prices. */
-  PriceRange = 'PRICE_RANGE'
-}
+  | 'PRICE_RANGE';
 
 /** A selectable value within a filter. */
 export type FilterValue = {
-  __typename?: 'FilterValue';
   /** The number of results that match this filter value. */
   count: Scalars['Int']['output'];
   /** A unique identifier. */
@@ -3768,7 +3625,6 @@ export type FilterValue = {
 
 /** Represents a single fulfillment in an order. */
 export type Fulfillment = {
-  __typename?: 'Fulfillment';
   /** List of the fulfillment's line items. */
   fulfillmentLineItems: FulfillmentLineItemConnection;
   /** The name of the tracking company. */
@@ -3799,7 +3655,6 @@ export type FulfillmentTrackingInfoArgs = {
 
 /** Represents a single line item in a fulfillment. There is at most one fulfillment line item for each order line item. */
 export type FulfillmentLineItem = {
-  __typename?: 'FulfillmentLineItem';
   /** The associated order's line item. */
   lineItem: OrderLineItem;
   /** The amount fulfilled in this fulfillment. */
@@ -3811,7 +3666,6 @@ export type FulfillmentLineItem = {
  *
  */
 export type FulfillmentLineItemConnection = {
-  __typename?: 'FulfillmentLineItemConnection';
   /** A list of edges. */
   edges: Array<FulfillmentLineItemEdge>;
   /** A list of the nodes contained in FulfillmentLineItemEdge. */
@@ -3825,7 +3679,6 @@ export type FulfillmentLineItemConnection = {
  *
  */
 export type FulfillmentLineItemEdge = {
-  __typename?: 'FulfillmentLineItemEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of FulfillmentLineItemEdge. */
@@ -3834,7 +3687,6 @@ export type FulfillmentLineItemEdge = {
 
 /** Tracking information associated with the fulfillment. */
 export type FulfillmentTrackingInfo = {
-  __typename?: 'FulfillmentTrackingInfo';
   /** The tracking number of the fulfillment. */
   number?: Maybe<Scalars['String']['output']>;
   /** The URL to track the fulfillment. */
@@ -3843,7 +3695,6 @@ export type FulfillmentTrackingInfo = {
 
 /** The generic file resource lets you manage files in a merchant’s store. Generic files include any file that doesn’t fit into a designated type such as image or video. Example: PDF, JSON. */
 export type GenericFile = Node & {
-  __typename?: 'GenericFile';
   /** A word or phrase to indicate the contents of a file. */
   alt?: Maybe<Scalars['String']['output']>;
   /** A globally-unique ID. */
@@ -3897,7 +3748,6 @@ export type HasMetafieldsIdentifier = {
 
 /** Represents an image resource. */
 export type Image = {
-  __typename?: 'Image';
   /** A word or phrase to share the nature or contents of an image. */
   altText?: Maybe<Scalars['String']['output']>;
   /** The original height of the image in pixels. Returns `null` if the image isn't hosted by Shopify. */
@@ -3962,7 +3812,6 @@ export type ImageUrlArgs = {
  *
  */
 export type ImageConnection = {
-  __typename?: 'ImageConnection';
   /** A list of edges. */
   edges: Array<ImageEdge>;
   /** A list of the nodes contained in ImageEdge. */
@@ -3972,21 +3821,19 @@ export type ImageConnection = {
 };
 
 /** List of supported image content types. */
-export enum ImageContentType {
+export type ImageContentType =
   /** A JPG image. */
-  Jpg = 'JPG',
+  | 'JPG'
   /** A PNG image. */
-  Png = 'PNG',
+  | 'PNG'
   /** A WEBP image. */
-  Webp = 'WEBP'
-}
+  | 'WEBP';
 
 /**
  * An auto-generated type which holds one Image and a cursor during pagination.
  *
  */
 export type ImageEdge = {
-  __typename?: 'ImageEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of ImageEdge. */
@@ -4037,7 +3884,6 @@ export type ImageTransformInput = {
 
 /** A language. */
 export type Language = {
-  __typename?: 'Language';
   /** The name of the language in the language itself. If the language uses capitalization, it is capitalized for a mid-sentence position. */
   endonymName: Scalars['String']['output'];
   /** The ISO code. */
@@ -4047,300 +3893,298 @@ export type Language = {
 };
 
 /** ISO 639-1 language codes supported by Shopify. */
-export enum LanguageCode {
+export type LanguageCode =
   /** Afrikaans. */
-  Af = 'AF',
+  | 'AF'
   /** Akan. */
-  Ak = 'AK',
+  | 'AK'
   /** Amharic. */
-  Am = 'AM',
+  | 'AM'
   /** Arabic. */
-  Ar = 'AR',
+  | 'AR'
   /** Assamese. */
-  As = 'AS',
+  | 'AS'
   /** Azerbaijani. */
-  Az = 'AZ',
+  | 'AZ'
   /** Belarusian. */
-  Be = 'BE',
+  | 'BE'
   /** Bulgarian. */
-  Bg = 'BG',
+  | 'BG'
   /** Bambara. */
-  Bm = 'BM',
+  | 'BM'
   /** Bangla. */
-  Bn = 'BN',
+  | 'BN'
   /** Tibetan. */
-  Bo = 'BO',
+  | 'BO'
   /** Breton. */
-  Br = 'BR',
+  | 'BR'
   /** Bosnian. */
-  Bs = 'BS',
+  | 'BS'
   /** Catalan. */
-  Ca = 'CA',
+  | 'CA'
   /** Chechen. */
-  Ce = 'CE',
+  | 'CE'
   /** Central Kurdish. */
-  Ckb = 'CKB',
+  | 'CKB'
   /** Czech. */
-  Cs = 'CS',
+  | 'CS'
   /** Church Slavic. */
-  Cu = 'CU',
+  | 'CU'
   /** Welsh. */
-  Cy = 'CY',
+  | 'CY'
   /** Danish. */
-  Da = 'DA',
+  | 'DA'
   /** German. */
-  De = 'DE',
+  | 'DE'
   /** Dzongkha. */
-  Dz = 'DZ',
+  | 'DZ'
   /** Ewe. */
-  Ee = 'EE',
+  | 'EE'
   /** Greek. */
-  El = 'EL',
+  | 'EL'
   /** English. */
-  En = 'EN',
+  | 'EN'
   /** Esperanto. */
-  Eo = 'EO',
+  | 'EO'
   /** Spanish. */
-  Es = 'ES',
+  | 'ES'
   /** Estonian. */
-  Et = 'ET',
+  | 'ET'
   /** Basque. */
-  Eu = 'EU',
+  | 'EU'
   /** Persian. */
-  Fa = 'FA',
+  | 'FA'
   /** Fulah. */
-  Ff = 'FF',
+  | 'FF'
   /** Finnish. */
-  Fi = 'FI',
+  | 'FI'
   /** Filipino. */
-  Fil = 'FIL',
+  | 'FIL'
   /** Faroese. */
-  Fo = 'FO',
+  | 'FO'
   /** French. */
-  Fr = 'FR',
+  | 'FR'
   /** Western Frisian. */
-  Fy = 'FY',
+  | 'FY'
   /** Irish. */
-  Ga = 'GA',
+  | 'GA'
   /** Scottish Gaelic. */
-  Gd = 'GD',
+  | 'GD'
   /** Galician. */
-  Gl = 'GL',
+  | 'GL'
   /** Gujarati. */
-  Gu = 'GU',
+  | 'GU'
   /** Manx. */
-  Gv = 'GV',
+  | 'GV'
   /** Hausa. */
-  Ha = 'HA',
+  | 'HA'
   /** Hebrew. */
-  He = 'HE',
+  | 'HE'
   /** Hindi. */
-  Hi = 'HI',
+  | 'HI'
   /** Croatian. */
-  Hr = 'HR',
+  | 'HR'
   /** Hungarian. */
-  Hu = 'HU',
+  | 'HU'
   /** Armenian. */
-  Hy = 'HY',
+  | 'HY'
   /** Interlingua. */
-  Ia = 'IA',
+  | 'IA'
   /** Indonesian. */
-  Id = 'ID',
+  | 'ID'
   /** Igbo. */
-  Ig = 'IG',
+  | 'IG'
   /** Sichuan Yi. */
-  Ii = 'II',
+  | 'II'
   /** Icelandic. */
-  Is = 'IS',
+  | 'IS'
   /** Italian. */
-  It = 'IT',
+  | 'IT'
   /** Japanese. */
-  Ja = 'JA',
+  | 'JA'
   /** Javanese. */
-  Jv = 'JV',
+  | 'JV'
   /** Georgian. */
-  Ka = 'KA',
+  | 'KA'
   /** Kikuyu. */
-  Ki = 'KI',
+  | 'KI'
   /** Kazakh. */
-  Kk = 'KK',
+  | 'KK'
   /** Kalaallisut. */
-  Kl = 'KL',
+  | 'KL'
   /** Khmer. */
-  Km = 'KM',
+  | 'KM'
   /** Kannada. */
-  Kn = 'KN',
+  | 'KN'
   /** Korean. */
-  Ko = 'KO',
+  | 'KO'
   /** Kashmiri. */
-  Ks = 'KS',
+  | 'KS'
   /** Kurdish. */
-  Ku = 'KU',
+  | 'KU'
   /** Cornish. */
-  Kw = 'KW',
+  | 'KW'
   /** Kyrgyz. */
-  Ky = 'KY',
+  | 'KY'
   /** Latin. */
-  La = 'LA',
+  | 'LA'
   /** Luxembourgish. */
-  Lb = 'LB',
+  | 'LB'
   /** Ganda. */
-  Lg = 'LG',
+  | 'LG'
   /** Lingala. */
-  Ln = 'LN',
+  | 'LN'
   /** Lao. */
-  Lo = 'LO',
+  | 'LO'
   /** Lithuanian. */
-  Lt = 'LT',
+  | 'LT'
   /** Luba-Katanga. */
-  Lu = 'LU',
+  | 'LU'
   /** Latvian. */
-  Lv = 'LV',
+  | 'LV'
   /** Malagasy. */
-  Mg = 'MG',
+  | 'MG'
   /** Māori. */
-  Mi = 'MI',
+  | 'MI'
   /** Macedonian. */
-  Mk = 'MK',
+  | 'MK'
   /** Malayalam. */
-  Ml = 'ML',
+  | 'ML'
   /** Mongolian. */
-  Mn = 'MN',
+  | 'MN'
   /** Moldavian. */
-  Mo = 'MO',
+  | 'MO'
   /** Marathi. */
-  Mr = 'MR',
+  | 'MR'
   /** Malay. */
-  Ms = 'MS',
+  | 'MS'
   /** Maltese. */
-  Mt = 'MT',
+  | 'MT'
   /** Burmese. */
-  My = 'MY',
+  | 'MY'
   /** Norwegian (Bokmål). */
-  Nb = 'NB',
+  | 'NB'
   /** North Ndebele. */
-  Nd = 'ND',
+  | 'ND'
   /** Nepali. */
-  Ne = 'NE',
+  | 'NE'
   /** Dutch. */
-  Nl = 'NL',
+  | 'NL'
   /** Norwegian Nynorsk. */
-  Nn = 'NN',
+  | 'NN'
   /** Norwegian. */
-  No = 'NO',
+  | 'NO'
   /** Oromo. */
-  Om = 'OM',
+  | 'OM'
   /** Odia. */
-  Or = 'OR',
+  | 'OR'
   /** Ossetic. */
-  Os = 'OS',
+  | 'OS'
   /** Punjabi. */
-  Pa = 'PA',
+  | 'PA'
   /** Polish. */
-  Pl = 'PL',
+  | 'PL'
   /** Pashto. */
-  Ps = 'PS',
+  | 'PS'
   /** Portuguese. */
-  Pt = 'PT',
+  | 'PT'
   /** Portuguese (Brazil). */
-  PtBr = 'PT_BR',
+  | 'PT_BR'
   /** Portuguese (Portugal). */
-  PtPt = 'PT_PT',
+  | 'PT_PT'
   /** Quechua. */
-  Qu = 'QU',
+  | 'QU'
   /** Romansh. */
-  Rm = 'RM',
+  | 'RM'
   /** Rundi. */
-  Rn = 'RN',
+  | 'RN'
   /** Romanian. */
-  Ro = 'RO',
+  | 'RO'
   /** Russian. */
-  Ru = 'RU',
+  | 'RU'
   /** Kinyarwanda. */
-  Rw = 'RW',
+  | 'RW'
   /** Sanskrit. */
-  Sa = 'SA',
+  | 'SA'
   /** Sardinian. */
-  Sc = 'SC',
+  | 'SC'
   /** Sindhi. */
-  Sd = 'SD',
+  | 'SD'
   /** Northern Sami. */
-  Se = 'SE',
+  | 'SE'
   /** Sango. */
-  Sg = 'SG',
+  | 'SG'
   /** Serbo-Croatian. */
-  Sh = 'SH',
+  | 'SH'
   /** Sinhala. */
-  Si = 'SI',
+  | 'SI'
   /** Slovak. */
-  Sk = 'SK',
+  | 'SK'
   /** Slovenian. */
-  Sl = 'SL',
+  | 'SL'
   /** Shona. */
-  Sn = 'SN',
+  | 'SN'
   /** Somali. */
-  So = 'SO',
+  | 'SO'
   /** Albanian. */
-  Sq = 'SQ',
+  | 'SQ'
   /** Serbian. */
-  Sr = 'SR',
+  | 'SR'
   /** Sundanese. */
-  Su = 'SU',
+  | 'SU'
   /** Swedish. */
-  Sv = 'SV',
+  | 'SV'
   /** Swahili. */
-  Sw = 'SW',
+  | 'SW'
   /** Tamil. */
-  Ta = 'TA',
+  | 'TA'
   /** Telugu. */
-  Te = 'TE',
+  | 'TE'
   /** Tajik. */
-  Tg = 'TG',
+  | 'TG'
   /** Thai. */
-  Th = 'TH',
+  | 'TH'
   /** Tigrinya. */
-  Ti = 'TI',
+  | 'TI'
   /** Turkmen. */
-  Tk = 'TK',
+  | 'TK'
   /** Tongan. */
-  To = 'TO',
+  | 'TO'
   /** Turkish. */
-  Tr = 'TR',
+  | 'TR'
   /** Tatar. */
-  Tt = 'TT',
+  | 'TT'
   /** Uyghur. */
-  Ug = 'UG',
+  | 'UG'
   /** Ukrainian. */
-  Uk = 'UK',
+  | 'UK'
   /** Urdu. */
-  Ur = 'UR',
+  | 'UR'
   /** Uzbek. */
-  Uz = 'UZ',
+  | 'UZ'
   /** Vietnamese. */
-  Vi = 'VI',
+  | 'VI'
   /** Volapük. */
-  Vo = 'VO',
+  | 'VO'
   /** Wolof. */
-  Wo = 'WO',
+  | 'WO'
   /** Xhosa. */
-  Xh = 'XH',
+  | 'XH'
   /** Yiddish. */
-  Yi = 'YI',
+  | 'YI'
   /** Yoruba. */
-  Yo = 'YO',
+  | 'YO'
   /** Chinese. */
-  Zh = 'ZH',
+  | 'ZH'
   /** Chinese (Simplified). */
-  ZhCn = 'ZH_CN',
+  | 'ZH_CN'
   /** Chinese (Traditional). */
-  ZhTw = 'ZH_TW',
+  | 'ZH_TW'
   /** Zulu. */
-  Zu = 'ZU'
-}
+  | 'ZU';
 
 /** Information about the localized experiences configured for the shop. */
 export type Localization = {
-  __typename?: 'Localization';
   /** The list of countries with enabled localized experiences. */
   availableCountries: Array<Country>;
   /** The list of languages available for the active country. */
@@ -4355,7 +4199,6 @@ export type Localization = {
 
 /** Represents a location where product inventory is held. */
 export type Location = HasMetafields & Node & {
-  __typename?: 'Location';
   /** The address of the location. */
   address: LocationAddress;
   /** A globally-unique ID. */
@@ -4386,7 +4229,6 @@ export type LocationMetafieldsArgs = {
  *
  */
 export type LocationAddress = {
-  __typename?: 'LocationAddress';
   /** The first line of the address for the location. */
   address1?: Maybe<Scalars['String']['output']>;
   /** The second line of the address for the location. */
@@ -4421,7 +4263,6 @@ export type LocationAddress = {
  *
  */
 export type LocationConnection = {
-  __typename?: 'LocationConnection';
   /** A list of edges. */
   edges: Array<LocationEdge>;
   /** A list of the nodes contained in LocationEdge. */
@@ -4435,7 +4276,6 @@ export type LocationConnection = {
  *
  */
 export type LocationEdge = {
-  __typename?: 'LocationEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of LocationEdge. */
@@ -4443,20 +4283,18 @@ export type LocationEdge = {
 };
 
 /** The set of valid sort keys for the Location query. */
-export enum LocationSortKeys {
+export type LocationSortKeys =
   /** Sort by the `city` value. */
-  City = 'CITY',
+  | 'CITY'
   /** Sort by the `distance` value. */
-  Distance = 'DISTANCE',
+  | 'DISTANCE'
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `name` value. */
-  Name = 'NAME'
-}
+  | 'NAME';
 
 /** Represents a mailing address for customers and shipping. */
 export type MailingAddress = Node & {
-  __typename?: 'MailingAddress';
   /** The first line of the address. Typically the street address or PO Box number. */
   address1?: Maybe<Scalars['String']['output']>;
   /**
@@ -4533,7 +4371,6 @@ export type MailingAddressFormattedArgs = {
  *
  */
 export type MailingAddressConnection = {
-  __typename?: 'MailingAddressConnection';
   /** A list of edges. */
   edges: Array<MailingAddressEdge>;
   /** A list of the nodes contained in MailingAddressEdge. */
@@ -4547,7 +4384,6 @@ export type MailingAddressConnection = {
  *
  */
 export type MailingAddressEdge = {
-  __typename?: 'MailingAddressEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of MailingAddressEdge. */
@@ -4600,7 +4436,6 @@ export type MailingAddressInput = {
  *
  */
 export type ManualDiscountApplication = DiscountApplication & {
-  __typename?: 'ManualDiscountApplication';
   /** The method by which the discount's value is allocated to its entitled items. */
   allocationMethod: DiscountApplicationAllocationMethod;
   /** The description of the application. */
@@ -4617,7 +4452,6 @@ export type ManualDiscountApplication = DiscountApplication & {
 
 /** A group of one or more regions of the world that a merchant is targeting for sales. To learn more about markets, refer to [the Shopify Markets conceptual overview](/docs/apps/markets). */
 export type Market = HasMetafields & Node & {
-  __typename?: 'Market';
   /**
    * A human-readable unique string for the market automatically generated from its title.
    *
@@ -4663,7 +4497,6 @@ export type Media = {
  *
  */
 export type MediaConnection = {
-  __typename?: 'MediaConnection';
   /** A list of edges. */
   edges: Array<MediaEdge>;
   /** A list of the nodes contained in MediaEdge. */
@@ -4673,23 +4506,21 @@ export type MediaConnection = {
 };
 
 /** The possible content types for a media object. */
-export enum MediaContentType {
+export type MediaContentType =
   /** An externally hosted video. */
-  ExternalVideo = 'EXTERNAL_VIDEO',
+  | 'EXTERNAL_VIDEO'
   /** A Shopify hosted image. */
-  Image = 'IMAGE',
+  | 'IMAGE'
   /** A 3d model. */
-  Model_3D = 'MODEL_3D',
+  | 'MODEL_3D'
   /** A Shopify hosted video. */
-  Video = 'VIDEO'
-}
+  | 'VIDEO';
 
 /**
  * An auto-generated type which holds one Media and a cursor during pagination.
  *
  */
 export type MediaEdge = {
-  __typename?: 'MediaEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of MediaEdge. */
@@ -4697,16 +4528,14 @@ export type MediaEdge = {
 };
 
 /** Host for a Media Resource. */
-export enum MediaHost {
+export type MediaHost =
   /** Host for Vimeo embedded videos. */
-  Vimeo = 'VIMEO',
+  | 'VIMEO'
   /** Host for YouTube embedded videos. */
-  Youtube = 'YOUTUBE'
-}
+  | 'YOUTUBE';
 
 /** Represents a Shopify hosted image. */
 export type MediaImage = Media & Node & {
-  __typename?: 'MediaImage';
   /** A word or phrase to share the nature or contents of a media. */
   alt?: Maybe<Scalars['String']['output']>;
   /** A globally-unique ID. */
@@ -4723,7 +4552,6 @@ export type MediaImage = Media & Node & {
 
 /** A media presentation. */
 export type MediaPresentation = Node & {
-  __typename?: 'MediaPresentation';
   /** A JSON object representing a presentation view. */
   asJson?: Maybe<Scalars['JSON']['output']>;
   /** A globally-unique ID. */
@@ -4737,12 +4565,11 @@ export type MediaPresentationAsJsonArgs = {
 };
 
 /** The possible formats for a media presentation. */
-export enum MediaPresentationFormat {
+export type MediaPresentationFormat =
   /** A media image presentation. */
-  Image = 'IMAGE',
+  | 'IMAGE'
   /** A model viewer presentation. */
-  ModelViewer = 'MODEL_VIEWER'
-}
+  | 'MODEL_VIEWER';
 
 /**
  * A [navigation menu](https://help.shopify.com/manual/online-store/menus-and-links) representing a hierarchy
@@ -4750,7 +4577,6 @@ export enum MediaPresentationFormat {
  *
  */
 export type Menu = Node & {
-  __typename?: 'Menu';
   /** The menu's handle. */
   handle: Scalars['String']['output'];
   /** A globally-unique ID. */
@@ -4765,7 +4591,6 @@ export type Menu = Node & {
 
 /** A menu item within a parent menu. */
 export type MenuItem = Node & {
-  __typename?: 'MenuItem';
   /** A globally-unique ID. */
   id: Scalars['ID']['output'];
   /** The menu item's child items. */
@@ -4791,30 +4616,29 @@ export type MenuItem = Node & {
 export type MenuItemResource = Article | Blog | Collection | Page | Product | ShopPolicy;
 
 /** A menu item type. */
-export enum MenuItemType {
+export type MenuItemType =
   /** An article link. */
-  Article = 'ARTICLE',
+  | 'ARTICLE'
   /** A blog link. */
-  Blog = 'BLOG',
+  | 'BLOG'
   /** A catalog link. */
-  Catalog = 'CATALOG',
+  | 'CATALOG'
   /** A collection link. */
-  Collection = 'COLLECTION',
+  | 'COLLECTION'
   /** A collection link. */
-  Collections = 'COLLECTIONS',
+  | 'COLLECTIONS'
   /** A frontpage link. */
-  Frontpage = 'FRONTPAGE',
+  | 'FRONTPAGE'
   /** An http link. */
-  Http = 'HTTP',
+  | 'HTTP'
   /** A page link. */
-  Page = 'PAGE',
+  | 'PAGE'
   /** A product link. */
-  Product = 'PRODUCT',
+  | 'PRODUCT'
   /** A search link. */
-  Search = 'SEARCH',
+  | 'SEARCH'
   /** A shop policy link. */
-  ShopPolicy = 'SHOP_POLICY'
-}
+  | 'SHOP_POLICY';
 
 /** The merchandise to be purchased at checkout. */
 export type Merchandise = ProductVariant;
@@ -4825,7 +4649,6 @@ export type Merchandise = ProductVariant;
  *
  */
 export type Metafield = Node & {
-  __typename?: 'Metafield';
   /** The date and time when the storefront metafield was created. */
   createdAt: Scalars['DateTime']['output'];
   /** The description of a metafield. */
@@ -4868,16 +4691,14 @@ export type MetafieldReferencesArgs = {
 };
 
 /** Possible error codes that can be returned by `MetafieldDeleteUserError`. */
-export enum MetafieldDeleteErrorCode {
+export type MetafieldDeleteErrorCode =
   /** The owner ID is invalid. */
-  InvalidOwner = 'INVALID_OWNER',
+  | 'INVALID_OWNER'
   /** Metafield not found. */
-  MetafieldDoesNotExist = 'METAFIELD_DOES_NOT_EXIST'
-}
+  | 'METAFIELD_DOES_NOT_EXIST';
 
 /** An error that occurs during the execution of cart metafield deletion. */
 export type MetafieldDeleteUserError = DisplayableError & {
-  __typename?: 'MetafieldDeleteUserError';
   /** The error code. */
   code?: Maybe<MetafieldDeleteErrorCode>;
   /** The path to the input field that caused the error. */
@@ -4919,7 +4740,6 @@ export type MetafieldReference = Collection | GenericFile | MediaImage | Metaobj
  *
  */
 export type MetafieldReferenceConnection = {
-  __typename?: 'MetafieldReferenceConnection';
   /** A list of edges. */
   edges: Array<MetafieldReferenceEdge>;
   /** A list of the nodes contained in MetafieldReferenceEdge. */
@@ -4933,7 +4753,6 @@ export type MetafieldReferenceConnection = {
  *
  */
 export type MetafieldReferenceEdge = {
-  __typename?: 'MetafieldReferenceEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of MetafieldReferenceEdge. */
@@ -4942,7 +4761,6 @@ export type MetafieldReferenceEdge = {
 
 /** An error that occurs during the execution of `MetafieldsSet`. */
 export type MetafieldsSetUserError = DisplayableError & {
-  __typename?: 'MetafieldsSetUserError';
   /** The error code. */
   code?: Maybe<MetafieldsSetUserErrorCode>;
   /** The index of the array element that's causing the error. */
@@ -4954,30 +4772,28 @@ export type MetafieldsSetUserError = DisplayableError & {
 };
 
 /** Possible error codes that can be returned by `MetafieldsSetUserError`. */
-export enum MetafieldsSetUserErrorCode {
+export type MetafieldsSetUserErrorCode =
   /** The input value is blank. */
-  Blank = 'BLANK',
+  | 'BLANK'
   /** The input value isn't included in the list. */
-  Inclusion = 'INCLUSION',
+  | 'INCLUSION'
   /** The owner ID is invalid. */
-  InvalidOwner = 'INVALID_OWNER',
+  | 'INVALID_OWNER'
   /** The type is invalid. */
-  InvalidType = 'INVALID_TYPE',
+  | 'INVALID_TYPE'
   /** The value is invalid for metafield type or for definition options. */
-  InvalidValue = 'INVALID_VALUE',
+  | 'INVALID_VALUE'
   /** The input value should be less than or equal to the maximum value allowed. */
-  LessThanOrEqualTo = 'LESS_THAN_OR_EQUAL_TO',
+  | 'LESS_THAN_OR_EQUAL_TO'
   /** The input value needs to be blank. */
-  Present = 'PRESENT',
+  | 'PRESENT'
   /** The input value is too long. */
-  TooLong = 'TOO_LONG',
+  | 'TOO_LONG'
   /** The input value is too short. */
-  TooShort = 'TOO_SHORT'
-}
+  | 'TOO_SHORT';
 
 /** An instance of a user-defined model based on a MetaobjectDefinition. */
 export type Metaobject = Node & {
-  __typename?: 'Metaobject';
   /** Accesses a field of the object by key. */
   field?: Maybe<MetaobjectField>;
   /**
@@ -5007,7 +4823,6 @@ export type MetaobjectFieldArgs = {
  *
  */
 export type MetaobjectConnection = {
-  __typename?: 'MetaobjectConnection';
   /** A list of edges. */
   edges: Array<MetaobjectEdge>;
   /** A list of the nodes contained in MetaobjectEdge. */
@@ -5021,7 +4836,6 @@ export type MetaobjectConnection = {
  *
  */
 export type MetaobjectEdge = {
-  __typename?: 'MetaobjectEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of MetaobjectEdge. */
@@ -5030,7 +4844,6 @@ export type MetaobjectEdge = {
 
 /** Provides the value of a Metaobject field. */
 export type MetaobjectField = {
-  __typename?: 'MetaobjectField';
   /** The field key. */
   key: Scalars['String']['output'];
   /** A referenced object if the field type is a resource reference. */
@@ -5066,7 +4879,6 @@ export type MetaobjectHandleInput = {
 
 /** Represents a Shopify hosted 3D model. */
 export type Model3d = Media & Node & {
-  __typename?: 'Model3d';
   /** A word or phrase to share the nature or contents of a media. */
   alt?: Maybe<Scalars['String']['output']>;
   /** A globally-unique ID. */
@@ -5083,7 +4895,6 @@ export type Model3d = Media & Node & {
 
 /** Represents a source for a Shopify hosted 3d model. */
 export type Model3dSource = {
-  __typename?: 'Model3dSource';
   /** The filesize of the 3d model. */
   filesize: Scalars['Int']['output'];
   /** The format of the 3d model. */
@@ -5107,7 +4918,6 @@ export type MoneyInput = {
  *
  */
 export type MoneyV2 = {
-  __typename?: 'MoneyV2';
   /** Decimal money amount. */
   amount: Scalars['Decimal']['output'];
   /** Currency of the money. */
@@ -5116,7 +4926,6 @@ export type MoneyV2 = {
 
 /** The schema’s entry-point for mutations. This acts as the public, top-level API from which all mutation queries must start. */
 export type Mutation = {
-  __typename?: 'Mutation';
   /** Updates the attributes on a cart. */
   cartAttributesUpdate?: Maybe<CartAttributesUpdatePayload>;
   /**
@@ -5589,7 +5398,6 @@ export type OnlineStorePublishable = {
 
 /** An order is a customer’s completed request to purchase one or more products from a shop. An order is created when a customer completes the checkout process, during which time they provides an email address, billing address and payment information. */
 export type Order = HasMetafields & Node & {
-  __typename?: 'Order';
   /** The address associated with the payment method. */
   billingAddress?: Maybe<MailingAddress>;
   /** The reason for the order's cancellation. Returns `null` if the order wasn't canceled. */
@@ -5739,25 +5547,23 @@ export type OrderSuccessfulFulfillmentsArgs = {
 };
 
 /** Represents the reason for the order's cancellation. */
-export enum OrderCancelReason {
+export type OrderCancelReason =
   /** The customer wanted to cancel the order. */
-  Customer = 'CUSTOMER',
+  | 'CUSTOMER'
   /** Payment was declined. */
-  Declined = 'DECLINED',
+  | 'DECLINED'
   /** The order was fraudulent. */
-  Fraud = 'FRAUD',
+  | 'FRAUD'
   /** There was insufficient inventory. */
-  Inventory = 'INVENTORY',
+  | 'INVENTORY'
   /** The order was canceled for an unlisted reason. */
-  Other = 'OTHER'
-}
+  | 'OTHER';
 
 /**
  * An auto-generated type for paginating through multiple Orders.
  *
  */
 export type OrderConnection = {
-  __typename?: 'OrderConnection';
   /** A list of edges. */
   edges: Array<OrderEdge>;
   /** A list of the nodes contained in OrderEdge. */
@@ -5773,7 +5579,6 @@ export type OrderConnection = {
  *
  */
 export type OrderEdge = {
-  __typename?: 'OrderEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of OrderEdge. */
@@ -5781,48 +5586,45 @@ export type OrderEdge = {
 };
 
 /** Represents the order's current financial status. */
-export enum OrderFinancialStatus {
+export type OrderFinancialStatus =
   /** Displayed as **Authorized**. */
-  Authorized = 'AUTHORIZED',
+  | 'AUTHORIZED'
   /** Displayed as **Paid**. */
-  Paid = 'PAID',
+  | 'PAID'
   /** Displayed as **Partially paid**. */
-  PartiallyPaid = 'PARTIALLY_PAID',
+  | 'PARTIALLY_PAID'
   /** Displayed as **Partially refunded**. */
-  PartiallyRefunded = 'PARTIALLY_REFUNDED',
+  | 'PARTIALLY_REFUNDED'
   /** Displayed as **Pending**. */
-  Pending = 'PENDING',
+  | 'PENDING'
   /** Displayed as **Refunded**. */
-  Refunded = 'REFUNDED',
+  | 'REFUNDED'
   /** Displayed as **Voided**. */
-  Voided = 'VOIDED'
-}
+  | 'VOIDED';
 
 /** Represents the order's aggregated fulfillment status for display purposes. */
-export enum OrderFulfillmentStatus {
+export type OrderFulfillmentStatus =
   /** Displayed as **Fulfilled**. All of the items in the order have been fulfilled. */
-  Fulfilled = 'FULFILLED',
+  | 'FULFILLED'
   /** Displayed as **In progress**. Some of the items in the order have been fulfilled, or a request for fulfillment has been sent to the fulfillment service. */
-  InProgress = 'IN_PROGRESS',
+  | 'IN_PROGRESS'
   /** Displayed as **On hold**. All of the unfulfilled items in this order are on hold. */
-  OnHold = 'ON_HOLD',
+  | 'ON_HOLD'
   /** Displayed as **Open**. None of the items in the order have been fulfilled. Replaced by "UNFULFILLED" status. */
-  Open = 'OPEN',
+  | 'OPEN'
   /** Displayed as **Partially fulfilled**. Some of the items in the order have been fulfilled. */
-  PartiallyFulfilled = 'PARTIALLY_FULFILLED',
+  | 'PARTIALLY_FULFILLED'
   /** Displayed as **Pending fulfillment**. A request for fulfillment of some items awaits a response from the fulfillment service. Replaced by "IN_PROGRESS" status. */
-  PendingFulfillment = 'PENDING_FULFILLMENT',
+  | 'PENDING_FULFILLMENT'
   /** Displayed as **Restocked**. All of the items in the order have been restocked. Replaced by "UNFULFILLED" status. */
-  Restocked = 'RESTOCKED',
+  | 'RESTOCKED'
   /** Displayed as **Scheduled**. All of the unfulfilled items in this order are scheduled for fulfillment at later time. */
-  Scheduled = 'SCHEDULED',
+  | 'SCHEDULED'
   /** Displayed as **Unfulfilled**. None of the items in the order have been fulfilled. */
-  Unfulfilled = 'UNFULFILLED'
-}
+  | 'UNFULFILLED';
 
 /** Represents a single line in an order. There is one line item for each distinct product variant. */
 export type OrderLineItem = {
-  __typename?: 'OrderLineItem';
   /** The number of entries associated to the line item minus the items that have been removed. */
   currentQuantity: Scalars['Int']['output'];
   /** List of custom attributes associated to the line item. */
@@ -5846,7 +5648,6 @@ export type OrderLineItem = {
  *
  */
 export type OrderLineItemConnection = {
-  __typename?: 'OrderLineItemConnection';
   /** A list of edges. */
   edges: Array<OrderLineItemEdge>;
   /** A list of the nodes contained in OrderLineItemEdge. */
@@ -5860,7 +5661,6 @@ export type OrderLineItemConnection = {
  *
  */
 export type OrderLineItemEdge = {
-  __typename?: 'OrderLineItemEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of OrderLineItemEdge. */
@@ -5868,24 +5668,22 @@ export type OrderLineItemEdge = {
 };
 
 /** The set of valid sort keys for the Order query. */
-export enum OrderSortKeys {
+export type OrderSortKeys =
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `processed_at` value. */
-  ProcessedAt = 'PROCESSED_AT',
+  | 'PROCESSED_AT'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `total_price` value. */
-  TotalPrice = 'TOTAL_PRICE'
-}
+  | 'TOTAL_PRICE';
 
 /** Shopify merchants can create pages to hold static HTML content. Each Page object represents a custom page on the online store. */
 export type Page = HasMetafields & Node & OnlineStorePublishable & Trackable & {
-  __typename?: 'Page';
   /** The description of the page, complete with HTML formatting. */
   body: Scalars['HTML']['output'];
   /** Summary of the page body. */
@@ -5930,7 +5728,6 @@ export type PageMetafieldsArgs = {
  *
  */
 export type PageConnection = {
-  __typename?: 'PageConnection';
   /** A list of edges. */
   edges: Array<PageEdge>;
   /** A list of the nodes contained in PageEdge. */
@@ -5944,7 +5741,6 @@ export type PageConnection = {
  *
  */
 export type PageEdge = {
-  __typename?: 'PageEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of PageEdge. */
@@ -5958,7 +5754,6 @@ export type PageEdge = {
  *
  */
 export type PageInfo = {
-  __typename?: 'PageInfo';
   /** The cursor corresponding to the last node in edges. */
   endCursor?: Maybe<Scalars['String']['output']>;
   /** Whether there are more pages to fetch following the current page. */
@@ -5970,24 +5765,22 @@ export type PageInfo = {
 };
 
 /** The set of valid sort keys for the Page query. */
-export enum PageSortKeys {
+export type PageSortKeys =
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  | 'TITLE'
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT'
-}
+  | 'UPDATED_AT';
 
 /** A payment applied to a checkout. */
 export type Payment = Node & {
-  __typename?: 'Payment';
   /** The amount of the payment. */
   amount: MoneyV2;
   /**
@@ -6024,7 +5817,6 @@ export type Payment = Node & {
 
 /** Settings related to payments. */
 export type PaymentSettings = {
-  __typename?: 'PaymentSettings';
   /** List of the card brands which the shop accepts. */
   acceptedCardBrands: Array<CardBrand>;
   /** The url pointing to the endpoint to vault credit cards. */
@@ -6046,26 +5838,24 @@ export type PaymentSettings = {
 };
 
 /** The valid values for the types of payment token. */
-export enum PaymentTokenType {
+export type PaymentTokenType =
   /** Apple Pay token type. */
-  ApplePay = 'APPLE_PAY',
+  | 'APPLE_PAY'
   /** Google Pay token type. */
-  GooglePay = 'GOOGLE_PAY',
+  | 'GOOGLE_PAY'
   /** Shopify Pay token type. */
-  ShopifyPay = 'SHOPIFY_PAY',
+  | 'SHOPIFY_PAY'
   /** Stripe token type. */
-  StripeVaultToken = 'STRIPE_VAULT_TOKEN',
+  | 'STRIPE_VAULT_TOKEN'
   /** Vault payment token type. */
-  Vault = 'VAULT'
-}
+  | 'VAULT';
 
 /** Decides the distribution of results. */
-export enum PredictiveSearchLimitScope {
+export type PredictiveSearchLimitScope =
   /** Return results up to limit across all types. */
-  All = 'ALL',
+  | 'ALL'
   /** Return results up to limit per type. */
-  Each = 'EACH'
-}
+  | 'EACH';
 
 /**
  * A predictive search result represents a list of products, collections, pages, articles, and query suggestions
@@ -6073,7 +5863,6 @@ export enum PredictiveSearchLimitScope {
  *
  */
 export type PredictiveSearchResult = {
-  __typename?: 'PredictiveSearchResult';
   /** The articles that match the search query. */
   articles: Array<Article>;
   /** The articles that match the search query. */
@@ -6087,18 +5876,17 @@ export type PredictiveSearchResult = {
 };
 
 /** The types of search items to perform predictive search on. */
-export enum PredictiveSearchType {
+export type PredictiveSearchType =
   /** Returns matching articles. */
-  Article = 'ARTICLE',
+  | 'ARTICLE'
   /** Returns matching collections. */
-  Collection = 'COLLECTION',
+  | 'COLLECTION'
   /** Returns matching pages. */
-  Page = 'PAGE',
+  | 'PAGE'
   /** Returns matching products. */
-  Product = 'PRODUCT',
+  | 'PRODUCT'
   /** Returns matching query strings. */
-  Query = 'QUERY'
-}
+  | 'QUERY';
 
 /**
  * The input fields for a filter used to view a subset of products in a collection matching a specific price range.
@@ -6113,7 +5901,6 @@ export type PriceRangeFilter = {
 
 /** The value of the percentage pricing object. */
 export type PricingPercentageValue = {
-  __typename?: 'PricingPercentageValue';
   /** The percentage value of the object. */
   percentage: Scalars['Float']['output'];
 };
@@ -6129,7 +5916,6 @@ export type PricingValue = MoneyV2 | PricingPercentageValue;
  *
  */
 export type Product = HasMetafields & Node & OnlineStorePublishable & Trackable & {
-  __typename?: 'Product';
   /** Indicates if at least one product variant is available for sale. */
   availableForSale: Scalars['Boolean']['output'];
   /** List of collections a product belongs to. */
@@ -6361,35 +6147,33 @@ export type ProductVariantsArgs = {
 };
 
 /** The set of valid sort keys for the ProductCollection query. */
-export enum ProductCollectionSortKeys {
+export type ProductCollectionSortKeys =
   /** Sort by the `best-selling` value. */
-  BestSelling = 'BEST_SELLING',
+  | 'BEST_SELLING'
   /** Sort by the `collection-default` value. */
-  CollectionDefault = 'COLLECTION_DEFAULT',
+  | 'COLLECTION_DEFAULT'
   /** Sort by the `created` value. */
-  Created = 'CREATED',
+  | 'CREATED'
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `manual` value. */
-  Manual = 'MANUAL',
+  | 'MANUAL'
   /** Sort by the `price` value. */
-  Price = 'PRICE',
+  | 'PRICE'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `title` value. */
-  Title = 'TITLE'
-}
+  | 'TITLE';
 
 /**
  * An auto-generated type for paginating through multiple Products.
  *
  */
 export type ProductConnection = {
-  __typename?: 'ProductConnection';
   /** A list of edges. */
   edges: Array<ProductEdge>;
   /** A list of available filters. */
@@ -6405,7 +6189,6 @@ export type ProductConnection = {
  *
  */
 export type ProductEdge = {
-  __typename?: 'ProductEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of ProductEdge. */
@@ -6438,34 +6221,32 @@ export type ProductFilter = {
 };
 
 /** The set of valid sort keys for the ProductImage query. */
-export enum ProductImageSortKeys {
+export type ProductImageSortKeys =
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  | 'CREATED_AT'
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `position` value. */
-  Position = 'POSITION',
+  | 'POSITION'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE'
-}
+  | 'RELEVANCE';
 
 /** The set of valid sort keys for the ProductMedia query. */
-export enum ProductMediaSortKeys {
+export type ProductMediaSortKeys =
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `position` value. */
-  Position = 'POSITION',
+  | 'POSITION'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE'
-}
+  | 'RELEVANCE';
 
 /**
  * Product property names like "Size", "Color", and "Material" that the customers can select.
@@ -6474,7 +6255,6 @@ export enum ProductMediaSortKeys {
  *
  */
 export type ProductOption = Node & {
-  __typename?: 'ProductOption';
   /** A globally-unique ID. */
   id: Scalars['ID']['output'];
   /** The product option’s name. */
@@ -6485,7 +6265,6 @@ export type ProductOption = Node & {
 
 /** The price range of the product. */
 export type ProductPriceRange = {
-  __typename?: 'ProductPriceRange';
   /** The highest variant's price. */
   maxVariantPrice: MoneyV2;
   /** The lowest variant's price. */
@@ -6497,45 +6276,42 @@ export type ProductPriceRange = {
  * You can use intent to generate product recommendations according to different strategies.
  *
  */
-export enum ProductRecommendationIntent {
+export type ProductRecommendationIntent =
   /** Offer customers products that are complementary to a product for which recommendations are to be fetched. An example is add-on products that display in a Pair it with section. */
-  Complementary = 'COMPLEMENTARY',
+  | 'COMPLEMENTARY'
   /** Offer customers a mix of products that are similar or complementary to a product for which recommendations are to be fetched. An example is substitutable products that display in a You may also like section. */
-  Related = 'RELATED'
-}
+  | 'RELATED';
 
 /** The set of valid sort keys for the Product query. */
-export enum ProductSortKeys {
+export type ProductSortKeys =
   /** Sort by the `best_selling` value. */
-  BestSelling = 'BEST_SELLING',
+  | 'BEST_SELLING'
   /** Sort by the `created_at` value. */
-  CreatedAt = 'CREATED_AT',
+  | 'CREATED_AT'
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `price` value. */
-  Price = 'PRICE',
+  | 'PRICE'
   /** Sort by the `product_type` value. */
-  ProductType = 'PRODUCT_TYPE',
+  | 'PRODUCT_TYPE'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `title` value. */
-  Title = 'TITLE',
+  | 'TITLE'
   /** Sort by the `updated_at` value. */
-  UpdatedAt = 'UPDATED_AT',
+  | 'UPDATED_AT'
   /** Sort by the `vendor` value. */
-  Vendor = 'VENDOR'
-}
+  | 'VENDOR';
 
 /**
  * A product variant represents a different version of a product, such as differing sizes or differing colors.
  *
  */
 export type ProductVariant = HasMetafields & Node & {
-  __typename?: 'ProductVariant';
   /** Indicates if the product variant is available for sale. */
   availableForSale: Scalars['Boolean']['output'];
   /** The barcode (for example, ISBN, UPC, or GTIN) associated with the variant. */
@@ -6641,7 +6417,6 @@ export type ProductVariantStoreAvailabilityArgs = {
  *
  */
 export type ProductVariantConnection = {
-  __typename?: 'ProductVariantConnection';
   /** A list of edges. */
   edges: Array<ProductVariantEdge>;
   /** A list of the nodes contained in ProductVariantEdge. */
@@ -6655,7 +6430,6 @@ export type ProductVariantConnection = {
  *
  */
 export type ProductVariantEdge = {
-  __typename?: 'ProductVariantEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of ProductVariantEdge. */
@@ -6663,26 +6437,24 @@ export type ProductVariantEdge = {
 };
 
 /** The set of valid sort keys for the ProductVariant query. */
-export enum ProductVariantSortKeys {
+export type ProductVariantSortKeys =
   /** Sort by the `id` value. */
-  Id = 'ID',
+  | 'ID'
   /** Sort by the `position` value. */
-  Position = 'POSITION',
+  | 'POSITION'
   /**
    * Sort by relevance to the search terms when the `query` parameter is specified on the connection.
    * Don't use this sort key when no search query is specified.
    *
    */
-  Relevance = 'RELEVANCE',
+  | 'RELEVANCE'
   /** Sort by the `sku` value. */
-  Sku = 'SKU',
+  | 'SKU'
   /** Sort by the `title` value. */
-  Title = 'TITLE'
-}
+  | 'TITLE';
 
 /** The schema’s entry-point for queries. This acts as the public, top-level API from which all queries must start. */
 export type QueryRoot = {
-  __typename?: 'QueryRoot';
   /** Fetch a specific Article by its ID. */
   article?: Maybe<Article>;
   /** List of the shop's articles. */
@@ -7031,7 +6803,6 @@ export type QueryRootUrlRedirectsArgs = {
 
 /** SEO information. */
 export type Seo = {
-  __typename?: 'SEO';
   /** The meta description. */
   description?: Maybe<Scalars['String']['output']>;
   /** The SEO title. */
@@ -7044,7 +6815,6 @@ export type Seo = {
  *
  */
 export type ScriptDiscountApplication = DiscountApplication & {
-  __typename?: 'ScriptDiscountApplication';
   /** The method by which the discount's value is allocated to its entitled items. */
   allocationMethod: DiscountApplicationAllocationMethod;
   /** Which lines of targetType that the discount is allocated over. */
@@ -7058,16 +6828,14 @@ export type ScriptDiscountApplication = DiscountApplication & {
 };
 
 /** Specifies whether to perform a partial word match on the last search term. */
-export enum SearchPrefixQueryType {
+export type SearchPrefixQueryType =
   /** Perform a partial word match on the last search term. */
-  Last = 'LAST',
+  | 'LAST'
   /** Don't perform a partial word match on the last search term. */
-  None = 'NONE'
-}
+  | 'NONE';
 
 /** A search query suggestion. */
 export type SearchQuerySuggestion = Trackable & {
-  __typename?: 'SearchQuerySuggestion';
   /** The text of the search query suggestion with highlighted HTML tags. */
   styledText: Scalars['String']['output'];
   /** The text of the search query suggestion. */
@@ -7087,7 +6855,6 @@ export type SearchResultItem = Article | Page | Product;
  *
  */
 export type SearchResultItemConnection = {
-  __typename?: 'SearchResultItemConnection';
   /** A list of edges. */
   edges: Array<SearchResultItemEdge>;
   /** A list of the nodes contained in SearchResultItemEdge. */
@@ -7105,7 +6872,6 @@ export type SearchResultItemConnection = {
  *
  */
 export type SearchResultItemEdge = {
-  __typename?: 'SearchResultItemEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of SearchResultItemEdge. */
@@ -7113,54 +6879,50 @@ export type SearchResultItemEdge = {
 };
 
 /** The set of valid sort keys for the search query. */
-export enum SearchSortKeys {
+export type SearchSortKeys =
   /** Sort by the `price` value. */
-  Price = 'PRICE',
+  | 'PRICE'
   /** Sort by relevance to the search terms. */
-  Relevance = 'RELEVANCE'
-}
+  | 'RELEVANCE';
 
 /** The types of search items to perform search within. */
-export enum SearchType {
+export type SearchType =
   /** Returns matching articles. */
-  Article = 'ARTICLE',
+  | 'ARTICLE'
   /** Returns matching pages. */
-  Page = 'PAGE',
+  | 'PAGE'
   /** Returns matching products. */
-  Product = 'PRODUCT'
-}
+  | 'PRODUCT';
 
 /** Specifies whether to display results for unavailable products. */
-export enum SearchUnavailableProductsType {
+export type SearchUnavailableProductsType =
   /** Exclude unavailable products. */
-  Hide = 'HIDE',
+  | 'HIDE'
   /** Show unavailable products after all other matching results. This is the default. */
-  Last = 'LAST',
+  | 'LAST'
   /** Show unavailable products in the order that they're found. */
-  Show = 'SHOW'
-}
+  | 'SHOW';
 
 /** Specifies the list of resource fields to search. */
-export enum SearchableField {
+export type SearchableField =
   /** Author of the page or article. */
-  Author = 'AUTHOR',
+  | 'AUTHOR'
   /** Body of the page or article or product description or collection description. */
-  Body = 'BODY',
+  | 'BODY'
   /** Product type. */
-  ProductType = 'PRODUCT_TYPE',
+  | 'PRODUCT_TYPE'
   /** Tag associated with the product or article. */
-  Tag = 'TAG',
+  | 'TAG'
   /** Title of the page or article or product title or collection title. */
-  Title = 'TITLE',
+  | 'TITLE'
   /** Variant barcode. */
-  VariantsBarcode = 'VARIANTS_BARCODE',
+  | 'VARIANTS_BARCODE'
   /** Variant SKU. */
-  VariantsSku = 'VARIANTS_SKU',
+  | 'VARIANTS_SKU'
   /** Variant title. */
-  VariantsTitle = 'VARIANTS_TITLE',
+  | 'VARIANTS_TITLE'
   /** Product vendor. */
-  Vendor = 'VENDOR'
-}
+  | 'VENDOR';
 
 /**
  * Properties used by customers to select a product variant.
@@ -7168,7 +6930,6 @@ export enum SearchableField {
  *
  */
 export type SelectedOption = {
-  __typename?: 'SelectedOption';
   /** The product option’s name. */
   name: Scalars['String']['output'];
   /** The product option’s value. */
@@ -7185,7 +6946,6 @@ export type SelectedOptionInput = {
 
 /** Represents how products and variants can be sold and purchased. */
 export type SellingPlan = {
-  __typename?: 'SellingPlan';
   /** The initial payment due for the purchase. */
   checkoutCharge: SellingPlanCheckoutCharge;
   /** The description of the selling plan. */
@@ -7204,7 +6964,6 @@ export type SellingPlan = {
 
 /** Represents an association between a variant and a selling plan. Selling plan allocations describe the options offered for each variant, and the price of the variant when purchased with a selling plan. */
 export type SellingPlanAllocation = {
-  __typename?: 'SellingPlanAllocation';
   /** The checkout charge amount due for the purchase. */
   checkoutChargeAmount: MoneyV2;
   /** A list of price adjustments, with a maximum of two. When there are two, the first price adjustment goes into effect at the time of purchase, while the second one starts after a certain number of orders. A price adjustment represents how a selling plan affects pricing when a variant is purchased with a selling plan. Prices display in the customer's currency if the shop is configured for it. */
@@ -7220,7 +6979,6 @@ export type SellingPlanAllocation = {
  *
  */
 export type SellingPlanAllocationConnection = {
-  __typename?: 'SellingPlanAllocationConnection';
   /** A list of edges. */
   edges: Array<SellingPlanAllocationEdge>;
   /** A list of the nodes contained in SellingPlanAllocationEdge. */
@@ -7234,7 +6992,6 @@ export type SellingPlanAllocationConnection = {
  *
  */
 export type SellingPlanAllocationEdge = {
-  __typename?: 'SellingPlanAllocationEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of SellingPlanAllocationEdge. */
@@ -7243,7 +7000,6 @@ export type SellingPlanAllocationEdge = {
 
 /** The resulting prices for variants when they're purchased with a specific selling plan. */
 export type SellingPlanAllocationPriceAdjustment = {
-  __typename?: 'SellingPlanAllocationPriceAdjustment';
   /** The price of the variant when it's purchased without a selling plan for the same number of deliveries. For example, if a customer purchases 6 deliveries of $10.00 granola separately, then the price is 6 x $10.00 = $60.00. */
   compareAtPrice: MoneyV2;
   /** The effective price for a single delivery. For example, for a prepaid subscription plan that includes 6 deliveries at the price of $48.00, the per delivery price is $8.00. */
@@ -7256,7 +7012,6 @@ export type SellingPlanAllocationPriceAdjustment = {
 
 /** The initial payment due for the purchase. */
 export type SellingPlanCheckoutCharge = {
-  __typename?: 'SellingPlanCheckoutCharge';
   /** The charge type for the checkout charge. */
   type: SellingPlanCheckoutChargeType;
   /** The charge value for the checkout charge. */
@@ -7265,18 +7020,16 @@ export type SellingPlanCheckoutCharge = {
 
 /** The percentage value of the price used for checkout charge. */
 export type SellingPlanCheckoutChargePercentageValue = {
-  __typename?: 'SellingPlanCheckoutChargePercentageValue';
   /** The percentage value of the price used for checkout charge. */
   percentage: Scalars['Float']['output'];
 };
 
 /** The checkout charge when the full amount isn't charged at checkout. */
-export enum SellingPlanCheckoutChargeType {
+export type SellingPlanCheckoutChargeType =
   /** The checkout charge is a percentage of the product or variant price. */
-  Percentage = 'PERCENTAGE',
+  | 'PERCENTAGE'
   /** The checkout charge is a fixed price amount. */
-  Price = 'PRICE'
-}
+  | 'PRICE';
 
 /** The portion of the price to be charged at checkout. */
 export type SellingPlanCheckoutChargeValue = MoneyV2 | SellingPlanCheckoutChargePercentageValue;
@@ -7286,7 +7039,6 @@ export type SellingPlanCheckoutChargeValue = MoneyV2 | SellingPlanCheckoutCharge
  *
  */
 export type SellingPlanConnection = {
-  __typename?: 'SellingPlanConnection';
   /** A list of edges. */
   edges: Array<SellingPlanEdge>;
   /** A list of the nodes contained in SellingPlanEdge. */
@@ -7300,7 +7052,6 @@ export type SellingPlanConnection = {
  *
  */
 export type SellingPlanEdge = {
-  __typename?: 'SellingPlanEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of SellingPlanEdge. */
@@ -7309,21 +7060,18 @@ export type SellingPlanEdge = {
 
 /** A fixed amount that's deducted from the original variant price. For example, $10.00 off. */
 export type SellingPlanFixedAmountPriceAdjustment = {
-  __typename?: 'SellingPlanFixedAmountPriceAdjustment';
   /** The money value of the price adjustment. */
   adjustmentAmount: MoneyV2;
 };
 
 /** A fixed price adjustment for a variant that's purchased with a selling plan. */
 export type SellingPlanFixedPriceAdjustment = {
-  __typename?: 'SellingPlanFixedPriceAdjustment';
   /** A new price of the variant when it's purchased with the selling plan. */
   price: MoneyV2;
 };
 
 /** Represents a selling method. For example, 'Subscribe and save' is a selling method where customers pay for goods or services per delivery. A selling plan group contains individual selling plans. */
 export type SellingPlanGroup = {
-  __typename?: 'SellingPlanGroup';
   /** A display friendly name for the app that created the selling plan group. */
   appName?: Maybe<Scalars['String']['output']>;
   /** The name of the selling plan group. */
@@ -7349,7 +7097,6 @@ export type SellingPlanGroupSellingPlansArgs = {
  *
  */
 export type SellingPlanGroupConnection = {
-  __typename?: 'SellingPlanGroupConnection';
   /** A list of edges. */
   edges: Array<SellingPlanGroupEdge>;
   /** A list of the nodes contained in SellingPlanGroupEdge. */
@@ -7363,7 +7110,6 @@ export type SellingPlanGroupConnection = {
  *
  */
 export type SellingPlanGroupEdge = {
-  __typename?: 'SellingPlanGroupEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of SellingPlanGroupEdge. */
@@ -7376,7 +7122,6 @@ export type SellingPlanGroupEdge = {
  * Individual selling plans contribute their options to the associated selling plan group. For example, a selling plan group might have an option called `option1: Delivery every`. One selling plan in that group could contribute `option1: 2 weeks` with the pricing for that option, and another selling plan could contribute `option1: 4 weeks`, with different pricing.
  */
 export type SellingPlanGroupOption = {
-  __typename?: 'SellingPlanGroupOption';
   /** The name of the option. For example, 'Delivery every'. */
   name: Scalars['String']['output'];
   /** The values for the options specified by the selling plans in the selling plan group. For example, '1 week', '2 weeks', '3 weeks'. */
@@ -7385,7 +7130,6 @@ export type SellingPlanGroupOption = {
 
 /** An option provided by a Selling Plan. */
 export type SellingPlanOption = {
-  __typename?: 'SellingPlanOption';
   /** The name of the option (ie "Delivery every"). */
   name?: Maybe<Scalars['String']['output']>;
   /** The value of the option (ie "Month"). */
@@ -7394,14 +7138,12 @@ export type SellingPlanOption = {
 
 /** A percentage amount that's deducted from the original variant price. For example, 10% off. */
 export type SellingPlanPercentagePriceAdjustment = {
-  __typename?: 'SellingPlanPercentagePriceAdjustment';
   /** The percentage value of the price adjustment. */
   adjustmentPercentage: Scalars['Int']['output'];
 };
 
 /** Represents by how much the price of a variant associated with a selling plan is adjusted. Each variant can have up to two price adjustments. If a variant has multiple price adjustments, then the first price adjustment applies when the variant is initially purchased. The second price adjustment applies after a certain number of orders (specified by the `orderCount` field) are made. If a selling plan doesn't have any price adjustments, then the unadjusted price of the variant is the effective price. */
 export type SellingPlanPriceAdjustment = {
-  __typename?: 'SellingPlanPriceAdjustment';
   /** The type of price adjustment. An adjustment value can have one of three types: percentage, amount off, or a new price. */
   adjustmentValue: SellingPlanPriceAdjustmentValue;
   /** The number of orders that the price adjustment applies to. If the price adjustment always applies, then this field is `null`. */
@@ -7413,7 +7155,6 @@ export type SellingPlanPriceAdjustmentValue = SellingPlanFixedAmountPriceAdjustm
 
 /** A shipping rate to be applied to a checkout. */
 export type ShippingRate = {
-  __typename?: 'ShippingRate';
   /** Human-readable unique identifier for this shipping rate. */
   handle: Scalars['String']['output'];
   /** Price of this shipping rate. */
@@ -7429,7 +7170,6 @@ export type ShippingRate = {
 
 /** Shop represents a collection of the general settings and information about the shop. */
 export type Shop = HasMetafields & Node & {
-  __typename?: 'Shop';
   /** The shop's branding configuration. */
   brand?: Maybe<Brand>;
   /** A description of the shop. */
@@ -7488,7 +7228,6 @@ export type ShopPayWalletContentInput = {
 
 /** Policy that a merchant has configured for their store, such as their refund or privacy policy. */
 export type ShopPolicy = Node & {
-  __typename?: 'ShopPolicy';
   /** Policy text, maximum size of 64kb. */
   body: Scalars['String']['output'];
   /** Policy’s handle. */
@@ -7508,7 +7247,6 @@ export type ShopPolicy = Node & {
  *
  */
 export type ShopPolicyWithDefault = {
-  __typename?: 'ShopPolicyWithDefault';
   /** The text of the policy. Maximum size: 64KB. */
   body: Scalars['String']['output'];
   /** The handle of the policy. */
@@ -7527,7 +7265,6 @@ export type ShopPolicyWithDefault = {
  *
  */
 export type StoreAvailability = {
-  __typename?: 'StoreAvailability';
   /** Whether the product variant is in-stock at this location. */
   available: Scalars['Boolean']['output'];
   /** The location where this product variant is stocked at. */
@@ -7543,7 +7280,6 @@ export type StoreAvailability = {
  *
  */
 export type StoreAvailabilityConnection = {
-  __typename?: 'StoreAvailabilityConnection';
   /** A list of edges. */
   edges: Array<StoreAvailabilityEdge>;
   /** A list of the nodes contained in StoreAvailabilityEdge. */
@@ -7557,7 +7293,6 @@ export type StoreAvailabilityConnection = {
  *
  */
 export type StoreAvailabilityEdge = {
-  __typename?: 'StoreAvailabilityEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of StoreAvailabilityEdge. */
@@ -7569,7 +7304,6 @@ export type StoreAvailabilityEdge = {
  *
  */
 export type StringConnection = {
-  __typename?: 'StringConnection';
   /** A list of edges. */
   edges: Array<StringEdge>;
   /** Information to aid in pagination. */
@@ -7581,7 +7315,6 @@ export type StringConnection = {
  *
  */
 export type StringEdge = {
-  __typename?: 'StringEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of StringEdge. */
@@ -7590,7 +7323,6 @@ export type StringEdge = {
 
 /** An error that occurred during cart submit for completion. */
 export type SubmissionError = {
-  __typename?: 'SubmissionError';
   /** The error code. */
   code: SubmissionErrorCode;
   /** The error message. */
@@ -7598,112 +7330,109 @@ export type SubmissionError = {
 };
 
 /** The code of the error that occurred during cart submit for completion. */
-export enum SubmissionErrorCode {
-  BuyerIdentityEmailIsInvalid = 'BUYER_IDENTITY_EMAIL_IS_INVALID',
-  BuyerIdentityEmailRequired = 'BUYER_IDENTITY_EMAIL_REQUIRED',
-  BuyerIdentityPhoneIsInvalid = 'BUYER_IDENTITY_PHONE_IS_INVALID',
-  DeliveryAddress1Invalid = 'DELIVERY_ADDRESS1_INVALID',
-  DeliveryAddress1Required = 'DELIVERY_ADDRESS1_REQUIRED',
-  DeliveryAddress1TooLong = 'DELIVERY_ADDRESS1_TOO_LONG',
-  DeliveryAddress2Invalid = 'DELIVERY_ADDRESS2_INVALID',
-  DeliveryAddress2Required = 'DELIVERY_ADDRESS2_REQUIRED',
-  DeliveryAddress2TooLong = 'DELIVERY_ADDRESS2_TOO_LONG',
-  DeliveryAddressRequired = 'DELIVERY_ADDRESS_REQUIRED',
-  DeliveryCityInvalid = 'DELIVERY_CITY_INVALID',
-  DeliveryCityRequired = 'DELIVERY_CITY_REQUIRED',
-  DeliveryCityTooLong = 'DELIVERY_CITY_TOO_LONG',
-  DeliveryCompanyInvalid = 'DELIVERY_COMPANY_INVALID',
-  DeliveryCompanyRequired = 'DELIVERY_COMPANY_REQUIRED',
-  DeliveryCompanyTooLong = 'DELIVERY_COMPANY_TOO_LONG',
-  DeliveryCountryRequired = 'DELIVERY_COUNTRY_REQUIRED',
-  DeliveryFirstNameInvalid = 'DELIVERY_FIRST_NAME_INVALID',
-  DeliveryFirstNameRequired = 'DELIVERY_FIRST_NAME_REQUIRED',
-  DeliveryFirstNameTooLong = 'DELIVERY_FIRST_NAME_TOO_LONG',
-  DeliveryInvalidPostalCodeForCountry = 'DELIVERY_INVALID_POSTAL_CODE_FOR_COUNTRY',
-  DeliveryInvalidPostalCodeForZone = 'DELIVERY_INVALID_POSTAL_CODE_FOR_ZONE',
-  DeliveryLastNameInvalid = 'DELIVERY_LAST_NAME_INVALID',
-  DeliveryLastNameRequired = 'DELIVERY_LAST_NAME_REQUIRED',
-  DeliveryLastNameTooLong = 'DELIVERY_LAST_NAME_TOO_LONG',
-  DeliveryNoDeliveryAvailable = 'DELIVERY_NO_DELIVERY_AVAILABLE',
-  DeliveryNoDeliveryAvailableForMerchandiseLine = 'DELIVERY_NO_DELIVERY_AVAILABLE_FOR_MERCHANDISE_LINE',
-  DeliveryOptionsPhoneNumberInvalid = 'DELIVERY_OPTIONS_PHONE_NUMBER_INVALID',
-  DeliveryOptionsPhoneNumberRequired = 'DELIVERY_OPTIONS_PHONE_NUMBER_REQUIRED',
-  DeliveryPhoneNumberInvalid = 'DELIVERY_PHONE_NUMBER_INVALID',
-  DeliveryPhoneNumberRequired = 'DELIVERY_PHONE_NUMBER_REQUIRED',
-  DeliveryPostalCodeInvalid = 'DELIVERY_POSTAL_CODE_INVALID',
-  DeliveryPostalCodeRequired = 'DELIVERY_POSTAL_CODE_REQUIRED',
-  DeliveryZoneNotFound = 'DELIVERY_ZONE_NOT_FOUND',
-  DeliveryZoneRequiredForCountry = 'DELIVERY_ZONE_REQUIRED_FOR_COUNTRY',
-  Error = 'ERROR',
-  MerchandiseLineLimitReached = 'MERCHANDISE_LINE_LIMIT_REACHED',
-  MerchandiseNotApplicable = 'MERCHANDISE_NOT_APPLICABLE',
-  MerchandiseNotEnoughStockAvailable = 'MERCHANDISE_NOT_ENOUGH_STOCK_AVAILABLE',
-  MerchandiseOutOfStock = 'MERCHANDISE_OUT_OF_STOCK',
-  MerchandiseProductNotPublished = 'MERCHANDISE_PRODUCT_NOT_PUBLISHED',
-  NoDeliveryGroupSelected = 'NO_DELIVERY_GROUP_SELECTED',
-  PaymentsAddress1Invalid = 'PAYMENTS_ADDRESS1_INVALID',
-  PaymentsAddress1Required = 'PAYMENTS_ADDRESS1_REQUIRED',
-  PaymentsAddress1TooLong = 'PAYMENTS_ADDRESS1_TOO_LONG',
-  PaymentsAddress2Invalid = 'PAYMENTS_ADDRESS2_INVALID',
-  PaymentsAddress2Required = 'PAYMENTS_ADDRESS2_REQUIRED',
-  PaymentsAddress2TooLong = 'PAYMENTS_ADDRESS2_TOO_LONG',
-  PaymentsBillingAddressZoneNotFound = 'PAYMENTS_BILLING_ADDRESS_ZONE_NOT_FOUND',
-  PaymentsBillingAddressZoneRequiredForCountry = 'PAYMENTS_BILLING_ADDRESS_ZONE_REQUIRED_FOR_COUNTRY',
-  PaymentsCityInvalid = 'PAYMENTS_CITY_INVALID',
-  PaymentsCityRequired = 'PAYMENTS_CITY_REQUIRED',
-  PaymentsCityTooLong = 'PAYMENTS_CITY_TOO_LONG',
-  PaymentsCompanyInvalid = 'PAYMENTS_COMPANY_INVALID',
-  PaymentsCompanyRequired = 'PAYMENTS_COMPANY_REQUIRED',
-  PaymentsCompanyTooLong = 'PAYMENTS_COMPANY_TOO_LONG',
-  PaymentsCountryRequired = 'PAYMENTS_COUNTRY_REQUIRED',
-  PaymentsCreditCardBaseExpired = 'PAYMENTS_CREDIT_CARD_BASE_EXPIRED',
-  PaymentsCreditCardBaseGatewayNotSupported = 'PAYMENTS_CREDIT_CARD_BASE_GATEWAY_NOT_SUPPORTED',
-  PaymentsCreditCardBaseInvalidStartDateOrIssueNumberForDebit = 'PAYMENTS_CREDIT_CARD_BASE_INVALID_START_DATE_OR_ISSUE_NUMBER_FOR_DEBIT',
-  PaymentsCreditCardBrandNotSupported = 'PAYMENTS_CREDIT_CARD_BRAND_NOT_SUPPORTED',
-  PaymentsCreditCardFirstNameBlank = 'PAYMENTS_CREDIT_CARD_FIRST_NAME_BLANK',
-  PaymentsCreditCardGeneric = 'PAYMENTS_CREDIT_CARD_GENERIC',
-  PaymentsCreditCardLastNameBlank = 'PAYMENTS_CREDIT_CARD_LAST_NAME_BLANK',
-  PaymentsCreditCardMonthInclusion = 'PAYMENTS_CREDIT_CARD_MONTH_INCLUSION',
-  PaymentsCreditCardNameInvalid = 'PAYMENTS_CREDIT_CARD_NAME_INVALID',
-  PaymentsCreditCardNumberInvalid = 'PAYMENTS_CREDIT_CARD_NUMBER_INVALID',
-  PaymentsCreditCardNumberInvalidFormat = 'PAYMENTS_CREDIT_CARD_NUMBER_INVALID_FORMAT',
-  PaymentsCreditCardSessionId = 'PAYMENTS_CREDIT_CARD_SESSION_ID',
-  PaymentsCreditCardVerificationValueBlank = 'PAYMENTS_CREDIT_CARD_VERIFICATION_VALUE_BLANK',
-  PaymentsCreditCardVerificationValueInvalidForCardType = 'PAYMENTS_CREDIT_CARD_VERIFICATION_VALUE_INVALID_FOR_CARD_TYPE',
-  PaymentsCreditCardYearExpired = 'PAYMENTS_CREDIT_CARD_YEAR_EXPIRED',
-  PaymentsCreditCardYearInvalidExpiryYear = 'PAYMENTS_CREDIT_CARD_YEAR_INVALID_EXPIRY_YEAR',
-  PaymentsFirstNameInvalid = 'PAYMENTS_FIRST_NAME_INVALID',
-  PaymentsFirstNameRequired = 'PAYMENTS_FIRST_NAME_REQUIRED',
-  PaymentsFirstNameTooLong = 'PAYMENTS_FIRST_NAME_TOO_LONG',
-  PaymentsInvalidPostalCodeForCountry = 'PAYMENTS_INVALID_POSTAL_CODE_FOR_COUNTRY',
-  PaymentsInvalidPostalCodeForZone = 'PAYMENTS_INVALID_POSTAL_CODE_FOR_ZONE',
-  PaymentsLastNameInvalid = 'PAYMENTS_LAST_NAME_INVALID',
-  PaymentsLastNameRequired = 'PAYMENTS_LAST_NAME_REQUIRED',
-  PaymentsLastNameTooLong = 'PAYMENTS_LAST_NAME_TOO_LONG',
-  PaymentsMethodRequired = 'PAYMENTS_METHOD_REQUIRED',
-  PaymentsMethodUnavailable = 'PAYMENTS_METHOD_UNAVAILABLE',
-  PaymentsPhoneNumberInvalid = 'PAYMENTS_PHONE_NUMBER_INVALID',
-  PaymentsPhoneNumberRequired = 'PAYMENTS_PHONE_NUMBER_REQUIRED',
-  PaymentsPostalCodeInvalid = 'PAYMENTS_POSTAL_CODE_INVALID',
-  PaymentsPostalCodeRequired = 'PAYMENTS_POSTAL_CODE_REQUIRED',
-  PaymentsShopifyPaymentsRequired = 'PAYMENTS_SHOPIFY_PAYMENTS_REQUIRED',
-  PaymentsUnacceptablePaymentAmount = 'PAYMENTS_UNACCEPTABLE_PAYMENT_AMOUNT',
-  PaymentsWalletContentMissing = 'PAYMENTS_WALLET_CONTENT_MISSING',
-  TaxesDeliveryGroupIdNotFound = 'TAXES_DELIVERY_GROUP_ID_NOT_FOUND',
-  TaxesLineIdNotFound = 'TAXES_LINE_ID_NOT_FOUND',
-  TaxesMustBeDefined = 'TAXES_MUST_BE_DEFINED'
-}
+export type SubmissionErrorCode =
+  | 'BUYER_IDENTITY_EMAIL_IS_INVALID'
+  | 'BUYER_IDENTITY_EMAIL_REQUIRED'
+  | 'BUYER_IDENTITY_PHONE_IS_INVALID'
+  | 'DELIVERY_ADDRESS1_INVALID'
+  | 'DELIVERY_ADDRESS1_REQUIRED'
+  | 'DELIVERY_ADDRESS1_TOO_LONG'
+  | 'DELIVERY_ADDRESS2_INVALID'
+  | 'DELIVERY_ADDRESS2_REQUIRED'
+  | 'DELIVERY_ADDRESS2_TOO_LONG'
+  | 'DELIVERY_ADDRESS_REQUIRED'
+  | 'DELIVERY_CITY_INVALID'
+  | 'DELIVERY_CITY_REQUIRED'
+  | 'DELIVERY_CITY_TOO_LONG'
+  | 'DELIVERY_COMPANY_INVALID'
+  | 'DELIVERY_COMPANY_REQUIRED'
+  | 'DELIVERY_COMPANY_TOO_LONG'
+  | 'DELIVERY_COUNTRY_REQUIRED'
+  | 'DELIVERY_FIRST_NAME_INVALID'
+  | 'DELIVERY_FIRST_NAME_REQUIRED'
+  | 'DELIVERY_FIRST_NAME_TOO_LONG'
+  | 'DELIVERY_INVALID_POSTAL_CODE_FOR_COUNTRY'
+  | 'DELIVERY_INVALID_POSTAL_CODE_FOR_ZONE'
+  | 'DELIVERY_LAST_NAME_INVALID'
+  | 'DELIVERY_LAST_NAME_REQUIRED'
+  | 'DELIVERY_LAST_NAME_TOO_LONG'
+  | 'DELIVERY_NO_DELIVERY_AVAILABLE'
+  | 'DELIVERY_NO_DELIVERY_AVAILABLE_FOR_MERCHANDISE_LINE'
+  | 'DELIVERY_OPTIONS_PHONE_NUMBER_INVALID'
+  | 'DELIVERY_OPTIONS_PHONE_NUMBER_REQUIRED'
+  | 'DELIVERY_PHONE_NUMBER_INVALID'
+  | 'DELIVERY_PHONE_NUMBER_REQUIRED'
+  | 'DELIVERY_POSTAL_CODE_INVALID'
+  | 'DELIVERY_POSTAL_CODE_REQUIRED'
+  | 'DELIVERY_ZONE_NOT_FOUND'
+  | 'DELIVERY_ZONE_REQUIRED_FOR_COUNTRY'
+  | 'ERROR'
+  | 'MERCHANDISE_LINE_LIMIT_REACHED'
+  | 'MERCHANDISE_NOT_APPLICABLE'
+  | 'MERCHANDISE_NOT_ENOUGH_STOCK_AVAILABLE'
+  | 'MERCHANDISE_OUT_OF_STOCK'
+  | 'MERCHANDISE_PRODUCT_NOT_PUBLISHED'
+  | 'NO_DELIVERY_GROUP_SELECTED'
+  | 'PAYMENTS_ADDRESS1_INVALID'
+  | 'PAYMENTS_ADDRESS1_REQUIRED'
+  | 'PAYMENTS_ADDRESS1_TOO_LONG'
+  | 'PAYMENTS_ADDRESS2_INVALID'
+  | 'PAYMENTS_ADDRESS2_REQUIRED'
+  | 'PAYMENTS_ADDRESS2_TOO_LONG'
+  | 'PAYMENTS_BILLING_ADDRESS_ZONE_NOT_FOUND'
+  | 'PAYMENTS_BILLING_ADDRESS_ZONE_REQUIRED_FOR_COUNTRY'
+  | 'PAYMENTS_CITY_INVALID'
+  | 'PAYMENTS_CITY_REQUIRED'
+  | 'PAYMENTS_CITY_TOO_LONG'
+  | 'PAYMENTS_COMPANY_INVALID'
+  | 'PAYMENTS_COMPANY_REQUIRED'
+  | 'PAYMENTS_COMPANY_TOO_LONG'
+  | 'PAYMENTS_COUNTRY_REQUIRED'
+  | 'PAYMENTS_CREDIT_CARD_BASE_EXPIRED'
+  | 'PAYMENTS_CREDIT_CARD_BASE_GATEWAY_NOT_SUPPORTED'
+  | 'PAYMENTS_CREDIT_CARD_BASE_INVALID_START_DATE_OR_ISSUE_NUMBER_FOR_DEBIT'
+  | 'PAYMENTS_CREDIT_CARD_BRAND_NOT_SUPPORTED'
+  | 'PAYMENTS_CREDIT_CARD_FIRST_NAME_BLANK'
+  | 'PAYMENTS_CREDIT_CARD_GENERIC'
+  | 'PAYMENTS_CREDIT_CARD_LAST_NAME_BLANK'
+  | 'PAYMENTS_CREDIT_CARD_MONTH_INCLUSION'
+  | 'PAYMENTS_CREDIT_CARD_NAME_INVALID'
+  | 'PAYMENTS_CREDIT_CARD_NUMBER_INVALID'
+  | 'PAYMENTS_CREDIT_CARD_NUMBER_INVALID_FORMAT'
+  | 'PAYMENTS_CREDIT_CARD_SESSION_ID'
+  | 'PAYMENTS_CREDIT_CARD_VERIFICATION_VALUE_BLANK'
+  | 'PAYMENTS_CREDIT_CARD_VERIFICATION_VALUE_INVALID_FOR_CARD_TYPE'
+  | 'PAYMENTS_CREDIT_CARD_YEAR_EXPIRED'
+  | 'PAYMENTS_CREDIT_CARD_YEAR_INVALID_EXPIRY_YEAR'
+  | 'PAYMENTS_FIRST_NAME_INVALID'
+  | 'PAYMENTS_FIRST_NAME_REQUIRED'
+  | 'PAYMENTS_FIRST_NAME_TOO_LONG'
+  | 'PAYMENTS_INVALID_POSTAL_CODE_FOR_COUNTRY'
+  | 'PAYMENTS_INVALID_POSTAL_CODE_FOR_ZONE'
+  | 'PAYMENTS_LAST_NAME_INVALID'
+  | 'PAYMENTS_LAST_NAME_REQUIRED'
+  | 'PAYMENTS_LAST_NAME_TOO_LONG'
+  | 'PAYMENTS_METHOD_REQUIRED'
+  | 'PAYMENTS_METHOD_UNAVAILABLE'
+  | 'PAYMENTS_PHONE_NUMBER_INVALID'
+  | 'PAYMENTS_PHONE_NUMBER_REQUIRED'
+  | 'PAYMENTS_POSTAL_CODE_INVALID'
+  | 'PAYMENTS_POSTAL_CODE_REQUIRED'
+  | 'PAYMENTS_SHOPIFY_PAYMENTS_REQUIRED'
+  | 'PAYMENTS_UNACCEPTABLE_PAYMENT_AMOUNT'
+  | 'PAYMENTS_WALLET_CONTENT_MISSING'
+  | 'TAXES_DELIVERY_GROUP_ID_NOT_FOUND'
+  | 'TAXES_LINE_ID_NOT_FOUND'
+  | 'TAXES_MUST_BE_DEFINED';
 
 /** Cart submit for checkout completion is successful. */
 export type SubmitAlreadyAccepted = {
-  __typename?: 'SubmitAlreadyAccepted';
   /** The ID of the cart completion attempt that will be used for polling for the result. */
   attemptId: Scalars['String']['output'];
 };
 
 /** Cart submit for checkout completion failed. */
 export type SubmitFailed = {
-  __typename?: 'SubmitFailed';
   /** The URL of the checkout for the cart. */
   checkoutUrl?: Maybe<Scalars['URL']['output']>;
   /** The list of errors that occurred from executing the mutation. */
@@ -7712,14 +7441,12 @@ export type SubmitFailed = {
 
 /** Cart submit for checkout completion is already accepted. */
 export type SubmitSuccess = {
-  __typename?: 'SubmitSuccess';
   /** The ID of the cart completion attempt that will be used for polling for the result. */
   attemptId: Scalars['String']['output'];
 };
 
 /** Cart submit for checkout completion is throttled. */
 export type SubmitThrottled = {
-  __typename?: 'SubmitThrottled';
   /**
    * UTC date time string that indicates the time after which clients should make their next
    * poll request. Any poll requests sent before this time will be ignored. Use this value to schedule the
@@ -7759,7 +7486,6 @@ export type Trackable = {
 
 /** An object representing exchange of money for a product or service. */
 export type Transaction = {
-  __typename?: 'Transaction';
   /** The amount of money that the transaction was for. */
   amount: MoneyV2;
   /**
@@ -7781,41 +7507,38 @@ export type Transaction = {
 };
 
 /** The different kinds of order transactions. */
-export enum TransactionKind {
+export type TransactionKind =
   /**
    * An amount reserved against the cardholder's funding source.
    * Money does not change hands until the authorization is captured.
    *
    */
-  Authorization = 'AUTHORIZATION',
+  | 'AUTHORIZATION'
   /** A transfer of the money that was reserved during the authorization stage. */
-  Capture = 'CAPTURE',
+  | 'CAPTURE'
   /** Money returned to the customer when they have paid too much. */
-  Change = 'CHANGE',
+  | 'CHANGE'
   /** An authorization for a payment taken with an EMV credit card reader. */
-  EmvAuthorization = 'EMV_AUTHORIZATION',
+  | 'EMV_AUTHORIZATION'
   /** An authorization and capture performed together in a single step. */
-  Sale = 'SALE'
-}
+  | 'SALE';
 
 /** Transaction statuses describe the status of a transaction. */
-export enum TransactionStatus {
+export type TransactionStatus =
   /** There was an error while processing the transaction. */
-  Error = 'ERROR',
+  | 'ERROR'
   /** The transaction failed. */
-  Failure = 'FAILURE',
+  | 'FAILURE'
   /** The transaction is pending. */
-  Pending = 'PENDING',
+  | 'PENDING'
   /** The transaction succeeded. */
-  Success = 'SUCCESS'
-}
+  | 'SUCCESS';
 
 /**
  * The measurement used to calculate a unit price for a product variant (e.g. $9.99 / 100ml).
  *
  */
 export type UnitPriceMeasurement = {
-  __typename?: 'UnitPriceMeasurement';
   /** The type of unit of measurement for the unit price measurement. */
   measuredType?: Maybe<UnitPriceMeasurementMeasuredType>;
   /** The quantity unit for the unit price measurement. */
@@ -7829,54 +7552,50 @@ export type UnitPriceMeasurement = {
 };
 
 /** The accepted types of unit of measurement. */
-export enum UnitPriceMeasurementMeasuredType {
+export type UnitPriceMeasurementMeasuredType =
   /** Unit of measurements representing areas. */
-  Area = 'AREA',
+  | 'AREA'
   /** Unit of measurements representing lengths. */
-  Length = 'LENGTH',
+  | 'LENGTH'
   /** Unit of measurements representing volumes. */
-  Volume = 'VOLUME',
+  | 'VOLUME'
   /** Unit of measurements representing weights. */
-  Weight = 'WEIGHT'
-}
+  | 'WEIGHT';
 
 /** The valid units of measurement for a unit price measurement. */
-export enum UnitPriceMeasurementMeasuredUnit {
+export type UnitPriceMeasurementMeasuredUnit =
   /** 100 centiliters equals 1 liter. */
-  Cl = 'CL',
+  | 'CL'
   /** 100 centimeters equals 1 meter. */
-  Cm = 'CM',
+  | 'CM'
   /** Metric system unit of weight. */
-  G = 'G',
+  | 'G'
   /** 1 kilogram equals 1000 grams. */
-  Kg = 'KG',
+  | 'KG'
   /** Metric system unit of volume. */
-  L = 'L',
+  | 'L'
   /** Metric system unit of length. */
-  M = 'M',
+  | 'M'
   /** Metric system unit of area. */
-  M2 = 'M2',
+  | 'M2'
   /** 1 cubic meter equals 1000 liters. */
-  M3 = 'M3',
+  | 'M3'
   /** 1000 milligrams equals 1 gram. */
-  Mg = 'MG',
+  | 'MG'
   /** 1000 milliliters equals 1 liter. */
-  Ml = 'ML',
+  | 'ML'
   /** 1000 millimeters equals 1 meter. */
-  Mm = 'MM'
-}
+  | 'MM';
 
 /** Systems of weights and measures. */
-export enum UnitSystem {
+export type UnitSystem =
   /** Imperial system of weights and measures. */
-  ImperialSystem = 'IMPERIAL_SYSTEM',
+  | 'IMPERIAL_SYSTEM'
   /** Metric system of weights and measures. */
-  MetricSystem = 'METRIC_SYSTEM'
-}
+  | 'METRIC_SYSTEM';
 
 /** A redirect on the online store. */
 export type UrlRedirect = Node & {
-  __typename?: 'UrlRedirect';
   /** The ID of the URL redirect. */
   id: Scalars['ID']['output'];
   /** The old path to be redirected from. When the user visits this path, they'll be redirected to the target location. */
@@ -7890,7 +7609,6 @@ export type UrlRedirect = Node & {
  *
  */
 export type UrlRedirectConnection = {
-  __typename?: 'UrlRedirectConnection';
   /** A list of edges. */
   edges: Array<UrlRedirectEdge>;
   /** A list of the nodes contained in UrlRedirectEdge. */
@@ -7904,7 +7622,6 @@ export type UrlRedirectConnection = {
  *
  */
 export type UrlRedirectEdge = {
-  __typename?: 'UrlRedirectEdge';
   /** A cursor for use in pagination. */
   cursor: Scalars['String']['output'];
   /** The item at the end of UrlRedirectEdge. */
@@ -7913,7 +7630,6 @@ export type UrlRedirectEdge = {
 
 /** Represents an error in the input of a mutation. */
 export type UserError = DisplayableError & {
-  __typename?: 'UserError';
   /** The path to the input field that caused the error. */
   field?: Maybe<Array<Scalars['String']['output']>>;
   /** The error message. */
@@ -7930,7 +7646,6 @@ export type VariantOptionFilter = {
 
 /** Represents a Shopify hosted video. */
 export type Video = Media & Node & {
-  __typename?: 'Video';
   /** A word or phrase to share the nature or contents of a media. */
   alt?: Maybe<Scalars['String']['output']>;
   /** A globally-unique ID. */
@@ -7947,7 +7662,6 @@ export type Video = Media & Node & {
 
 /** Represents a source for a Shopify hosted video. */
 export type VideoSource = {
-  __typename?: 'VideoSource';
   /** The format of the video source. */
   format: Scalars['String']['output'];
   /** The height of the video. */
@@ -7961,18 +7675,17 @@ export type VideoSource = {
 };
 
 /** Units of measurement for weight. */
-export enum WeightUnit {
+export type WeightUnit =
   /** Metric system unit of mass. */
-  Grams = 'GRAMS',
+  | 'GRAMS'
   /** 1 kilogram equals 1000 grams. */
-  Kilograms = 'KILOGRAMS',
+  | 'KILOGRAMS'
   /** Imperial system unit of mass. */
-  Ounces = 'OUNCES',
+  | 'OUNCES'
   /** 1 pound equals 16 ounces. */
-  Pounds = 'POUNDS'
-}
+  | 'POUNDS';
 
 export type CreateCartMutationVariables = Exact<{ [key: string]: never; }>;
 
 
-export type CreateCartMutation = { __typename?: 'Mutation', payload?: { __typename?: 'CartCreatePayload', cart?: { __typename?: 'Cart', id: string } | null } | null };
+export type CreateCartMutation = { payload?: { cart?: { id: string } | null } | null };
