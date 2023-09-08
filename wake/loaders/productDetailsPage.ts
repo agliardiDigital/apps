@@ -24,11 +24,11 @@ async function loader(
 ): Promise<ProductDetailsPage | null> {
   const url = new URL(req.url);
   const { slug } = props;
-  const { api, storefront } = ctx;
+  const { storefront } = ctx;
 
   if (!slug) return null;
 
-  const variantId = Number(url.searchParams.get("skuId")) || null;
+  // const variantId = Number(url.searchParams.get("skuId")) || null;
   const { id: productId } = parseSlug(slug);
 
   if (!productId) {
@@ -64,62 +64,6 @@ async function loader(
         wakeProduct.seo?.find((m) => m?.name === "description")?.content ?? "",
     },
   };
-
-  // const current = relatedVariants.find((rel) =>
-  //   rel
-  //     ? variantId
-  //       ? rel.produtoVarianteId === variantId
-  //       : rel.produtoId === productId
-  //     : false
-  // );
-
-  // // 404: product not found
-  // if (!current) return null;
-
-  // const isVariantOf = relatedVariants.filter((
-  //   rel,
-  // ): rel is API["GET /produtos/:identificador"]["response"] =>
-  //   Boolean(rel && rel.exibirSite && rel.produtoId === current.produtoId)
-  // );
-
-  // const isSimilarTo = relatedVariants.filter((
-  //   rel,
-  // ): rel is API["GET /produtos/:identificador"]["response"] =>
-  //   Boolean(rel && rel.exibirSite && rel.produtoId !== current.produtoId)
-  // );
-
-  // const currentParams = {
-  //   identificador: current.produtoVarianteId!,
-  //   tipoIdentificador: "ProdutoVarianteId",
-  // } as const;
-
-  // const [partial, variants, similars, categories, seo] = await Promise.all([
-  //   toProduct(current, { api, base: url }),
-  //   Promise.all(isVariantOf.map((v) => toProduct(v, { api, base: url }))),
-  //   Promise.all(isSimilarTo.map((v) => toProduct(v, { api, base: url }))),
-  //   api["GET /produtos/:identificador/categorias"](currentParams, stale)
-  //     .then((res) => res.json()),
-  //   api["GET /produtos/:identificador/seo"](currentParams, stale)
-  //     .then((res) => res.json()),
-  // ]);
-
-  // const product = {
-  //   ...partial,
-  //   isSimilarTo: similars,
-  //   isVariantOf: { ...partial.isVariantOf!, hasVariant: variants },
-  // };
-
-  // return {
-  //   "@type": "ProductDetailsPage",
-  //   breadcrumbList: toBreadcrumbList(product, categories, { base: url }),
-  //   product,
-  //   seo: {
-  //     canonical: product.isVariantOf.url ?? "",
-  //     title: seo.title ?? "",
-  //     description:
-  //       seo.metatags?.find((m) => m.name === "description")?.content ?? "",
-  //   },
-  // };
 }
 
 export default loader;
